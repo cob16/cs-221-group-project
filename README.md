@@ -1,4 +1,5 @@
-cs-221-group-progect
+cs-221-group-project
 ====================
 
 team: Tornado Busters!...?
+
