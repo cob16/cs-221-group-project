@@ -1,6 +1,15 @@
-# cs-221-group-project
+# *cs-221-group-project*
 
-## Members: 
+### Team Sigma
+
+![sigma image]
+(https://upload.wikimedia.org/wikipedia/commons/e/e7/Greek_uc_sigma.svg)
+
+#### ToDo:
+- [ ] Add minutes
+- [ ] Get everyone else on git by 9/10/14
+
+#### Members: 
 
 | me                  | UserID
 ----------------------| ------------------
@@ -17,3 +26,5 @@
 |Zach Yewman          | Codlydodly        |
   
 (please edit this file to include your github usernames)
+
+
