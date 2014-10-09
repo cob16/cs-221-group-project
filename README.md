@@ -24,6 +24,8 @@
 | James Portch        | Giraffesintrousers| 
 | Melissa Smith       |                   |
 | Zach Yewman         | Codlydodly        |
+
+**Note: nwhaber - Nigel Hardy (our tutor) is allso added for oversight of the progect**
   
 (please edit this file to include your github usernames)
 
