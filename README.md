@@ -15,7 +15,7 @@
 ----------------------| ------------------
 | Abdullah Alkhashty  | abdullahalkhashty |
 | Cormac Brady        | cob16             |
-| Calvin Chan         |                   |
+| Calvin Chan         | cac36             |
 | Karl Franks         | karlfranks        |
 | Henry Hollingsworth | hmh7              |
 | Kieran Howard       |                   |
