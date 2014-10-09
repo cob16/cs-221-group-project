@@ -6,7 +6,7 @@
 (https://upload.wikimedia.org/wikipedia/commons/e/e7/Greek_uc_sigma.svg)
 
 #### ToDo:
-- [ ] Add minutes
+- [x] Add minutes
 - [ ] Get everyone else on git by 9/10/14
 
 #### Members: 
