@@ -1,6 +1,6 @@
 # *cs-221-group-project*
 
-### Team Sigma
+### Team TOP KEK
 
 ![sigma image]
 (https://upload.wikimedia.org/wikipedia/commons/e/e7/Greek_uc_sigma.svg)
