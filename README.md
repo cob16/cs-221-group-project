@@ -6,8 +6,7 @@
 (http://i2.kym-cdn.com/photos/images/original/000/617/381/26b)
 
 #### ToDo:
-- [x] Add minutes
-- [ ] Get everyone else on git by 9/10/14
+- [ ] Reorganise second meeting (due to new practicals next week)
 
 #### Members: 
 
