@@ -22,7 +22,7 @@
 | Scott Lockett       | scottl111         |
 | Kieran Lynch        |                   |
 | James Portch        | Giraffesintrousers| 
-| Melissa Smith       |                   |
+| Melissa Smith       | LissaSmith        |
 | Zach Yewman         | Codlydodly        |
 
 **Note: nwhaber - Nigel Hardy (our tutor) is allso added for oversight of the progect**
