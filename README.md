@@ -2,8 +2,8 @@
 
 ### Team TOP KEK
 
-![sigma image]
-(https://upload.wikimedia.org/wikipedia/commons/e/e7/Greek_uc_sigma.svg)
+![TOP KEK]
+(http://i2.kym-cdn.com/photos/images/original/000/617/381/26b)
 
 #### ToDo:
 - [x] Add minutes
