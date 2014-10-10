@@ -11,7 +11,7 @@
 
 #### Members: 
 
-| me                  | UserID
+| Member              | Github ID
 ----------------------| ------------------
 | Abdullah Alkhashty  | abdullahalkhashty |
 | Cormac Brady        | cob16             |
@@ -25,7 +25,9 @@
 | Melissa Smith       | LissaSmith        |
 | Zach Yewman         | Codlydodly        |
 
-**Note: nwhaber - Nigel Hardy (our tutor) is allso added for oversight of the project**
+
+**Note: nwhaber - Nigel Hardy (our tutor) is also added for oversight of the project**
+
   
 (please edit this file to include your github usernames)
 
