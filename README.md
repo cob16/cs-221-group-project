@@ -25,7 +25,7 @@
 | Melissa Smith       | LissaSmith        |
 | Zach Yewman         | Codlydodly        |
 
-**Note: nwhaber - Nigel Hardy (our tutor) is allso added for oversight of the progect**
+**Note: nwhaber - Nigel Hardy (our tutor) is allso added for oversight of the project**
   
 (please edit this file to include your github usernames)
 
