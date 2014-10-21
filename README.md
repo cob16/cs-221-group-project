@@ -6,7 +6,7 @@
 (http://i2.kym-cdn.com/photos/images/original/000/617/381/26b)
 
 #### ToDo:
-- [ ] Reorganise second meeting (due to new practicals next week)
+- [ ] get on the facebook group
 
 #### Members: 
 
