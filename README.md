@@ -10,19 +10,20 @@
 
 #### Members: 
 
-| Member              | Github ID
-----------------------| ------------------
-| Abdullah Alkhashty  | abdullahalkhashty |
-| Cormac Brady        | cob16             |
-| Calvin Chan         | cac36             |
-| Karl Franks         | karlfranks        |
-| Henry Hollingsworth | hmh7              |
-| Kieran Howard       |                   |
-| Scott Lockett       | scottl111         |
-| Kieran Lynch        |                   |
-| James Portch        | Giraffesintrousers| 
-| Melissa Smith       | LissaSmith        |
-| Zach Yewman         | Codlydodly        |
+| Member              | Github ID         | Aber ID
+----------------------| ------------------|---------------
+| Abdullah Alkhashty  | abdullahalkhashty | aba5
+| Au, Yee Tim	        |                   | yta	
+| Cormac Brady        | cob16             | cob16
+| Calvin Chan         | cac36             | cac36	
+| Karl Franks         | karlfranks        | kpf
+| Henry Hollingsworth | hmh7              | hmh7
+| Howard, Rhys Kieran	|                   | rkh4
+| Scott Lockett       | scottl111         | scl10	
+| Kieran Lynch        |                   | kil7
+| James Portch        | Giraffesintrousers| jap55
+| Melissa Smith       | LissaSmith        | mas97
+| Zach Yewman         | Codlydodly        | zay
 
 
 **Note: nwhaber - Nigel Hardy (our tutor) is also added for oversight of the project**
