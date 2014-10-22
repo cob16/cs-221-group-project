@@ -13,7 +13,7 @@
 | Member              | Github ID         | Aber ID
 ----------------------| ------------------|---------------
 | Abdullah Alkhashty  | abdullahalkhashty | aba5
-| Au, Yee Tim	        |                   | yta	
+| Au, Yee Tim	        | Timfortress       | yta	
 | Cormac Brady        | cob16             | cob16
 | Calvin Chan         | cac36             | cac36	
 | Karl Franks         | karlfranks        | kpf
