@@ -1,0 +1,50 @@
+List of tests:
+
+Application tests:
+•	Can input data.
+•	Data can be saved to database for later uploads.
+•	User can input details (e-mail etc.)
+•	Incorrect details (such as misspellings) will not make errors.
+•	Details can be saved for re-use in other recordings.
+•	Multiple records can be saved to the database from different sites.
+•	User can identify the site they are recording from.
+•	Locations that are not sites will be prompted to input again.
+•	GPS can obtain location and is correct.
+•	Date and time of recording can be obtained from the device 
+•	Time and date are correct.
+•	List of species is available.
+•	User can select a species, or multiple species.
+•	User can provide name if species is not on list.
+•	User cannot input a species that does not exist.
+•	User can select the abundance of the species from list.
+•	User can input comments in text box.
+•	Photos can be uploaded from device gallery.
+•	Photos that are outside size restraints won’t cause crashes.
+•	User is able to edit or delete their recording.
+•	Deletion won’t cause issues to the database.
+
+Web tests (including server requests from app):
+•	Information about the visit is added to the server correctly.
+•	Species recordings are added to the server correctly.
+•	Additions of new recordings don’t cause crashes.
+•	Test server database size restraints.
+•	The user is able to upload new reserve records to the website.
+•	The user can delete reserve records without causing issues.
+•	The reserve records have OS Grid References, test to see if an incorrect reference causes issues.
+•	Character limits of textual descriptions of reserves (i.e. if maximum is 40 chars try 41).
+•	Users can view a reserve including all species recordings at that reserve.
+•	List is actually in alphabetical order (of latin names).
+•	Option to order by date.
+•	List is actually in date order.
+
+
+Interface tests:
+•	Do the buttons work.
+•	Does changing quickly back and forth between screens cause crashes.
+•	Can the screen be saved if a new application is opened.
+•	Is user input reflected on the screen within one second.
+•	Do menus open correctly.
+•	If menu button pressed does screen change quick enough.
+•	Do backwards and forwards buttons work correctly.
+•	Novice user tests (gather selection of non-compsci not I.T literate users and have them use the app).
+
