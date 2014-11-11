@@ -20,7 +20,7 @@
 | Henry Hollingsworth | hmh7              | hmh7
 | Howard, Rhys Kieran	| rkh4              | rkh4
 | Scott Lockett       | scottl111         | scl10	
-| Kieran Lynch        | kil7                  | kil7
+| Kieran Lynch        |                   | kil7
 | James Portch        | Giraffesintrousers| jap55
 | Melissa Smith       | LissaSmith        | mas97
 | Zach Yewman         | Codlydodly        | zay
