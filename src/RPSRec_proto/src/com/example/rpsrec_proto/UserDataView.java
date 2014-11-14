@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -77,6 +78,10 @@ public class UserDataView extends Activity {
 					"Please enter a phone number", Toast.LENGTH_SHORT).show();
 		}
 		return phone;
+	}
+	
+	void pressButton(View button) {
+		//get all the stuff stored in semi-permanent variables
 	}
 	
 }

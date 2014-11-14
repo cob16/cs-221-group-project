@@ -23,12 +23,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UserDataScreen"
-            android:label="@string/title_activity_user_data_screen"
-            android:parentActivityName="com.example.myfirstapp.MainActivity"
-            android:windowSoftInputMode="adjustResize|stateVisible" >
-        </activity>
-        <activity
             android:name=".BlankRecord"
             android:label="@string/title_activity_blank_record" >
         </activity>
