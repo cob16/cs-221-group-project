@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.rpsrec_proto"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UserDataScreen"
+            android:label="@string/title_activity_user_data_screen"
+            android:parentActivityName="com.example.myfirstapp.MainActivity"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+        </activity>
+        <activity
+            android:name=".BlankRecord"
+            android:label="@string/title_activity_blank_record" >
+        </activity>
+        <activity
+            android:name=".NewRecord"
+            android:label="@string/title_activity_new_record" >
+        </activity>
+        <activity
+            android:name=".UserDataView"
+            android:label="@string/title_activity_user_data_view" >
+        </activity>
+        <activity
+            android:name=".RecordView"
+            android:label="@string/title_activity_record_view" >
+        </activity>
+    </application>
+
+</manifest>
