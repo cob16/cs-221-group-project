@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2014 at 06:40 PM
+-- Generation Time: Nov 16, 2014 at 09:24 PM
 -- Server version: 5.5.40-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.5
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `Recordings` (
   `author_ID` int(11) NOT NULL,
   `reserve_name` varchar(80) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf32 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf32 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `Recordings`
@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `Reserves` (
   `reserve_ID` int(11) NOT NULL AUTO_INCREMENT,
   `reserve_name` text NOT NULL,
   PRIMARY KEY (`reserve_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `Reserves`
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `Species` (
   `Common Name` varchar(33) DEFAULT NULL,
   PRIMARY KEY (`species_id`),
   UNIQUE KEY `Species` (`Species`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8325 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7852 ;
 
 --
 -- Dumping data for table `Species`
@@ -7949,19 +7949,18 @@ INSERT INTO `Species` (`species_id`, `Species`, `Common Name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `Users` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `autor` varchar(80) CHARACTER SET utf8 NOT NULL,
   `Email` varchar(80) CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`ID`),
+  PRIMARY KEY (`Email`),
   UNIQUE KEY `Email` (`Email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`ID`, `autor`, `Email`) VALUES
-(1, 'cormac brady', 'cob16@aber.ac.uk');
+INSERT INTO `Users` (`autor`, `Email`) VALUES
+('cormac brady', 'cob16@aber.ac.uk');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
