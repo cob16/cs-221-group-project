@@ -1,0 +1,76 @@
+body {
+font-family: 'Source Sans Pro', sans-serif;
+background-color: #F6F6F6;
+margin-left: 0%;
+margin-right: 0%;
+}
+
+a {
+  color: #2ecc71;
+  text-decoration: none;
+}
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  padding: 1rem 2rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header a:hover {
+	color: #1e1d1d;
+}
+
+.header h1,
+.header p {
+  margin: 0;
+  font-size: 2rem;
+  float: left;
+  font-weight: 300;
+}
+
+.header p {
+  color: #999;
+  font-weight: 300;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid #ccc;
+ }
+
+.gitlogo {
+	float: right;
+}
+
+.data {
+  display: block;
+  background: #fff;
+  padding: 2rem;
+  margin: 2rem;
+  border: 1px solid #ccc;
+  margin-left: 20%;
+  margin-right: 20%;
+  overflow: hidden;
+}
+
+table  {
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+table td {
+	border-top: solid #ccc;
+	border-width: 1px;
+	border-bottom: solid #ccc;
+	border-width: 1px;
+	overflow: hidden;
+	color: #1e1d1d;
+	font-weight: 300;
+}
+
+table th {
+	color: #1e1d1d;
+	font-weight: 400;
+	font-size: 1.25rem;
+}
+
