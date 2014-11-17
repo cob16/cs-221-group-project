@@ -1,19 +1,48 @@
 package com.example.rpsrec_proto;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class UserDataView extends Activity {
 
+	SharedPreferences sharedpreferences;
+
+	TextView name;
+	TextView phone;
+	TextView email;
+	public static final String Name = "nameKey";
+	public static final String Phone = "phoneKey";
+	public static final String Email = "emailKey";
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		name = (TextView) findViewById(R.id.name);
+		phone = (TextView) findViewById(R.id.phone);
+		email = (TextView) findViewById(R.id.email);
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_data_view);
+
+		if (sharedpreferences.contains(Name)) {
+			name.setText(sharedpreferences.getString(Name, ""));
+
+		}
+		if (sharedpreferences.contains(Phone)) {
+			phone.setText(sharedpreferences.getString(Phone, ""));
+
+		}
+		if (sharedpreferences.contains(Email)) {
+			email.setText(sharedpreferences.getString(Email, ""));
+
+		}
 	}
 
 	@Override
@@ -34,26 +63,28 @@ public class UserDataView extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	/**
 	 * Retrieve the value from the name box as a string.
 	 */
 	String getEnteredName() {
-		String name="";;
+		String name = "";
+		;
 		try {
 			EditText et = (EditText) findViewById(R.id.name);
 			name = et.getText().toString();
 		} catch (Exception e) {
 			// failed to get the name string
 
-			Toast.makeText(getApplicationContext(),
-					"Please enter a name", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "Please enter a name",
+					Toast.LENGTH_SHORT).show();
 		}
 		return name;
 	}
-	
+
 	String getEnteredEmail() {
-		String email="";;
+		String email = "";
+		;
 		try {
 			EditText et = (EditText) findViewById(R.id.email);
 			email = et.getText().toString();
@@ -67,7 +98,8 @@ public class UserDataView extends Activity {
 	}
 
 	String getEnteredPhoneNumber() {
-		String phone="";;
+		String phone = "";
+		;
 		try {
 			EditText et = (EditText) findViewById(R.id.phone);
 			phone = et.getText().toString();
@@ -79,9 +111,19 @@ public class UserDataView extends Activity {
 		}
 		return phone;
 	}
-	
+
 	void pressButton(View button) {
-		//get all the stuff stored in semi-permanent variables
+		// check all the data is correct and put it in cache
+		String n = name.getText().toString();
+		String ph = phone.getText().toString();
+		String e = email.getText().toString();
+
+		Editor editor = sharedpreferences.edit();
+		editor.putString(Name, n);
+		editor.putString(Phone, ph);
+		editor.putString(Email, e);
+
+		editor.commit();
 	}
-	
+
 }
