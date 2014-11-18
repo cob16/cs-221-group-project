@@ -3,6 +3,7 @@ font-family: 'Source Sans Pro', sans-serif;
 background-color: #F6F6F6;
 margin-left: 0%;
 margin-right: 0%;
+margin-top: 0;
 }
 
 a {
@@ -16,6 +17,8 @@ a {
   padding: 1rem 2rem;
   text-align: center;
   overflow: hidden;
+  margin-top: 0;
+
 }
 
 .header a:hover {
@@ -28,6 +31,7 @@ a {
   font-size: 2rem;
   float: left;
   font-weight: 300;
+  margin-top: 0;
 }
 
 .header p {
