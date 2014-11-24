@@ -1,9 +1,6 @@
 # *cs-221-group-project*
 
-### Team TOP KEK
-
-![TOP KEK]
-(http://i2.kym-cdn.com/photos/images/original/000/617/381/26b)
+### Team TOP KEK | ![TOP KEK] (http://i2.kym-cdn.com/photos/images/original/000/617/381/26b)
 
 #### ToDo:
 - [ ] get Abdullah  to do work or throw him out
