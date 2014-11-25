@@ -1,16 +1,34 @@
 package com.example.rpsrec_proto;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class NewRecord extends Activity {
 
+	private EditText et;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_record);
+		
+		final Button button =(Button)findViewById(R.id.button1);
+		button.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				buttonPressed();
+				Intent i = new Intent(getApplicationContext(), RecordView.class);
+				startActivity(i);
+				
+			}
+		});
 	}
 
 	@Override
@@ -30,5 +48,32 @@ public class NewRecord extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	String getSpecies() {
+		et = (EditText) findViewById(R.id.speciesName);
+		return et.getText().toString();
+	}
+	
+	char getDAFOR() {
+		et = (EditText) findViewById(R.id.name);
+		return et.getText().toString().charAt(0);
+	}
+	
+	String getTypicalLocation() {
+		et = (EditText) findViewById(R.id.typLocation);
+		return et.getText().toString();
+	}
+	
+	String getInfo() {
+		et = (EditText) findViewById(R.id.info);
+		return et.getText().toString();
+	}
+	
+	void buttonPressed() {
+		getSpecies();
+		getDAFOR();
+		getTypicalLocation();
+		getInfo();
 	}
 }

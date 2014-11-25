@@ -1,12 +1,14 @@
 package com.example.rpsrec_proto;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,12 +20,16 @@ public class UserDataView extends Activity {
 	TextView name;
 	TextView phone;
 	TextView email;
+	
 	public static final String Name = "nameKey";
 	public static final String Phone = "phoneKey";
 	public static final String Email = "emailKey";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		sharedpreferences = getPreferences(0);
+		
+		
 		name = (TextView) findViewById(R.id.name);
 		phone = (TextView) findViewById(R.id.phone);
 		email = (TextView) findViewById(R.id.email);
@@ -43,6 +49,17 @@ public class UserDataView extends Activity {
 			email.setText(sharedpreferences.getString(Email, ""));
 
 		}
+		
+		final Button button =(Button)findViewById(R.id.sign_up_button);
+		button.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				pressButton();
+				Intent i = new Intent(getApplicationContext(), BlankRecord.class);
+				startActivity(i);
+			}
+		}); 
 	}
 
 	@Override
@@ -112,11 +129,14 @@ public class UserDataView extends Activity {
 		return phone;
 	}
 
-	void pressButton(View button) {
+	void pressButton() {
 		// check all the data is correct and put it in cache
-		String n = name.getText().toString();
-		String ph = phone.getText().toString();
-		String e = email.getText().toString();
+		EditText et = (EditText) findViewById(R.id.name);
+		String n = et.getText().toString();
+		et = (EditText) findViewById(R.id.phone);
+		String ph = et.getText().toString();
+		et = (EditText) findViewById(R.id.email);
+		String e = et.getText().toString();
 
 		Editor editor = sharedpreferences.edit();
 		editor.putString(Name, n);
