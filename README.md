@@ -1,10 +1,10 @@
 # *cs-221-group-project*
 
-### Team TOP KEK | ![TOP KEK] (http://i2.kym-cdn.com/photos/images/original/000/617/381/26b)
+### Team TOP KEK
 
 #### Current Timesheet:
 
-![Current timeshee] (http://cormacbrady.info/~cormac/timesheet.PNG)
+![Current timeshee] (http://cormacbrady.info/~cormac/timesheet.PNG) | ![TOP KEK] (http://i2.kym-cdn.com/photos/images/original/000/617/381/26b)
 
 
 #### Members: 
