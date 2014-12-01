@@ -15,7 +15,7 @@ public class BlankRecord extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_blank_record);
 		
-		final Button button =(Button)findViewById(R.id.button1);
+		final Button button =(Button)findViewById(R.id.addRecordButton);
 		button.setOnClickListener(new View.OnClickListener() {
 			
 			@Override

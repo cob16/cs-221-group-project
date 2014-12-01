@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="reserves_array">
+        <item>Reserve 1</item>
+        <item>Reserve 2</item>
+        <item>Reserve 3</item>
+    </string-array>
+</resources>

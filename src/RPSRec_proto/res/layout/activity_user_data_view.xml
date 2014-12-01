@@ -37,7 +37,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/nameHint"
-                android:inputType="textPersonName" >
+                android:inputType="textPersonName"
+                android:maxLines="1" >
 
                 <requestFocus />
             </EditText>
@@ -48,7 +49,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/emailHint"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:maxLines="1" />
 
             <EditText
                 android:id="@+id/phone"
@@ -56,12 +58,15 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/phoneHint"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:maxLength="13"
+                android:maxLines="1" />
 
             <Spinner
                 android:id="@+id/reserve_spinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:entries="@array/reserves_array" />
 
             <Button
                 android:id="@+id/sign_up_button"

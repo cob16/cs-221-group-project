@@ -22,4 +22,27 @@
     <string name="title_section3">Section 3</string>
     <string name="emailHint">Email Address</string>
 
+    <!--  DAFOR slider elements -->
+    <string-array name="dafor_array">
+        <item>D (Dominant)</item>
+        <item>A (Abundant)</item>
+        <item>F (Frequent)</item>
+        <item>O (Occasional)</item>
+        <item>R (Rare)</item>
+    </string-array>
+    
+    <!-- Navigation Drawer (Hamburger Menu) items -->
+    <string-array name="nav_drawer_items">
+        <item >Send</item>
+        <item >Edit</item>
+        <item >Delete</item>
+    </string-array>
+    
+        <string name="add_specimen_img_title">Add specimen image</string>
+        <string name="species_name_hint">Species Name</string>
+        <string name="enter_record_button_text">Enter Record</string>
+        <string name="add_location_image_title">Add Location Image</string>
+        <string name="typlocation_hint">Typical Location</string>
+        <string name="addinfo_hint">Additional Information</string>
+
 </resources>

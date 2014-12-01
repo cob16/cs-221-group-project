@@ -18,7 +18,7 @@ public class NewRecord extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_new_record);
 		
-		final Button button =(Button)findViewById(R.id.button1);
+		final Button button =(Button)findViewById(R.id.addRecordDataButton);
 		button.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -56,7 +56,7 @@ public class NewRecord extends Activity {
 	}
 	
 	char getDAFOR() {
-		et = (EditText) findViewById(R.id.name);
+		et = (EditText) findViewById(R.id.dafor_spinner);
 		return et.getText().toString().charAt(0);
 	}
 	

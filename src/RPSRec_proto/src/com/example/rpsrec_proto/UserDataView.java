@@ -30,14 +30,14 @@ public class UserDataView extends Activity {
 		sharedpreferences = getPreferences(0);
 		
 		
-		name = (TextView) findViewById(R.id.name);
+		/*name = (TextView) findViewById(R.id.name);
 		phone = (TextView) findViewById(R.id.phone);
-		email = (TextView) findViewById(R.id.email);
+		email = (TextView) findViewById(R.id.email);*/
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_data_view);
 
-		if (sharedpreferences.contains(Name)) {
+		/*if (sharedpreferences.contains(Name)) {
 			name.setText(sharedpreferences.getString(Name, ""));
 
 		}
@@ -48,7 +48,7 @@ public class UserDataView extends Activity {
 		if (sharedpreferences.contains(Email)) {
 			email.setText(sharedpreferences.getString(Email, ""));
 
-		}
+		}*/
 		
 		final Button button =(Button)findViewById(R.id.sign_up_button);
 		button.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +86,7 @@ public class UserDataView extends Activity {
 	 */
 	String getEnteredName() {
 		String name = "";
-		;
+		
 		try {
 			EditText et = (EditText) findViewById(R.id.name);
 			name = et.getText().toString();
@@ -101,7 +101,6 @@ public class UserDataView extends Activity {
 
 	String getEnteredEmail() {
 		String email = "";
-		;
 		try {
 			EditText et = (EditText) findViewById(R.id.email);
 			email = et.getText().toString();
@@ -109,14 +108,13 @@ public class UserDataView extends Activity {
 			// failed to get the name string
 
 			Toast.makeText(getApplicationContext(),
-					"Please enter an email address", Toast.LENGTH_SHORT).show();
+					"Please enter a valid email address", Toast.LENGTH_SHORT).show();
 		}
 		return email;
 	}
 
 	String getEnteredPhoneNumber() {
 		String phone = "";
-		;
 		try {
 			EditText et = (EditText) findViewById(R.id.phone);
 			phone = et.getText().toString();
@@ -131,12 +129,9 @@ public class UserDataView extends Activity {
 
 	void pressButton() {
 		// check all the data is correct and put it in cache
-		EditText et = (EditText) findViewById(R.id.name);
-		String n = et.getText().toString();
-		et = (EditText) findViewById(R.id.phone);
-		String ph = et.getText().toString();
-		et = (EditText) findViewById(R.id.email);
-		String e = et.getText().toString();
+		String n = getEnteredName();
+		String ph = getEnteredPhoneNumber();
+		String e = getEnteredEmail();
 
 		Editor editor = sharedpreferences.edit();
 		editor.putString(Name, n);

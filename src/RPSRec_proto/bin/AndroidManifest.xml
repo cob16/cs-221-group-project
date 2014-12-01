@@ -28,7 +28,11 @@
         </activity>
         <activity
             android:name=".NewRecord"
-            android:label="@string/title_activity_new_record" >
+            android:label="@string/title_activity_new_record"
+            android:parentActivityName="com.example.rpsrec_proto.BlankRecord" >
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.rpsrec_proto.BlankRecord" />
         </activity>
         <activity
             android:name=".UserDataView"

@@ -9,7 +9,7 @@
     tools:context="com.example.rpsrec_proto.MainActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/startButton"
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:layout_alignParentBottom="true"
