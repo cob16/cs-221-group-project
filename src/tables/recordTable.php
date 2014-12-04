@@ -5,7 +5,12 @@
 </head>
 <body>
 	<div class="container">
+
+
 		<?php
+		// ================================================================
+		// THIS GENERATES A TABLE FOR THE RECORDINGS GOT FROM THE DATABASE
+		// =================================================================
 		$conn = pg_connect("host=http://cormacbrady.info/owncloud/superSecret/adminer-4.1.0.php?db=cb-group-project
 			dbname=Recordings user=root password=Universe94!");
 		$res = pg_query ($conn, "select * from Recordings");
@@ -35,7 +40,7 @@
 			echo '<td>' . $a["reserve_name"] . '</td>';
 			echo '</tr>'
 		}
-		echo '</table>';
+		echo '</table>'; 
 		?>
 	</div>
 </body>
