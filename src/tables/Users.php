@@ -8,7 +8,7 @@
 		<?php
 
 		$conn = pg_connect("host=http://cormacbrady.info/owncloud/superSecret/adminer-4.1.0.php?db=cb-group-project
-			dbname=Users user=root password=Universe94!");
+			dbname=Users user=tkek password=topkek3");
 		$res = pg_query ($conn, "select * from Users");
 		echo '<table>';
 		echo '<thead>';
