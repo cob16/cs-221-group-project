@@ -12,7 +12,7 @@
 		// THIS GENERATES A TABLE FOR THE RECORDINGS GOT FROM THE DATABASE
 		// =================================================================
 		$conn = pg_connect("host=http://cormacbrady.info/owncloud/superSecret/adminer-4.1.0.php?db=cb-group-project
-			dbname=Recordings user=root password=Universe94!");
+			dbname=Recordings user=tkek password=topkek3");
 		$res = pg_query ($conn, "select * from Recordings");
 		echo '<table>';
 		echo '<thead>';
