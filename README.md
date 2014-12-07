@@ -2,7 +2,7 @@
 
 ### Team TOP KEK
 todo:
-- [ ] UUpdate project plan document to reflect [our way of devolving things]. (http://istqbexamcertification.com/what-is-iterative-model-advantages-disadvantages-and-when-to-use-it/)
+- [ ] Update project plan document to reflect [our way of devolving things](http://istqbexamcertification.com/what-is-iterative-model-advantages-disadvantages-and-when-to-use-it/).
 
 #### Current Timesheet:
 
