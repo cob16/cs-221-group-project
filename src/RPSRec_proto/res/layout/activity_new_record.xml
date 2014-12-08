@@ -54,28 +54,6 @@
             android:text="@string/rarityTitle"
             android:textAppearance="?android:attr/textAppearanceSmall" />
 
-        <TextView
-            android:id="@+id/coordinateTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/info"
-            android:layout_below="@+id/dafor_spinner"
-            android:layout_marginTop="25dp"
-            android:text="@string/coordinateTitle"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
-
-        <EditText
-            android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/dafor_spinner"
-            android:layout_below="@+id/coordinateTitle"
-            android:layout_marginTop="72dp"
-            android:ems="10"
-            android:hint="@string/addinfo_hint"
-            android:inputType="textMultiLine"
-            android:maxLines="2" />
-
         <EditText
             android:id="@+id/typLocation"
             android:layout_width="wrap_content"
@@ -115,6 +93,56 @@
             android:layout_below="@+id/textView3"
             android:layout_marginTop="39dp"
             android:text="@string/enter_record_button_text" />
+
+        <Button
+            android:id="@+id/getSpecimenImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/add_species_img_title"
+            android:layout_alignBottom="@+id/add_species_img_title"
+            android:layout_marginLeft="21dp"
+            android:layout_toRightOf="@+id/rarityTitle"
+            android:text="@string/gallery_button" />
+
+        <Button
+            android:id="@+id/getLocationImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_alignLeft="@+id/getSpecimenImage"
+            android:text="@string/gallery_button" />
+
+        <Button
+            android:id="@+id/specimenCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/getSpecimenImage"
+            android:layout_alignBottom="@+id/getSpecimenImage"
+            android:layout_marginLeft="19dp"
+            android:layout_toRightOf="@+id/getSpecimenImage"
+            android:text="@string/camera_button" />
+
+        <Button
+            android:id="@+id/locationCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/getLocationImage"
+            android:layout_alignBottom="@+id/getLocationImage"
+            android:layout_alignLeft="@+id/specimenCamera"
+            android:text="@string/camera_button" />
+
+        <EditText
+            android:id="@+id/info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/dafor_spinner"
+            android:layout_below="@+id/dafor_spinner"
+            android:layout_marginTop="29dp"
+            android:ems="10"
+            android:hint="@string/addinfo_hint"
+            android:inputType="textMultiLine"
+            android:maxLines="2" />
 
     </RelativeLayout>
 
