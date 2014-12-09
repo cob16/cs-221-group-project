@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.2.13.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 28, 2014 at 08:05 PM
--- Server version: 5.5.40-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.5
+-- Generation Time: Dec 09, 2014 at 11:51 AM
+-- Server version: 5.5.40-0+wheezy1
+-- PHP Version: 5.4.35-0+deb7u2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,8 +17,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `Reserve_Plant_Species_kek3`
+-- Database: `cb-group-project`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `DAFOR`
+--
+
+CREATE TABLE IF NOT EXISTS `DAFOR` (
+  `Value` char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `DAFOR`
+--
+
+INSERT INTO `DAFOR` (`Value`) VALUES
+('A'),
+('D'),
+('F'),
+('O'),
+('R');
 
 -- --------------------------------------------------------
 
@@ -27,23 +48,24 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `Recordings` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `species` text NOT NULL,
+`ID` int(11) NOT NULL,
+  `species` int(11) NOT NULL,
+  `DAFOR` char(1) CHARACTER SET utf8mb4 NOT NULL,
   `comments` text,
   `date_recorded` date NOT NULL,
   `photo_path_general` text NOT NULL,
   `photo_path_species` text NOT NULL,
-  `author_ID` int(11) NOT NULL,
-  `reserve_name` varchar(80) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf32 AUTO_INCREMENT=2 ;
+  `Email` varchar(80) CHARACTER SET utf8 NOT NULL,
+  `reserve_name` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf32;
 
 --
 -- Dumping data for table `Recordings`
 --
 
-INSERT INTO `Recordings` (`ID`, `species`, `comments`, `date_recorded`, `photo_path_general`, `photo_path_species`, `author_ID`, `reserve_name`) VALUES
-(1, 'Abelia uniflora', 'this is the firts test record', '2014-11-16', 'foo/foo.jpeg', 'foo/foo1.jpeg', 1, '1');
+INSERT INTO `Recordings` (`ID`, `species`, `DAFOR`, `comments`, `date_recorded`, `photo_path_general`, `photo_path_species`, `Email`, `reserve_name`) VALUES
+(7, 1, 'A', 'eg comment', '0003-11-14', 'images/example_pic1.jpg', 'images/example_pic2.jpg', 'cob16@aber.ac.uk', 1),
+(8, 25, 'F', 'second example recording', '2014-12-09', ' ', ' ', 'cob16@aber.ac.uk', 1);
 
 -- --------------------------------------------------------
 
@@ -52,17 +74,17 @@ INSERT INTO `Recordings` (`ID`, `species`, `comments`, `date_recorded`, `photo_p
 --
 
 CREATE TABLE IF NOT EXISTS `Reserves` (
-  `reserve_ID` int(11) NOT NULL AUTO_INCREMENT,
-  `reserve_name` text NOT NULL,
-  PRIMARY KEY (`reserve_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+`reserve_ID` int(11) NOT NULL,
+  `reserve_name` varchar(80) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Reserves`
 --
 
 INSERT INTO `Reserves` (`reserve_ID`, `reserve_name`) VALUES
-(1, 'example reserve');
+(1, 'example name'),
+(2, 'other example reserve');
 
 -- --------------------------------------------------------
 
@@ -71,12 +93,10 @@ INSERT INTO `Reserves` (`reserve_ID`, `reserve_name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `Species` (
-  `species_id` int(11) NOT NULL AUTO_INCREMENT,
+`species_id` int(11) NOT NULL,
   `Species` varchar(82) NOT NULL,
-  `Common Name` varchar(33) DEFAULT NULL,
-  PRIMARY KEY (`species_id`),
-  UNIQUE KEY `Species` (`Species`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7852 ;
+  `Common Name` varchar(33) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7852 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `Species`
@@ -7949,18 +7969,83 @@ INSERT INTO `Species` (`species_id`, `Species`, `Common Name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `Users` (
-  `autor` varchar(80) CHARACTER SET utf8 NOT NULL,
-  `Email` varchar(80) CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`Email`),
-  UNIQUE KEY `Email` (`Email`)
+  `Name` varchar(80) CHARACTER SET utf8 NOT NULL,
+  `Email` varchar(80) CHARACTER SET utf8 NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Users`
 --
 
-INSERT INTO `Users` (`autor`, `Email`) VALUES
+INSERT INTO `Users` (`Name`, `Email`) VALUES
 ('cormac brady', 'cob16@aber.ac.uk');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `DAFOR`
+--
+ALTER TABLE `DAFOR`
+ ADD PRIMARY KEY (`Value`);
+
+--
+-- Indexes for table `Recordings`
+--
+ALTER TABLE `Recordings`
+ ADD PRIMARY KEY (`ID`), ADD KEY `Email` (`Email`), ADD KEY `species` (`species`), ADD KEY `DAFOR` (`DAFOR`), ADD KEY `reserve_name` (`reserve_name`);
+
+--
+-- Indexes for table `Reserves`
+--
+ALTER TABLE `Reserves`
+ ADD PRIMARY KEY (`reserve_ID`);
+
+--
+-- Indexes for table `Species`
+--
+ALTER TABLE `Species`
+ ADD PRIMARY KEY (`species_id`), ADD UNIQUE KEY `Species` (`Species`);
+
+--
+-- Indexes for table `Users`
+--
+ALTER TABLE `Users`
+ ADD PRIMARY KEY (`Email`), ADD UNIQUE KEY `Email` (`Email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `Recordings`
+--
+ALTER TABLE `Recordings`
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `Reserves`
+--
+ALTER TABLE `Reserves`
+MODIFY `reserve_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `Species`
+--
+ALTER TABLE `Species`
+MODIFY `species_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7852;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `Recordings`
+--
+ALTER TABLE `Recordings`
+ADD CONSTRAINT `Recordings_ibfk_1` FOREIGN KEY (`Email`) REFERENCES `Users` (`Email`),
+ADD CONSTRAINT `Recordings_ibfk_2` FOREIGN KEY (`reserve_name`) REFERENCES `Reserves` (`reserve_ID`),
+ADD CONSTRAINT `Recordings_ibfk_3` FOREIGN KEY (`species`) REFERENCES `Species` (`species_id`),
+ADD CONSTRAINT `Recordings_ibfk_4` FOREIGN KEY (`DAFOR`) REFERENCES `DAFOR` (`Value`),
+ADD CONSTRAINT `Recordings_ibfk_5` FOREIGN KEY (`reserve_name`) REFERENCES `Reserves` (`reserve_ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
