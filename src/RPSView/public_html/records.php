@@ -54,8 +54,7 @@ SQL;
 			echo '<h1><a href="https://cormacbrady.info/~tkek"><strong>RPSR</strong>view</a></h1>';
 			while ($b = $fishsticks->fetch_assoc()) {
 						if ($reserve_name == $b["reserve_ID"]) {
-							echo '<p>' . $b["reserve_name"] . '</p>';
-
+							echo '<p>Reserve - ' . ucwords($b["reserve_name"]) . '</p>';
 						}
 					}		
 			echo '<a class="gitlogo" href="https://github.com/cob16/cs-221-group-project"> <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" height="45" width="45"></a>';
@@ -64,7 +63,6 @@ SQL;
 	
 		echo '<div class="container">';
 
-		
 			
 			echo '<table cellpadding="25">';
 			echo '<thead>';
@@ -91,7 +89,8 @@ SQL;
 				// echo '<td>' . $a["species"] . '</td>';
 				echo '<td>' . $a["DAFOR"] . '</td>';
 				echo '<td>' . $a["comments"] . '</td>';
-				echo '<td>' . $a["date_recorded"] . '</td>';
+				$fixedDate = date("d-m-Y", strtotime($a["date_recorded"]));
+				echo '<td>' . $fixedDate . '</td>';
 				echo '<td><img src="' . $a["photo_path_general"] . '"></td>';
 				echo '<td><img src="' . $a["photo_path_species"] . '"</td>';
 				echo '<td>' . $a["Email"] . '</td>';
