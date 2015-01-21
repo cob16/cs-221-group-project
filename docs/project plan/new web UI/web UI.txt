@@ -1,0 +1,21 @@
+4.2.1 Reserve View
+
+This is the view the user will see when accessing the RPSRview website. It displays the name, location and description of every reserve. By clicking on a reserve's name the user will be taken to the list of plants in that specific reserve.
+
+The “Add Reserve” button opens a page to add a new reserve to the list, the “Edit List” button allows the user to edit the list of reserve (eg delete a reserve, rename a reserve).
+
+4.2.2 Edit List View
+
+By clicking the 'Edit list' button on the other pages the user will be able to change the attributes of each reserve as well as select and delete entries. 
+
+ 4.2.3 Plant View
+
+The plant view shows every plant recorded (sorted alphabetically) in the selected reserve and the date of their first and last recording. By clicking on a plant's name the user will be taken to the recorder view.
+
+Adding and editing entries in the list functions identically to the reserve view.
+
+4.2.4 Recorder view
+
+The recorder view displays the information about the selected plant in the reserve with the list sorted reverse chronologically.
+
+Adding and editing entries in the list functions identically to the reserve and plant view. 
