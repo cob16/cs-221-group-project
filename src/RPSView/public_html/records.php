@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="style221.css" />
+		<link rel="stylesheet" type="text/css" href="style221.css" />
 	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700' rel='stylesheet' type='text/css'>
 	<title>RPSRview</title>
 	<meta charset="UTF-8" />
@@ -67,6 +67,7 @@ SQL;
 			echo '<table cellpadding="25">';
 			echo '<thead>';
 			echo '<tr>';
+			echo '<th>Select</th>';
 			echo '<th>Species</th>';
 			echo '<th>DAFOR Scale</th>';
 			echo '<th>Comments</th>';
@@ -78,7 +79,7 @@ SQL;
 			//print eatch row
 			while ($a = $res->fetch_assoc()) {
 				echo '<tr>';
-
+				echo '<td><input type="checkbox"></td>';
 				 $specNumber = $a["species"];
 				 while ($c = $dopefish->fetch_assoc()) {
 				 	if ($specNumber == $c["species_id"]) {
@@ -86,7 +87,6 @@ SQL;
 				 		break;
 				 	}
 				 }
-				// echo '<td>' . $a["species"] . '</td>';
 				echo '<td>' . $a["DAFOR"] . '</td>';
 				echo '<td>' . $a["comments"] . '</td>';
 				$fixedDate = date("d-m-Y", strtotime($a["date_recorded"]));
