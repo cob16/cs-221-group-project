@@ -40,6 +40,7 @@
         }
       }
     }
+    //need similar code to update databse with edited details
 
     $host = 'localhost';
     $user = 'tkek';
@@ -56,7 +57,7 @@
         die('There was an error running the query [' . $db->error . ']');
       }
 
-
+    //text needs to be input fields, to be able to update details
     echo '<table cellpadding="25">';
     echo '<thead>';
     echo '<tr>';
@@ -70,6 +71,9 @@
     }
     echo '</table>';
 
+    echo '<input type="submit" name ="delete" value ="Delete Selected"/>';
+    echo '<input type="submit" name ="cancel" value ="Cancel"/>'; //should just take user back to index
+    echo '<input type="submit" name="apply" value ="Apply Changes"/>';
 
   }
 ?>

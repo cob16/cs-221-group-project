@@ -29,22 +29,37 @@
 			FROM `Reserves`
 			SQL;
 
+			$count = <<<SQL
+			COUNT(*)
+			FROM `Reserves`
+			SQL;
 
+			if(!$count = $conn->query($count)){
+				die('There was an error running the query [' . $db->error . ']');
+			}
+
+			//ADD NEW RESERVE
+			if (isset($_POST['reserve_name']))
+			{
+				$new_record = $_POST['reserve_name'];
+				$new_id = $count + 1;
+				 	$host = 'localhost';
+				 	$user = 'tkek';
+				 	$pass = 'topkek3';
+				 	$database = 'cb-group-project';
+				 	$conn = new mysqli($host, $user, $pass, $database);
+					if(!$conn->connect_errno > 0){
+						$res = <<<SQL INSERT INTO `Reserves` (`reserve_ID`, `reserve_name`) VALUES ($new_id, $new_record) SQL;
+						if(!$res = $conn->query($res)){
+							die('There was an error running the query [' . $db->error . ']');
+						}
+					}
+			}
 
 			if(!$res = $conn->query($res)){
 				die('There was an error running the query [' . $db->error . ']');
 			}
 
-
-		// echo '<table cellpadding="25">';
-		// echo '<thead>';
-		// echo '<tr>';
-		// echo '<th>testing</th>';
-		// while ($b = $fishsticks->fetch_assoc()) {
-		// 	echo '<td>' . $a["reserve_name"] . '</td>';
-		// 	echo '</tr>';
-		// }
-		// echo'</table>';
 
 		echo '<table cellpadding="25">';
 		echo '<thead>';
@@ -57,8 +72,8 @@
 				echo '</tr>';
 		}
 	echo '</table>';
-	
-	echo '<button onclick="location.href='/add_record.php'">Add Record</button>';
+
+	echo '<button onclick="location.href='/add_record.php'">Add Reserve</button>';
 	echo '<button onclick="location.href='/edit_list.php'">Edit List</button>';
 	}
 ?>
