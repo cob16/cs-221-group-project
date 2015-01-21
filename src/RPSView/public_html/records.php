@@ -8,17 +8,6 @@
 	<meta charset="UTF-8" />
 </head>
 <body>
-	<div class="header">
-		<h1><a href="https://cormacbrady.info/~tkek"><strong>RPSR</strong>view</a></h1>
-		<p>Record List</p>
-		<a class="gitlogo" href="https://github.com/cob16/cs-221-group-project"> <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" height="45" width="45"></a>
-	</div>
-
-	
-	<div class="container">
-
-
-
 		<?php
 		/*
 		 * Takes the reserve id passed to it
@@ -61,14 +50,21 @@ SQL;
 				die('there was an error running the query :(');
 			}
 
-			// $resNumber = $a["reserve_name"];
-				while ($b = $fishsticks->fetch_assoc()) {
-					if ($reserve_name == $b["reserve_ID"]) {
-						echo '<h1>' . $b["reserve_name"] . '</h1>';
+		echo '<div class="header">';
+			echo '<h1><a href="https://cormacbrady.info/~tkek"><strong>RPSR</strong>view</a></h1>';
+			while ($b = $fishsticks->fetch_assoc()) {
+						if ($reserve_name == $b["reserve_ID"]) {
+							echo '<p>' . $b["reserve_name"] . '</p>';
 
-					}
-				}
-			// echo '<h1>Testing</h1>';
+						}
+					}		
+			echo '<a class="gitlogo" href="https://github.com/cob16/cs-221-group-project"> <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" height="45" width="45"></a>';
+		echo '</div>';
+
+	
+		echo '<div class="container">';
+
+		
 			
 			echo '<table cellpadding="25">';
 			echo '<thead>';
@@ -85,16 +81,14 @@ SQL;
 			while ($a = $res->fetch_assoc()) {
 				echo '<tr>';
 
-				 // $specNumber = $a["species"];
-				 // echo $specNumber . ", ";
-				 // while ($c = $dopefish->fetch_assoc()) {
-				 	 // echo $specNumber . ", ";
-				 	// if ($specNumber == $c["species_id"]) {
-				 		// echo $specNumber . ", ";
-				 		// echo '<td>' . $c["Species"] . '</td>';
-				 	// }
-				 // }
-				echo '<td>' . $a["species"] . '</td>';
+				 $specNumber = $a["species"];
+				 while ($c = $dopefish->fetch_assoc()) {
+				 	if ($specNumber == $c["species_id"]) {
+				 		echo '<td>' . $c["Species"] . '</td>';
+				 		break;
+				 	}
+				 }
+				// echo '<td>' . $a["species"] . '</td>';
 				echo '<td>' . $a["DAFOR"] . '</td>';
 				echo '<td>' . $a["comments"] . '</td>';
 				echo '<td>' . $a["date_recorded"] . '</td>';
