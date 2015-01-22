@@ -20,8 +20,8 @@
 
     echo 'Add a new reserve:';
     echo '<form action="index.php" method="post">';
-    echo '<input type="text" name="reserve_name" placeholder="Reserve Name"></input>';
-    echo '<input type="submit" value="Add"></input>';
+    echo '<input type="text" name="reserve_name" placeholder="Reserve Name" />';
+    echo '<input type="submit" value="Add" />';
     echo '</form>';
     }
 ?>
