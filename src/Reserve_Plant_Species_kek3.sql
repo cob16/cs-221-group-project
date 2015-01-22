@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 09, 2014 at 11:51 AM
+-- Generation Time: Jan 22, 2015 at 08:15 PM
 -- Server version: 5.5.40-0+wheezy1
--- PHP Version: 5.4.35-0+deb7u2
+-- PHP Version: 5.4.36-0+deb7u3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -57,15 +57,29 @@ CREATE TABLE IF NOT EXISTS `Recordings` (
   `photo_path_species` text NOT NULL,
   `Email` varchar(80) CHARACTER SET utf8 NOT NULL,
   `reserve_name` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf32;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf32;
 
 --
 -- Dumping data for table `Recordings`
 --
 
 INSERT INTO `Recordings` (`ID`, `species`, `DAFOR`, `comments`, `date_recorded`, `photo_path_general`, `photo_path_species`, `Email`, `reserve_name`) VALUES
-(7, 1, 'A', 'eg comment', '0003-11-14', 'images/example_pic1.jpg', 'images/example_pic2.jpg', 'cob16@aber.ac.uk', 1),
-(8, 25, 'F', 'second example recording', '2014-12-09', ' ', ' ', 'cob16@aber.ac.uk', 1);
+(7, 1, 'A', 'eg comment', '2014-11-13', 'images/example_pic1.jpg', 'images/example_pic2.jpg', 'cob16@aber.ac.uk', 1),
+(8, 25, 'F', 'second example recording', '2014-12-09', 'images/example_pic1.jpg', 'images/example_pic2.jpg', 'cob16@aber.ac.uk', 1),
+(9, 1133, 'F', 'this is yet another top kek', '2015-01-21', 'images/example_pic1.jpg', 'images/example_pic2.jpg', 'cob16@aber.ac.uk', 2),
+(10, 45, 'D', 'Abundance better than previously found.', '2015-01-08', 'images/example_pic1.jpg', 'images/example_pic2.jpg', 'cob16@aber.ac.uk', 6),
+(11, 1414, 'F', 'Acacia is found throughout the Australian wilderness and many other places.', '2015-01-22', 'images/example_pic1.jpg', 'images/example_pic2.jpg', 'cob16@aber.ac.uk', 7),
+(12, 2984, 'A', 'Banksia is a beautifully colourful flower found throughout SE Asia and South Asia, and is very popular amongst wetlands.', '2015-01-22', 'images/example_pic1.jpg\r\n', 'images/example_pic2.jpg', 'cob16@aber.ac.uk', 6),
+(13, 2433, 'O', 'The Iconic Japanese Bonsai is a unique plant to Japan, as it holds much cultural value and beauty.', '2015-01-22', 'images/example_pic1.jpg', 'images/example_pic2.jpg', 'cob16@aber.ac.uk', 15),
+(14, 3002, 'D', 'A big tree known for its beautifully red flowers. Brachychiton is a truly marvellous plant.', '2015-01-22', 'images/example_pic1.jpg\r\n', 'images/example_pic2.jpg\r\n', 'cob16@aber.ac.uk', 2),
+(15, 76, 'A', 'Abundance surprisingly high for the current climate of the area', '2015-01-06', 'images/example_pic1.jpg', 'images/example_pic2.jpg', 'cob16@aber.ac.uk', 4),
+(17, 1921, 'A', 'Correa is a bell shaped flower that grows mostly in Europe in and around forests.', '2015-01-22', 'images/example_pic1.jpg\r\n', 'images/example_pic2.jpg\r\n', 'cob16@aber.ac.uk', 5),
+(19, 1092, 'D', 'Banksia (Ser. Dryandra) is a plant native to the forests of Russia. ', '2015-01-22', 'images/example_pic1.jpg\r\n', 'images/example_pic2.jpg\r\n', 'cob16@aber.ac.uk', 8),
+(20, 1092, 'D', 'Banksia (Ser. Dryandra) is a plant native to the forests of Russia. ', '2015-01-22', 'images/example_pic1.jpg\r\n', 'images/example_pic2.jpg\r\n', 'cob16@aber.ac.uk', 8),
+(21, 356, 'O', 'Abundance low for time of year', '2014-05-15', 'images/example_pic1.jpg', 'images/example_pic2.jpg', 'jap55@aber.ac.uk', 5),
+(22, 79, 'F', 'Abundance is as expected for the time of year', '2015-01-03', 'images/example_pic1.jpg', 'images/example_pic2.jpg', 'jap55@aber.ac.uk', 7),
+(23, 2219, 'O', 'Epacris is a native plant of South America. Very colourful.', '2015-01-22', 'images/example_pic1.jpg\r\n', 'images/example_pic2.jpg\r\n', 'cob16@aber.ac.uk', 3),
+(25, 138, 'A', 'Calvin is giving me a brain aneurysm ', '2015-01-22', 'images/example_pic1.jpg\r\n\r\n', 'images/example_pic2.jpg', 'jap55@aber.ac.uk', 8);
 
 -- --------------------------------------------------------
 
@@ -75,16 +89,48 @@ INSERT INTO `Recordings` (`ID`, `species`, `DAFOR`, `comments`, `date_recorded`,
 
 CREATE TABLE IF NOT EXISTS `Reserves` (
 `reserve_ID` int(11) NOT NULL,
-  `reserve_name` varchar(80) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `reserve_name` varchar(80) NOT NULL,
+  `latitude` int(11) NOT NULL DEFAULT '0',
+  `longitude` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Reserves`
 --
 
-INSERT INTO `Reserves` (`reserve_ID`, `reserve_name`) VALUES
-(1, 'example name'),
-(2, 'other example reserve');
+INSERT INTO `Reserves` (`reserve_ID`, `reserve_name`, `latitude`, `longitude`) VALUES
+(1, 'huh', 0, 0),
+(2, 'huh', 0, 0),
+(3, 'Llyn Eiddwen', 0, 0),
+(4, 'Dyfi', 0, 0),
+(5, 'Coed Rheidol', 0, 0),
+(6, 'Cors Goch Llanllwch', 0, 0),
+(7, 'Oxwich', 0, 0),
+(8, 'Allt y Benglog', 0, 0),
+(9, 'Boronia Fraseri', 0, 0),
+(11, 'Sopogon Dawsonii', 0, 0),
+(14, 'Rasp Ferns', 0, 0),
+(15, 'Dendrobium Kingianum', 0, 0),
+(17, 'Eucalyptus Haemastoma', 0, 0),
+(18, 'Bonsai', 0, 0),
+(19, 'Correa', 0, 0),
+(20, 'Dryandra', 0, 0),
+(21, 'Epacris', 0, 0),
+(22, 'Eremophila', 0, 0),
+(23, 'Fabaceae', 0, 0),
+(24, 'Fern', 0, 0),
+(25, 'Grevillea', 0, 0),
+(26, 'Hakea', 0, 0),
+(27, 'Hibiscus', 0, 0),
+(28, 'Isopogon', 0, 0),
+(29, 'Petrophile', 0, 0),
+(30, 'Melaleuca', 0, 0),
+(31, 'Orchids', 0, 0),
+(33, 'Prostanthera', 0, 0),
+(41, 'huh', 0, 0),
+(42, 'hello there mortal', 0, 0),
+(43, 'hello there mortal', 0, 0),
+(44, 'is this reserve', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -7978,7 +8024,8 @@ CREATE TABLE IF NOT EXISTS `Users` (
 --
 
 INSERT INTO `Users` (`Name`, `Email`) VALUES
-('cormac brady', 'cob16@aber.ac.uk');
+('cormac brady', 'cob16@aber.ac.uk'),
+('James Portch', 'jap55@aber.ac.uk');
 
 --
 -- Indexes for dumped tables
@@ -8022,12 +8069,12 @@ ALTER TABLE `Users`
 -- AUTO_INCREMENT for table `Recordings`
 --
 ALTER TABLE `Recordings`
-MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `Reserves`
 --
 ALTER TABLE `Reserves`
-MODIFY `reserve_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `reserve_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=45;
 --
 -- AUTO_INCREMENT for table `Species`
 --
