@@ -70,10 +70,9 @@
         echo '</tr>';
     }
     echo '</table>';
-
-    echo '<input type="submit" name ="delete" value ="Delete Selected"/>';
-    echo '<input type="submit" name ="cancel" value ="Cancel"/>'; //should just take user back to index
-    echo '<input type="submit" name="apply" value ="Apply Changes"/>';
+    echo '<input type="submit" name ="delete" value ="Delete Selected" />';
+    echo '<input type="submit" name ="cancel" value ="Cancel" />'; //should just take user back to index
+    echo '<input type="submit" name="apply" value ="Apply Changes" />';
 
   }
 ?>
