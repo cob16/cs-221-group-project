@@ -1,2 +1,5 @@
 docs/project plan/Thumbs.db
 *.db
+/.project
+
+*.DS_Store

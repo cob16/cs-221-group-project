@@ -31,13 +31,10 @@
         <item>R (Rare)</item>
     </string-array>
 
-    <!-- Navigation Drawer (Hamburger Menu) items -->
-    <string-array name="nav_drawer_items">
-        <item>Send</item>
-        <item>Edit</item>
-        <item>Delete</item>
-    </string-array>
 
+    <string name="action_send">Send</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_delete">Delete</string>
     <string name="add_specimen_img_title">Add specimen image</string>
     <string name="species_name_hint">Species Name</string>
     <string name="enter_record_button_text">Enter Record</string>
@@ -47,8 +44,7 @@
     <string name="gallery_button">Gallery</string>
     <string name="camera_button">Camera</string>
     <string name="title_activity_temp_record_view">TempRecordView</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
+    <string name="title_activity_fragment_test">Fragment_test</string>
 
 </resources>

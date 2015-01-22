@@ -1,19 +1,42 @@
 package com.example.rpsrec_proto;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class BlankRecord extends Activity {
+public class BlankRecord extends FragmentActivity {
+	
+	ActionBar.Tab tab1, tab2;
+	Fragment fragmentTab1 = new FragmentTab1();
+	Fragment fragmentTab2 = new FragmentTab2();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_blank_record);
+		//super.onCreate(savedInstanceState);
+		//setContentView(R.layout.activity_blank_record);
+		
+		////////////////TABZ AND STEARFF
+		ActionBar actionBar = getActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        
+        
+        tab1 = actionBar.newTab().setText("Derp");
+        tab2 = actionBar.newTab().setText("Herp");
+        
+        tab1.setTabListener(new MyTabListener(fragmentTab1));
+        tab2.setTabListener(new MyTabListener(fragmentTab2));
+        
+        actionBar.addTab(tab1);
+        actionBar.addTab(tab2);
+		
+		/////////////////////////
 		
 		final Button button =(Button)findViewById(R.id.addRecordButton);
 		button.setOnClickListener(new View.OnClickListener() {

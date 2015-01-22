@@ -12,9 +12,6 @@ public final class R {
         /**  DAFOR slider elements 
          */
         public static final int dafor_array=0x7f050001;
-        /**  Navigation Drawer (Hamburger Menu) items 
-         */
-        public static final int nav_drawer_items=0x7f050002;
         public static final int reserves_array=0x7f050000;
     }
     public static final class attr {
@@ -38,93 +35,100 @@ public final class R {
         public static final int ic_launcher=0x7f020003;
     }
     public static final class id {
-        public static final int RelativeLayout1=0x7f090003;
-        public static final int ScrollLayout=0x7f090002;
+        public static final int RelativeLayout1=0x7f090004;
+        public static final int ScrollLayout=0x7f090003;
         public static final int action_example=0x7f090021;
         public static final int action_settings=0x7f090020;
         public static final int addRecordButton=0x7f090000;
-        public static final int addRecordDataButton=0x7f09000b;
-        public static final int add_species_img_title=0x7f090009;
-        public static final int container=0x7f090013;
-        public static final int dafor_spinner=0x7f090005;
-        public static final int drawer_layout=0x7f090010;
-        public static final int email=0x7f090019;
-        public static final int email_login_form=0x7f090017;
-        public static final int getLocationImage=0x7f09000d;
-        public static final int getSpecimenImage=0x7f09000c;
-        public static final int info=0x7f090008;
-        public static final int left_drawer=0x7f090012;
-        public static final int locationCamera=0x7f09000f;
-        public static final int login_form=0x7f090016;
-        public static final int login_progress=0x7f090015;
-        public static final int name=0x7f090018;
-        public static final int navigation_drawer=0x7f090014;
-        public static final int pager=0x7f090011;
-        public static final int phone=0x7f09001a;
-        public static final int rarityTitle=0x7f090006;
-        public static final int reserve_spinner=0x7f09001b;
-        public static final int section_label=0x7f09001d;
-        public static final int sign_up_button=0x7f09001c;
-        public static final int speciesName=0x7f090004;
-        public static final int speciesRecordName=0x7f09001e;
-        public static final int specimenCamera=0x7f09000e;
-        public static final int startButton=0x7f090001;
-        public static final int textView1=0x7f09001f;
-        public static final int textView3=0x7f09000a;
-        public static final int typLocation=0x7f090007;
+        public static final int addRecordDataButton=0x7f09000c;
+        public static final int add_species_img_title=0x7f09000a;
+        public static final int container=0x7f090001;
+        public static final int dafor_spinner=0x7f090006;
+        public static final int drawer_layout=0x7f090011;
+        public static final int email=0x7f09001a;
+        public static final int email_login_form=0x7f090018;
+        public static final int fragment_container=0x7f090014;
+        public static final int getLocationImage=0x7f09000e;
+        public static final int getSpecimenImage=0x7f09000d;
+        public static final int info=0x7f090009;
+        public static final int left_drawer=0x7f090013;
+        public static final int locationCamera=0x7f090010;
+        public static final int login_form=0x7f090017;
+        public static final int login_progress=0x7f090016;
+        public static final int name=0x7f090019;
+        public static final int navigation_drawer=0x7f090015;
+        public static final int pager=0x7f090012;
+        public static final int phone=0x7f09001b;
+        public static final int rarityTitle=0x7f090007;
+        public static final int reserve_spinner=0x7f09001c;
+        public static final int section_label=0x7f09001e;
+        public static final int sign_up_button=0x7f09001d;
+        public static final int speciesName=0x7f090005;
+        public static final int specimenCamera=0x7f09000f;
+        public static final int startButton=0x7f090002;
+        public static final int tabtextview=0x7f09001f;
+        public static final int textView3=0x7f09000b;
+        public static final int typLocation=0x7f090008;
     }
     public static final class layout {
         public static final int activity_blank_record=0x7f030000;
-        public static final int activity_main=0x7f030001;
-        public static final int activity_new_record=0x7f030002;
-        public static final int activity_record_view=0x7f030003;
-        public static final int activity_temp_record_view=0x7f030004;
-        public static final int activity_user_data_view=0x7f030005;
-        public static final int fragment_navigation_drawer=0x7f030006;
-        public static final int fragment_record_view=0x7f030007;
-        public static final int fragment_temp_record_view=0x7f030008;
+        public static final int activity_fragment_test=0x7f030001;
+        public static final int activity_main=0x7f030002;
+        public static final int activity_new_record=0x7f030003;
+        public static final int activity_record_view=0x7f030004;
+        public static final int activity_tab_test=0x7f030005;
+        public static final int activity_temp_record_view=0x7f030006;
+        public static final int activity_user_data_view=0x7f030007;
+        public static final int drawer_list_item=0x7f030008;
+        public static final int fragment_fragment_test=0x7f030009;
+        public static final int fragment_record_view=0x7f03000a;
+        public static final int tab=0x7f03000b;
+        public static final int tab2=0x7f03000c;
     }
     public static final class menu {
         public static final int blank_record=0x7f080000;
-        public static final int global=0x7f080001;
-        public static final int main=0x7f080002;
-        public static final int new_record=0x7f080003;
-        public static final int record_view=0x7f080004;
-        public static final int temp_record_view=0x7f080005;
-        public static final int user_data_view=0x7f080006;
+        public static final int fragment_test=0x7f080001;
+        public static final int global=0x7f080002;
+        public static final int main=0x7f080003;
+        public static final int new_record=0x7f080004;
+        public static final int record_view=0x7f080005;
+        public static final int temp_record_view=0x7f080006;
+        public static final int user_data_view=0x7f080007;
     }
     public static final class string {
-        public static final int action_example=0x7f06001f;
+        public static final int action_delete=0x7f060016;
+        public static final int action_edit=0x7f060015;
+        public static final int action_example=0x7f060020;
+        public static final int action_send=0x7f060014;
         public static final int action_settings=0x7f060002;
-        public static final int add_location_image_title=0x7f060017;
+        public static final int add_location_image_title=0x7f06001a;
         public static final int add_new_record=0x7f060009;
-        public static final int add_specimen_img_title=0x7f060014;
-        public static final int addinfo_hint=0x7f060019;
+        public static final int add_specimen_img_title=0x7f060017;
+        public static final int addinfo_hint=0x7f06001c;
         public static final int app_name=0x7f060000;
-        public static final int camera_button=0x7f06001b;
+        public static final int camera_button=0x7f06001e;
         public static final int coordinateTitle=0x7f06000d;
         public static final int emailHint=0x7f060013;
-        public static final int enter_record_button_text=0x7f060016;
-        public static final int gallery_button=0x7f06001a;
+        public static final int enter_record_button_text=0x7f060019;
+        public static final int gallery_button=0x7f06001d;
         public static final int hello_world=0x7f060001;
         public static final int nameHint=0x7f060006;
-        public static final int navigation_drawer_close=0x7f06001e;
-        public static final int navigation_drawer_open=0x7f06001d;
         public static final int phoneHint=0x7f060007;
         public static final int rarityTitle=0x7f06000c;
         public static final int record=0x7f060003;
         public static final int speciesHint=0x7f06000b;
-        public static final int species_name_hint=0x7f060015;
+        public static final int species_name_hint=0x7f060018;
         public static final int start=0x7f060004;
         public static final int title_activity_blank_record=0x7f060008;
+        public static final int title_activity_fragment_test=0x7f060021;
         public static final int title_activity_new_record=0x7f06000a;
         public static final int title_activity_record_view=0x7f06000f;
-        public static final int title_activity_temp_record_view=0x7f06001c;
+        public static final int title_activity_temp_record_view=0x7f06001f;
         public static final int title_activity_user_data_view=0x7f06000e;
         public static final int title_section1=0x7f060010;
         public static final int title_section2=0x7f060011;
         public static final int title_section3=0x7f060012;
-        public static final int typlocation_hint=0x7f060018;
+        public static final int typlocation_hint=0x7f06001b;
         public static final int userName=0x7f060005;
     }
     public static final class style {

@@ -1,7 +1,8 @@
 package com.example.rpsrec_proto;
 
 import java.io.File;
-
+import com.example.rpsrec_proto.data_transfer.Record;
+import com.example.rpsrec_proto.data_transfer.RecordList;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -17,7 +18,7 @@ import android.widget.Spinner;
 public class NewRecord extends Activity {
 
 	private EditText et;
-	private SpeciesRecord record;
+	private Record record;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,24 +93,24 @@ public class NewRecord extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	void getSpecies() {
+	String getSpecies() {
 		et = (EditText) findViewById(R.id.speciesName);
-		record.setSpeciesName(et.getText().toString());
+		return et.getText().toString();
 	}
 
-	void getDAFOR() {
+	char getDAFOR() {
 		Spinner spinner = (Spinner) findViewById(R.id.dafor_spinner);
-		record.setDafor(spinner.getSelectedItem().toString().charAt(0));
+		return spinner.getSelectedItem().toString().charAt(0);
 	}
 
-	void getTypicalLocation() {
+	String getTypicalLocation() {
 		et = (EditText) findViewById(R.id.typLocation);
-		record.setComments(et.getText().toString());
+		return et.getText().toString();
 	}
 
-	void getInfo() {
+	String getInfo() {
 		et = (EditText) findViewById(R.id.info);
-		record.setComments(et.getText().toString());
+		return et.getText().toString();
 	}
 
 	void getGalleryImage(String type) {
@@ -127,10 +128,10 @@ public class NewRecord extends Activity {
 	}
 
 	void addRecordPressed() {
-		record = new SpeciesRecord();
-		getSpecies();
+	//	record = new Record(getSpecies(), getTypicalLocation(), getInfo(), getDAFOR());
+		/*getSpecies();
 		getDAFOR();
 		getTypicalLocation();
-		getInfo();
+		getInfo();*/
 	}
 }
