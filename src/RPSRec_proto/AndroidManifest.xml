@@ -44,7 +44,11 @@
         </activity>
         <activity
             android:name=".TempRecordView"
-            android:label="@string/title_activity_temp_record_view" >
+            android:label="@string/title_activity_record_view" >
+        </activity>
+        <activity
+            android:name=".Fragment_test"
+            android:label="@string/title_activity_fragment_test" >
         </activity>
     </application>
 

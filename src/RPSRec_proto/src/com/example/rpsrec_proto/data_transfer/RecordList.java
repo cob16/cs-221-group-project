@@ -18,11 +18,8 @@ public class RecordList {
 		recordList = new ArrayList<Record>();
 	}
 
-	public void addRecord(String species, String typicalLocation,
-			String additionalInfo, char daforScale, File speciesPhoto,
-			File locationPhoto) {
-		recordList.add(new Record(species, typicalLocation, additionalInfo,
-				daforScale, speciesPhoto, locationPhoto));
+	public void addRecord(Record newRecord) {
+		recordList.add(newRecord);
 		numberOfRecords++;
 	}
 
