@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.view.Menu;
 
 public class MainView extends Activity {
 	ActionBar.Tab tab1, tab2;
@@ -26,5 +27,12 @@ public class MainView extends Activity {
 
 		actionBar.addTab(tab1);
 		actionBar.addTab(tab2);
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
 	}
 }

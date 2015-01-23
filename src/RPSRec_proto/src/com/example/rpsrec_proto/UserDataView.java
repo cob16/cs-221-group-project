@@ -1,5 +1,7 @@
 package com.example.rpsrec_proto;
 
+import com.example.rpsrec_proto.exceptions.InvalidFieldException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -55,9 +57,16 @@ public class UserDataView extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				
+				if (!(getEnteredName().equals("") || getEnteredPhoneNumber().equals("") ||	 getEnteredEmail().equals(""))) {
 				pressButton();
 				Intent i = new Intent(getApplicationContext(), MainView.class);
 				startActivity(i);
+				}
+				
+				else {
+					new InvalidFieldException(getApplicationContext(), "Enter fields or die, dingus");
+				}
 			}
 		}); 
 	}

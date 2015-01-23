@@ -2,6 +2,8 @@ package com.example.rpsrec_proto;
 
 import java.io.File;
 
+import com.example.rpsrec_proto.exceptions.InvalidFieldException;
+
 import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,9 +25,11 @@ public class NewRecordFragment extends Fragment implements View.OnClickListener 
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_new_record, container, false);
+		view = inflater.inflate(R.layout.fragment_new_record, container,
+				false);
 
-		final Button specimenGalleryButton = (Button) view.findViewById(R.id.getSpecimenImage);
+		final ImageButton specimenGalleryButton = (ImageButton) view
+				.findViewById(R.id.getSpecimenImage);
 		specimenGalleryButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -33,7 +38,8 @@ public class NewRecordFragment extends Fragment implements View.OnClickListener 
 			}
 		});
 
-		final Button locationGalleryButton = (Button) view.findViewById(R.id.getLocationImage);
+		final ImageButton locationGalleryButton = (ImageButton) view
+				.findViewById(R.id.getLocationImage);
 		locationGalleryButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -42,7 +48,8 @@ public class NewRecordFragment extends Fragment implements View.OnClickListener 
 			}
 		});
 
-		final Button specimenCameraButton = (Button) view.findViewById(R.id.specimenCamera);
+		final ImageButton specimenCameraButton = (ImageButton) view
+				.findViewById(R.id.specimenCamera);
 		specimenCameraButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -51,7 +58,8 @@ public class NewRecordFragment extends Fragment implements View.OnClickListener 
 			}
 		});
 
-		final Button locationCameraButton = (Button) view.findViewById(R.id.locationCamera);
+		final ImageButton locationCameraButton = (ImageButton) view
+				.findViewById(R.id.locationCamera);
 		locationCameraButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -60,16 +68,24 @@ public class NewRecordFragment extends Fragment implements View.OnClickListener 
 			}
 		});
 
-		final Button addRecordButton = (Button) view.findViewById(R.id.addRecordDataButton);
+		final Button addRecordButton = (Button) view
+				.findViewById(R.id.addRecordDataButton);
 		addRecordButton.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				addRecordPressed();
-				Intent i = new Intent(getActivity(), RecordView.class);
-				startActivity(i);
-
+				if (!(getSpecies().equals("")
+						|| getTypicalLocation().equals("") || getInfo().equals(
+						""))) {
+					addRecordPressed();
+					Intent i = new Intent(getActivity(), RecordViewFragment.class);
+					startActivity(i);
+				} else {
+					new InvalidFieldException(getActivity(),
+							"Fill those fields, you dungbeetle");
+				}
 			}
+
 		});
 
 		return view;
@@ -80,8 +96,7 @@ public class NewRecordFragment extends Fragment implements View.OnClickListener 
 		// THE STUFF THAT SAVES RECORDS
 
 	}
-	
-	
+
 	String getSpecies() {
 		et = (EditText) view.findViewById(R.id.speciesName);
 		return et.getText().toString();
@@ -117,10 +132,10 @@ public class NewRecordFragment extends Fragment implements View.OnClickListener 
 	}
 
 	void addRecordPressed() {
-	//	record = new Record(getSpecies(), getTypicalLocation(), getInfo(), getDAFOR());
-		/*getSpecies();
-		getDAFOR();
-		getTypicalLocation();
-		getInfo();*/
+		// record = new Record(getSpecies(), getTypicalLocation(), getInfo(),
+		// getDAFOR());
+		/*
+		 * getSpecies(); getDAFOR(); getTypicalLocation(); getInfo();
+		 */
 	}
 }
