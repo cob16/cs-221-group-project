@@ -1,5 +1,10 @@
 package com.example.rpsrec_proto.database;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
@@ -34,6 +39,18 @@ public class ReserveDataManager extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void insertDataBase() {
+		JSONObject json = new JSONObject();
+		json.put("uniqueArrays", new JSONArray(items));
+		String arrayList = json.toString();
+	}
+	
+	
+	public void readDataBasa() {
+		JSONObject json = new JSONObject(stringreadfromsqlite);
+		  ArrayList items = json.optJSONArray("uniqueArrays");
 	}
 
 	public void getWritableDataBase() {

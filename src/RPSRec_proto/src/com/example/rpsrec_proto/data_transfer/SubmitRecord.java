@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 public class SubmitRecord {
 	private static final String TAG = "MainActivity";
-	private static final String URL = "";
+	private static final String URL = "cormacbrady.info";
 	private RecordList list;
 	private UserInfo ui;
 

@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(getApplicationContext(), Fragment_test.class);
+				Intent i = new Intent(getApplicationContext(), UserDataView.class);
 				startActivity(i);
 				
 			}

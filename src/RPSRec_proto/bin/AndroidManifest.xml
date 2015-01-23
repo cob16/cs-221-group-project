@@ -50,6 +50,10 @@
             android:name=".Fragment_test"
             android:label="@string/title_activity_fragment_test" >
         </activity>
+        <activity
+            android:name=".MainView"
+            android:label="@string/title_activity_fragment_test" >
+        </activity>
     </application>
 
 </manifest>

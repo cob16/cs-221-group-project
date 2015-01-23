@@ -56,7 +56,7 @@ public class UserDataView extends Activity {
 			@Override
 			public void onClick(View v) {
 				pressButton();
-				Intent i = new Intent(getApplicationContext(), BlankRecord.class);
+				Intent i = new Intent(getApplicationContext(), MainView.class);
 				startActivity(i);
 			}
 		}); 
