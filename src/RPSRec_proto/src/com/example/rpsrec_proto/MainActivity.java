@@ -1,6 +1,7 @@
 package com.example.rpsrec_proto;
 
 import com.example.rpsrec_proto.database.ReserveDataManager;
+import com.example.rpsrec_proto.location.GPSToGrid;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -23,6 +24,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				ReserveDataManager man = new ReserveDataManager(getApplicationContext());
+				GPSToGrid.gpsToGrid(52, 123);
 				//man.parseJSONObject();
 				man.createReserveList();
 				Intent i = new Intent(getApplicationContext(), UserDataView.class);

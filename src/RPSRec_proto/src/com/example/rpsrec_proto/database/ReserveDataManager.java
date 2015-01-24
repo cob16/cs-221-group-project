@@ -26,13 +26,11 @@ public class ReserveDataManager extends SQLiteOpenHelper {
 	private static final int DATABASE_VERSION = 1;
 	public static final String KEY_ID = "ID";
 	public static final String KEY_NAME = "keyName";
-	public static final String KEY_LOCATION = "keyLocation";
 
 	private static final String RESERVE_TABLE_NAME = "reserve";
 	private static final String RESERVE_TABLE_CREATE = "CREATE TABLE "
 			+ RESERVE_TABLE_NAME + " (" + KEY_ID
-			+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_NAME + " TEXT, "
-			+ KEY_LOCATION + " TEXT);";
+			+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_NAME  + " TEXT);";
 
 	public ReserveDataManager(Context context) {
 
