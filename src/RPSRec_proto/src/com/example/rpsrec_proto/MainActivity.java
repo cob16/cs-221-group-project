@@ -1,5 +1,7 @@
 package com.example.rpsrec_proto;
 
+import com.example.rpsrec_proto.database.ReserveDataManager;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,6 +22,9 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
+				ReserveDataManager man = new ReserveDataManager(getApplicationContext());
+				//man.parseJSONObject();
+				man.createReserveList();
 				Intent i = new Intent(getApplicationContext(), UserDataView.class);
 				startActivity(i);
 				

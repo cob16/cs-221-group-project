@@ -9,12 +9,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.EditText;
+import android.widget.Scroller;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -27,7 +29,7 @@ public class NewRecordFragment extends Fragment implements View.OnClickListener 
 			Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.fragment_new_record, container,
 				false);
-
+		
 		final ImageButton specimenGalleryButton = (ImageButton) view
 				.findViewById(R.id.getSpecimenImage);
 		specimenGalleryButton.setOnClickListener(new View.OnClickListener() {

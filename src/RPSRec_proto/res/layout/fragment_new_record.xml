@@ -103,7 +103,9 @@
             android:ems="10"
             android:hint="@string/addinfo_hint"
             android:inputType="textMultiLine"
-            android:maxLines="2" />
+            android:maxLines="2"
+            android:scrollbarStyle="insideOverlay"
+            android:scrollbars="vertical" />
 
         <ImageButton
             android:id="@+id/getSpecimenImage"
