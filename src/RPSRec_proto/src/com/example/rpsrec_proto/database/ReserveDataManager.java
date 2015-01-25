@@ -11,82 +11,85 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.StrictMode;
 import android.widget.Toast;
 
-public class ReserveDataManager extends SQLiteOpenHelper {
+public class ReserveDataManager {
 
-	private Context appContext;
-
-	private static final String DATABASE_NAME = "reserveDB";
-	private static final int DATABASE_VERSION = 1;
-	public static final String KEY_ID = "ID";
-	public static final String KEY_NAME = "keyName";
-
-	private static final String RESERVE_TABLE_NAME = "reserve";
-	private static final String RESERVE_TABLE_CREATE = "CREATE TABLE "
-			+ RESERVE_TABLE_NAME + " (" + KEY_ID
-			+ " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_NAME  + " TEXT);";
+	private SQLiteDatabase database;
+	ArrayList<String> reserves;
+	private DatabaseHelper dbHelper;
+	private String[] allColumns = { DatabaseHelper.COLUMN_ID,
+			DatabaseHelper.COLUMN_NAME };
 
 	public ReserveDataManager(Context context) {
-
-		super(context, DATABASE_NAME, null, DATABASE_VERSION);
-		appContext = context;
+		dbHelper = new DatabaseHelper(context);
 	}
 
-	@Override
-	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(RESERVE_TABLE_CREATE);
-
+	public void open() {
+		database = dbHelper.getWritableDatabase();
 	}
 
-	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		// TODO Auto-generated method stub
-
+	public void close() {
+		dbHelper.close();
 	}
 
-	// public void insertDataBase() {
-	// JSONObject json = new JSONObject();
-	// json.put("uniqueArrays", new JSONArray(items));
-	// String arrayList = json.toString();
-	// }
+	public ArrayList<String> getAllReserves() {
+		reserves = new ArrayList<String>();
 
-	// public void readDataBasa() {
-	// JSONObject json = new JSONObject(stringreadfromsqlite);
-	// ArrayList items = json.optJSONArray("uniqueArrays");
-	// }
+		Cursor cursor = database.query(DatabaseHelper.TABLE_RESERVES,
+				allColumns, null, null, null, null, null);
 
-	public void getWritableDataBase() {
-
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			Reserve reserve = cursorToReserve(cursor);
+			reserves.add(reserve.toString());
+			cursor.moveToNext();
+		}
+		// make sure to close the cursor
+		cursor.close();
+		return reserves;
 	}
 
-	public void getReadableDataBase() {
+	public void addReserve(String newReserve) {
+		ContentValues values = new ContentValues();
+		values.put(DatabaseHelper.COLUMN_NAME, newReserve);
+		long insertId = database.insert(DatabaseHelper.TABLE_RESERVES, null,
+				values);
+		Cursor cursor = database.query(DatabaseHelper.TABLE_RESERVES,
+				allColumns, DatabaseHelper.COLUMN_ID + " = " + insertId, null,
+				null, null, null);
+		cursor.moveToFirst();
 
+		/*
+		 * Reserve reserve = cursorToReserve(cursor); cursor.close(); return
+		 * newComment;
+		 */
 	}
 
-	public ArrayList<String> createReserveList() {
+	private Reserve cursorToReserve(Cursor cursor) {
+		Reserve reserve = new Reserve();
+		reserve.setId(cursor.getLong(0));
+		reserve.setName(cursor.getString(1));
+		return reserve;
+	}
+
+	public void createReserveList() {
 		JSONArray jsonArray = parseJSONObject();
-		ArrayList<String> reserveList = new ArrayList<String>(50);
 
 		for (int i = 0; i < jsonArray.length(); i++) {
 			try {
-				reserveList.add(jsonArray.getString(i));
+				addReserve(jsonArray.getString(i));
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-
-		for (String s : reserveList) {
-			System.out.println(s);
-		}
-
-		return reserveList;
 	}
 
 	public JSONArray parseJSONObject() {
@@ -122,8 +125,8 @@ public class ReserveDataManager extends SQLiteOpenHelper {
 		JSONObject obj;
 		JSONArray jsonMainArr = null;
 		try {
-			 obj = new JSONObject(jsonData);
-			//jsonMainArr = new JSONArray(jsonData);
+			obj = new JSONObject(jsonData);
+			// jsonMainArr = new JSONArray(jsonData);
 			jsonMainArr = obj.getJSONArray("list");
 			System.out.println(jsonMainArr.toString());
 		} catch (JSONException e) {

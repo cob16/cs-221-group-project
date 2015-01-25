@@ -1,5 +1,6 @@
 package com.example.rpsrec_proto;
 
+import com.example.rpsrec_proto.database.ReserveDataManager;
 import com.example.rpsrec_proto.exceptions.InvalidFieldException;
 
 import android.app.Activity;
@@ -10,8 +11,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +25,7 @@ public class UserDataView extends Activity {
 	TextView name;
 	TextView phone;
 	TextView email;
+	Spinner reserveSpinner;
 	
 	public static final String Name = "nameKey";
 	public static final String Phone = "phoneKey";
@@ -38,6 +42,8 @@ public class UserDataView extends Activity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_data_view);
+		
+		fillSpinner();
 
 		/*if (sharedpreferences.contains(Name)) {
 			name.setText(sharedpreferences.getString(Name, ""));
@@ -129,6 +135,17 @@ public class UserDataView extends Activity {
 		editor.putString(Email, e);
 
 		editor.commit();
+	}
+	
+	void fillSpinner() {
+		ReserveDataManager dataManager = new ReserveDataManager(getApplicationContext());
+		dataManager.open();
+		dataManager.createReserveList();
+
+		
+		Spinner reserveSpinner = (Spinner)findViewById(R.id.reserve_spinner);
+        ArrayAdapter<String> reserveAdapter = new ArrayAdapter<String>(UserDataView.this, android.R.layout.simple_spinner_item, dataManager.getAllReserves());
+        reserveSpinner.setAdapter(reserveAdapter);
 	}
 
 }

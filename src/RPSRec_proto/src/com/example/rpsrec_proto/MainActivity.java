@@ -23,10 +23,8 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				ReserveDataManager man = new ReserveDataManager(getApplicationContext());
-				GPSToGrid.gpsToGrid(52, 123);
+				//GPSToGrid.gpsToGrid(52, 123);
 				//man.parseJSONObject();
-				man.createReserveList();
 				Intent i = new Intent(getApplicationContext(), UserDataView.class);
 				startActivity(i);
 				
