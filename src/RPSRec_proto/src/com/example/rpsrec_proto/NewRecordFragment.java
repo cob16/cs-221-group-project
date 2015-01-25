@@ -6,9 +6,22 @@ import com.example.rpsrec_proto.data_transfer.Record;
 import com.example.rpsrec_proto.data_transfer.RecordList;
 import com.example.rpsrec_proto.data_transfer.SubmitRecord;
 import com.example.rpsrec_proto.exceptions.InvalidFieldException;
+import com.example.rpsrec_proto.location.GPSToGrid;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
+import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
+import com.google.android.gms.location.LocationServices;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.app.TabActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -19,18 +32,23 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-public class NewRecordFragment extends Fragment implements View.OnClickListener {
+public class NewRecordFragment extends Fragment implements
+		View.OnClickListener, ConnectionCallbacks, OnConnectionFailedListener {
 
 	private EditText et;
 	View view;
-	private SubmitRecord submit;
+	GoogleApiClient mGoogleApiClient;
+	Location mLastLocation;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		view = inflater.inflate(R.layout.fragment_new_record, container,
-				false);
-		
+		setRetainInstance(true);
+		view = inflater.inflate(R.layout.fragment_new_record, container, false);
+
+		buildGoogleApiClient();
+		mGoogleApiClient.connect();
 		final ImageButton specimenGalleryButton = (ImageButton) view
 				.findViewById(R.id.getSpecimenImage);
 		specimenGalleryButton.setOnClickListener(new View.OnClickListener() {
@@ -81,8 +99,9 @@ public class NewRecordFragment extends Fragment implements View.OnClickListener 
 						|| getTypicalLocation().equals("") || getInfo().equals(
 						""))) {
 					addRecordPressed();
-					Intent i = new Intent(getActivity(), RecordViewFragment.class);
-					startActivity(i);
+					/*Intent i = new Intent(getActivity(), UserDataView.class);
+					startActivity(i);*/
+				
 				} else {
 					new InvalidFieldException(getActivity(),
 							"Fill those fields, you dungbeetle");
@@ -135,14 +154,55 @@ public class NewRecordFragment extends Fragment implements View.OnClickListener 
 	}
 
 	void addRecordPressed() {
-		/*Record record = new Record(getSpecies(), "AB1234", getInfo(),
-		 getDAFOR(), "121212", "reserve name");
-		RecordList list = new RecordList();
-		list.addRecord(record);
-		submit = new SubmitRecord();
-		submit.sendToDatabase(list);
+		//LocationListener mLocationListener = null;
+		//LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+		//locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, mLocationListener);		 
+		 
 		/*
-		 * getSpecies(); getDAFOR(); getTypicalLocation(); getInfo();
+		 * Record record = new Record(getSpecies(), "AB1234", getInfo(),
+		 * getDAFOR(), "121212", "reserve name"); RecordList list = new
+		 * RecordList(); list.addRecord(record); submit = new SubmitRecord();
+		 * submit.sendToDatabase(list); /* getSpecies(); getDAFOR();
+		 * getTypicalLocation(); getInfo();
 		 */
+	}
+
+	protected synchronized void buildGoogleApiClient() {
+		mGoogleApiClient = new GoogleApiClient.Builder(getActivity())
+				.addConnectionCallbacks(this)
+				.addOnConnectionFailedListener(this)
+				.addApi(LocationServices.API).build();
+	}
+
+	@Override
+	public void onConnectionFailed(ConnectionResult arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onConnected(Bundle connectionHint) {
+		mLastLocation = LocationServices.FusedLocationApi
+				.getLastLocation(mGoogleApiClient);
+		if (mLastLocation != null) {
+			// mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
+			// mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
+			Toast toast = Toast.makeText(getActivity(), GPSToGrid.gpsToGrid(
+					mLastLocation.getLatitude(), mLastLocation.getLongitude()),
+					Toast.LENGTH_LONG);
+			toast.show();
+			System.out.println(mLastLocation.getLatitude()+ mLastLocation.getLongitude());
+		} else {
+			Toast toast = Toast.makeText(getActivity(),
+					"Failed to get location", Toast.LENGTH_LONG);
+			toast.show();
+		}
+	}
+	
+
+	@Override
+	public void onConnectionSuspended(int arg0) {
+		// TODO Auto-generated method stub
+
 	}
 }

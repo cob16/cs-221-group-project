@@ -11,14 +11,14 @@ import uk.me.jstott.jcoord.OSRef;
  */
 public class GPSToGrid {
 	
-	public static void gpsToGrid(double latitude, double longitude) {
+	public static String gpsToGrid(double latitude, double longitude) {
 		
 		    LatLng coordinates = new LatLng(latitude, longitude);
 		    coordinates.toOSGB36();
 		    OSRef gridRef = coordinates.toOSRef();
 		    System.out.println("Converted to OS Grid Ref: " + gridRef.toString() + " - "
 		        + gridRef.toSixFigureString());
-		    System.out.println();
+		    return gridRef.toSixFigureString();
 	}
 	
 

@@ -38,28 +38,10 @@ public class UserDataView extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		sharedpreferences = getPreferences(0);
 		
-		
-		/*name = (TextView) findViewById(R.id.name);
-		phone = (TextView) findViewById(R.id.phone);
-		email = (TextView) findViewById(R.id.email);*/
-
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_data_view);
 		
 		fillSpinner();
-
-		/*if (sharedpreferences.contains(Name)) {
-			name.setText(sharedpreferences.getString(Name, ""));
-
-		}
-		if (sharedpreferences.contains(Phone)) {
-			phone.setText(sharedpreferences.getString(Phone, ""));
-
-		}
-		if (sharedpreferences.contains(Email)) {
-			email.setText(sharedpreferences.getString(Email, ""));
-
-		}*/
 		
 		final Button button =(Button)findViewById(R.id.sign_up_button);
 		button.setOnClickListener(new View.OnClickListener() {
