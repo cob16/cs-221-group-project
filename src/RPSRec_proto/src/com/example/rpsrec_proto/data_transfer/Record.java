@@ -7,26 +7,29 @@ import java.io.File;
 
 public class Record {
 
-	private String species, typicalLocation, additionalInfo;
+	private String species, additionalInfo, reserve, location, date;
 	private char daforScale;
 	private File speciesPhoto, locationPhoto;
+	private UserInfo user;
 
 	public Record(String newSpecies, String newLocation, String newInfo,
-			char newDafor, File newSpeciesPhoto, File newLocationPhoto) {
+			char newDafor, String newDate, String newReserve) {
 		species = newSpecies;
-		typicalLocation = newLocation;
+		location = newLocation;
 		additionalInfo = newInfo;
 		daforScale = newDafor;
-		speciesPhoto = newSpeciesPhoto;
-		locationPhoto = newLocationPhoto;
+		date = newDate;
+		reserve = newReserve;
+		// speciesPhoto = newSpeciesPhoto;
+		// locationPhoto = newLocationPhoto;
 	}
 
 	public void setSpecies(String species) {
 		this.species = species;
 	}
 
-	public void setTypicalLocation(String typicalLocation) {
-		this.typicalLocation = typicalLocation;
+	public void setlocation(String newLocation) {
+		this.location = newLocation;
 	}
 
 	public void setAdditionalInfo(String additionalInfo) {
@@ -53,10 +56,6 @@ public class Record {
 		return daforScale;
 	}
 
-	public String getTypicalLocation() {
-		return typicalLocation;
-	}
-
 	public String getAdditionalInfo() {
 		return additionalInfo;
 	}
@@ -67,5 +66,21 @@ public class Record {
 
 	public File getLocationPhoto() {
 		return locationPhoto;
+	}
+
+	public String getReserve() {
+		return reserve;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public String getDate() {
+		return date;
+	}
+	
+	public UserInfo getUser() {
+		return user;
 	}
 }

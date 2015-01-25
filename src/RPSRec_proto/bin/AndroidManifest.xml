@@ -54,6 +54,9 @@
             android:name=".MainView"
             android:label="@string/title_activity_fragment_test" >
         </activity>
+        <category android:name="android.intent.category.DEFAULT" />
     </application>
 <uses-permission android:name="android.permission.INTERNET" /> 
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
 </manifest>

@@ -31,10 +31,6 @@ public class RecordList {
 		return recordList.get(index).getSpecies();
 	}
 
-	public String getTypicalLocation(int index) {
-		return recordList.get(index).getTypicalLocation();
-	}
-
 	public String getAdditionalInfo(int index) {
 		return recordList.get(index).getAdditionalInfo();
 	}
@@ -49,6 +45,22 @@ public class RecordList {
 
 	public File getLocationPhoto(int index) {
 		return recordList.get(index).getLocationPhoto();
+	}
+	
+	public String getLocation(int index) {
+		return recordList.get(index).getLocation();
+	}
+	
+	public String getReserve(int index) {
+		return recordList.get(index).getReserve();
+	}
+	
+	public String getDate(int index) {
+		return recordList.get(index).getDate();
+	}
+	
+	public UserInfo getUser(int index) {
+		return recordList.get(index).getUser();
 	}
 
 }

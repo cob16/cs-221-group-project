@@ -1,5 +1,8 @@
 package com.example.rpsrec_proto;
 
+import com.example.rpsrec_proto.data_transfer.Record;
+import com.example.rpsrec_proto.data_transfer.RecordList;
+import com.example.rpsrec_proto.data_transfer.SubmitRecord;
 import com.example.rpsrec_proto.database.ReserveDataManager;
 import com.example.rpsrec_proto.exceptions.InvalidFieldException;
 
@@ -135,6 +138,13 @@ public class UserDataView extends Activity {
 		editor.putString(Email, e);
 
 		editor.commit();
+		
+		Record record = new Record("Abella uniflora", "AB1234", "testing",
+				 'a', "121212", "example name");
+				RecordList list = new RecordList();
+				list.addRecord(record);
+				SubmitRecord submit = new SubmitRecord();
+				submit.sendToDatabase(list);
 	}
 	
 	void fillSpinner() {

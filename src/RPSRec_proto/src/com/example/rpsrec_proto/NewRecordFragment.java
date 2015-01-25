@@ -2,6 +2,9 @@ package com.example.rpsrec_proto;
 
 import java.io.File;
 
+import com.example.rpsrec_proto.data_transfer.Record;
+import com.example.rpsrec_proto.data_transfer.RecordList;
+import com.example.rpsrec_proto.data_transfer.SubmitRecord;
 import com.example.rpsrec_proto.exceptions.InvalidFieldException;
 
 import android.app.Fragment;
@@ -9,21 +12,19 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.EditText;
-import android.widget.Scroller;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 public class NewRecordFragment extends Fragment implements View.OnClickListener {
 
 	private EditText et;
 	View view;
+	private SubmitRecord submit;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -134,8 +135,12 @@ public class NewRecordFragment extends Fragment implements View.OnClickListener 
 	}
 
 	void addRecordPressed() {
-		// record = new Record(getSpecies(), getTypicalLocation(), getInfo(),
-		// getDAFOR());
+		/*Record record = new Record(getSpecies(), "AB1234", getInfo(),
+		 getDAFOR(), "121212", "reserve name");
+		RecordList list = new RecordList();
+		list.addRecord(record);
+		submit = new SubmitRecord();
+		submit.sendToDatabase(list);
 		/*
 		 * getSpecies(); getDAFOR(); getTypicalLocation(); getInfo();
 		 */
