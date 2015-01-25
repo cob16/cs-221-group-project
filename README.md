@@ -1,13 +1,6 @@
 # *cs-221-group-project*
 
 ### Team TOP KEK
-todo:
-- [ ] Update project plan document to reflect [our way of devolving things](http://istqbexamcertification.com/what-is-iterative-model-advantages-disadvantages-and-when-to-use-it/).
-
-#### Current Timesheet:
-
-![Current timeshee] (http://cormacbrady.info/~cormac/timesheet.PNG) | ![TOP KEK] (http://i2.kym-cdn.com/photos/images/original/000/617/381/26b)
-
 
 #### Members: 
 
