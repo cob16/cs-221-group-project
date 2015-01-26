@@ -9,19 +9,19 @@ public class Record {
 
 	private String species, additionalInfo, reserve, location, date;
 	private char daforScale;
-	private File speciesPhoto, locationPhoto;
+	private String speciesPhoto, locationPhoto;
 	private UserInfo user;
 
 	public Record(String newSpecies, String newLocation, String newInfo,
-			char newDafor, String newDate, String newReserve) {
+			char newDafor, String newDate, String newReserve, String ) {
 		species = newSpecies;
 		location = newLocation;
 		additionalInfo = newInfo;
 		daforScale = newDafor;
 		date = newDate;
 		reserve = newReserve;
-		// speciesPhoto = newSpeciesPhoto;
-		// locationPhoto = newLocationPhoto;
+		speciesPhoto = newSpeciesPhoto;
+		locationPhoto = newLocationPhoto;
 	}
 
 	public void setSpecies(String species) {
@@ -40,11 +40,11 @@ public class Record {
 		this.daforScale = daforScale;
 	}
 
-	public void setSpeciesPhoto(File speciesPhoto) {
+	public void setSpeciesPhoto(String speciesPhoto) {
 		this.speciesPhoto = speciesPhoto;
 	}
 
-	public void setLocationPhoto(File locationPhoto) {
+	public void setLocationPhoto(String locationPhoto) {
 		this.locationPhoto = locationPhoto;
 	}
 

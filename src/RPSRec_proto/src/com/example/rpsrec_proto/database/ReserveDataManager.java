@@ -12,6 +12,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.rpsrec_proto.data_transfer.Record;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -31,6 +33,17 @@ public class ReserveDataManager {
 	
 	private String[] Species_allColumns = { dbHelper.SPECIES_COLUMN_ID,
 			dbHelper.SPECIES_COLUMN_NAME };
+	
+	private String[] Record_allColumns = { 
+			dbHelper.RECORD_COLUMN_ID ,
+			dbHelper.RECORD_COLUMN_species ,
+			dbHelper.RECORD_COLUMN_DAFOR,
+			dbHelper.RECORD_COLUMN_comments,
+			dbHelper.RECORD_COLUMN_date_recorded,
+			dbHelper.RECORD_COLUMN_photo_path_general,
+			dbHelper.RECORD_COLUMN_photo_path_species,
+			dbHelper.RECORD_COLUMN_reserve_name,
+			dbHelper.RECORD_COLUMN_location};
 
 	public ReserveDataManager(Context context) {
 		dbHelper = new DatabaseHelper(context);
@@ -79,7 +92,7 @@ public class ReserveDataManager {
 	
 	public void addSpecies(String newSpecies) {
 		ContentValues values = new ContentValues();
-		values.put(dbHelper.TABLE_SPECIES, newSpecies);
+		values.put(dbHelper.SPECIES_COLUMN_NAME, newSpecies);
 		long insertId = database.insert(dbHelper.TABLE_SPECIES, null,
 				values);
 		Cursor cursor = database.query(dbHelper.TABLE_SPECIES,
@@ -93,8 +106,22 @@ public class ReserveDataManager {
 		 */
 	}
 	
-	
-	
+	public void addRecord(Record newRecord) {
+		ContentValues values = new ContentValues();
+		values.put(dbHelper.RECORD_COLUMN_comments, newRecord.);
+		long insertId = database.insert(dbHelper.TABLE_RECORDS, null,
+				values);
+		Cursor cursor = database.query(dbHelper.TABLE_SPECIES,
+				Species_allColumns, dbHelper.SPECIES_COLUMN_ID + " = " + insertId, null,
+				null, null, null);
+		cursor.moveToFirst();
+
+		/*
+		 * Reserve reserve = cursorToReserve(cursor); cursor.close(); return
+		 * newComment;
+		 */
+	}
+
 	
 
 	private Reserve cursorToReserve(Cursor cursor) {
