@@ -45,7 +45,7 @@ public class UserDataView extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_data_view);
 
-		//fillSpinner();
+		// fillSpinner();
 
 		final Button addRecordButton = (Button) findViewById(R.id.sign_up_button);
 		addRecordButton.setOnClickListener(new View.OnClickListener() {
@@ -74,8 +74,8 @@ public class UserDataView extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				dataManager = new ReserveDataManager(getApplicationContext());
-				Thread t= new Thread(new Task());
+
+				Thread t = new Thread(new Task());
 				t.start();
 				try {
 					t.join();
@@ -86,7 +86,7 @@ public class UserDataView extends Activity {
 				reserveSpinner = (Spinner) findViewById(R.id.reserve_spinner);
 				reserveSpinner.setAdapter(null);
 				fillSpinner();
-				
+
 			}
 		});
 
@@ -153,20 +153,20 @@ public class UserDataView extends Activity {
 		editor.commit();
 
 		Record record = new Record("Abella uniflora", "AB1234", "testing", 'a',
-				"121212", "example name");
+				"121212", "example name", "dsada", "dsfsf");
 		RecordList list = new RecordList();
 		list.addRecord(record);
-		SubmitRecord submit = new SubmitRecord();
-		submit.sendToDatabase(list);
+		//SubmitRecord submit = new SubmitRecord();
+		//submit.sendToDatabase(list);
 	}
 
 	void fillSpinner() {
-		//dataManager = new ReserveDataManager(getApplicationContext());
+		// dataManager = new ReserveDataManager(getApplicationContext());
 		// dataManager.open();
 		// dataManager.createReserveList();
-		//reserveSpinner = (Spinner) findViewById(R.id.reserve_spinner);
-		//reserveSpinner.setAdapter(null);
-		//new Thread(new Task()).start();
+		// reserveSpinner = (Spinner) findViewById(R.id.reserve_spinner);
+		// reserveSpinner.setAdapter(null);
+		// new Thread(new Task()).start();
 
 		reserveSpinner.setAdapter(reserveAdapter);
 
@@ -180,9 +180,11 @@ public class UserDataView extends Activity {
 
 		@Override
 		public void run() {
+			dataManager = new ReserveDataManager(getApplicationContext());
 			dataManager.open();
+			dataManager.flushDataBase();
 			dataManager.createReserveList();
-			dataManager.createSpeciesList();
+			// dataManager.createSpeciesList();
 			reserveAdapter = new ArrayAdapter<String>(UserDataView.this,
 					android.R.layout.simple_spinner_item,
 					dataManager.getAllReserves());

@@ -10,28 +10,28 @@ import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
-	public final String TABLE_RESERVES = "Reserves";
-	public final String COLUMN_ID = "_id";
-	public final String COLUMN_NAME = "reserve";
+	public static final String TABLE_RESERVES = "Reserves";
+	public static final String COLUMN_ID = "_id";
+	public static final String COLUMN_NAME = "reserve";
 	  
-	public final String TABLE_SPECIES = "Species";
-	public final String SPECIES_COLUMN_ID = "_id";
-	public final String SPECIES_COLUMN_NAME = "Species_name";
+	public static  final String TABLE_SPECIES = "Species";
+	public static final String SPECIES_COLUMN_ID = "_id";
+	public static final String SPECIES_COLUMN_NAME = "Species_name";
 	
-	public final String TABLE_RECORDS              		    = "Records";
-	public final String RECORD_COLUMN_ID 		    		= "_id";
-	public final String RECORD_COLUMN_species               = "species";
-	public final String RECORD_COLUMN_DAFOR                 = "DAFOR ";
-	public final String RECORD_COLUMN_comments	            = "comments";
-	public final String RECORD_COLUMN_date_recorded 	    = "date_recorded";
-	public final String RECORD_COLUMN_photo_path_general	= "photo_path_general";
-	public final String RECORD_COLUMN_photo_path_species    = "photo_path_species";
-	public final String RECORD_COLUMN_reserve_name          = "reserve_name ";
-	public final String RECORD_COLUMN_location              = "location";
+	public static  final String TABLE_RECORDS              		    = "Records";
+	public   final static String RECORD_COLUMN_ID 		    		= "_id";
+	public final static String RECORD_COLUMN_species               = "species";
+	public final static String RECORD_COLUMN_DAFOR                 = "DAFOR ";
+	public final static String RECORD_COLUMN_comments	            = "comments";
+	public final static String RECORD_COLUMN_date_recorded 	    = "date_recorded";
+	public final static String RECORD_COLUMN_photo_path_general	= "photo_path_general";
+	public final static String RECORD_COLUMN_photo_path_species    = "photo_path_species";
+	public final static String RECORD_COLUMN_reserve_name          = "reserve_name ";
+	public final static String RECORD_COLUMN_location              = "location";
 
 	
 	  private static final String DATABASE_NAME = "topkek";
-	  private static final int DATABASE_VERSION = 1;
+	  public static final int DATABASE_VERSION = 1;
 
 	  // Database creation sql statement
 	  private final String DATABASE_CREATE = "create table "
@@ -44,7 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 		  + " integer primary key autoincrement, " + SPECIES_COLUMN_NAME
 		  + " text not null);";
 	  
-	  private final String MAKE_Records = "CREATE TABLE " + TABLE_RECORDS + "(" + 
+	  private static  final String MAKE_Records = "CREATE TABLE " + TABLE_RECORDS + "(" + 
 			  RECORD_COLUMN_ID + " INT NOT NULL, " + 
 			  RECORD_COLUMN_species + " text NOT NULL, " +
 			  RECORD_COLUMN_DAFOR + " char(1) CHARACTER SET utf8mb4 NOT NULL, " +
@@ -62,8 +62,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	  @Override
 	  public void onCreate(SQLiteDatabase database) {
 	    database.execSQL(DATABASE_CREATE);
-	    database.execSQL(MAKE_Species);
-	    database.execSQL(MAKE_Records);
+	   // database.execSQL(MAKE_Species);
+	   // database.execSQL(MAKE_Records);
 	  }
 	  
 	  @Override

@@ -13,7 +13,7 @@ public class Record {
 	private UserInfo user;
 
 	public Record(String newSpecies, String newLocation, String newInfo,
-			char newDafor, String newDate, String newReserve, String ) {
+			char newDafor, String newDate, String newReserve,String newSpeciesPhoto, String newLocationPhoto) {
 		species = newSpecies;
 		location = newLocation;
 		additionalInfo = newInfo;
@@ -60,11 +60,11 @@ public class Record {
 		return additionalInfo;
 	}
 
-	public File getSpeciesPhoto() {
+	public String getSpeciesPhoto() {
 		return speciesPhoto;
 	}
 
-	public File getLocationPhoto() {
+	public String getLocationPhoto() {
 		return locationPhoto;
 	}
 

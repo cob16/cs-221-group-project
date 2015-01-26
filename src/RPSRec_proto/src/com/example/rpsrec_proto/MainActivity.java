@@ -20,6 +20,8 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		//View view = getViewById(R.id.relative_number);
+		//v=setOnTouchListener(this);		
 		final Button button =(Button)findViewById(R.id.startButton);
 		button.setOnClickListener(new View.OnClickListener() {
 			

@@ -39,11 +39,11 @@ public class RecordList {
 		return recordList.get(index).getDaforScale();
 	}
 
-	public File getSpeciesPhoto(int index) {
+	public String getSpeciesPhoto(int index) {
 		return recordList.get(index).getSpeciesPhoto();
 	}
 
-	public File getLocationPhoto(int index) {
+	public String getLocationPhoto(int index) {
 		return recordList.get(index).getLocationPhoto();
 	}
 	

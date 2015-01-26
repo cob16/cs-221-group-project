@@ -25,11 +25,16 @@ import android.widget.Toast;
 
 public class ReserveDataManager {
 
+	public ReserveDataManager(Context context) {
+		dbHelper = new DatabaseHelper(context);
+	}
+
+	
 	private SQLiteDatabase database;
 	ArrayList<String> reserves;
 	private DatabaseHelper dbHelper;
-	private String[] allColumns = { dbHelper.COLUMN_ID,
-			dbHelper.COLUMN_NAME };
+	private String[] allColumns = { DatabaseHelper.COLUMN_ID,
+			DatabaseHelper.COLUMN_NAME };
 	
 	private String[] Species_allColumns = { dbHelper.SPECIES_COLUMN_ID,
 			dbHelper.SPECIES_COLUMN_NAME };
@@ -45,16 +50,17 @@ public class ReserveDataManager {
 			dbHelper.RECORD_COLUMN_reserve_name,
 			dbHelper.RECORD_COLUMN_location};
 
-	public ReserveDataManager(Context context) {
-		dbHelper = new DatabaseHelper(context);
-	}
-
+	
 	public void open() {
 		database = dbHelper.getWritableDatabase();
 	}
 
 	public void close() {
 		dbHelper.close();
+	}
+	
+	public void flushDataBase() {
+		dbHelper.onUpgrade(database, dbHelper.DATABASE_VERSION, dbHelper.DATABASE_VERSION+1);
 	}
 
 	public ArrayList<String> getAllReserves() {
@@ -108,7 +114,17 @@ public class ReserveDataManager {
 	
 	public void addRecord(Record newRecord) {
 		ContentValues values = new ContentValues();
-		values.put(dbHelper.RECORD_COLUMN_comments, newRecord.);
+		values.put(dbHelper.RECORD_COLUMN_comments, newRecord.getAdditionalInfo());
+		values.put(dbHelper.RECORD_COLUMN_species, newRecord.getSpecies());
+		values.put(dbHelper.RECORD_COLUMN_DAFOR, newRecord.getDaforScale() +"");
+		values.put(dbHelper.RECORD_COLUMN_reserve_name, newRecord.getReserve());
+		values.put(dbHelper.RECORD_COLUMN_date_recorded, newRecord.getDate());
+		values.put(dbHelper.RECORD_COLUMN_location, newRecord.getLocation());
+		values.put(dbHelper.RECORD_COLUMN_photo_path_general, newRecord.getLocationPhoto());
+		values.put(dbHelper.RECORD_COLUMN_photo_path_species, newRecord.getSpeciesPhoto());
+		values.put(dbHelper.RECORD_COLUMN_reserve_name, newRecord.getReserve());
+		
+		
 		long insertId = database.insert(dbHelper.TABLE_RECORDS, null,
 				values);
 		Cursor cursor = database.query(dbHelper.TABLE_SPECIES,
@@ -133,12 +149,12 @@ public class ReserveDataManager {
 
 	public void createReserveList() {
 		JSONArray jsonArray = null;
-		try {
-			jsonArray = parseJSONObject(new URL("http://cormacbrady.info/~tkek/json/reserves.json"));
-		} catch (MalformedURLException e1) {
+		//try {
+			jsonArray = parseJSONObject("reserve");//new URL("http://cormacbrady.info/~tkek/json/reserves.json"));
+		//} catch (MalformedURLException e1) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+			//e1.printStackTrace();
+		//}
 
 		for (int i = 0; i < jsonArray.length(); i++) {
 			try {
@@ -151,23 +167,23 @@ public class ReserveDataManager {
 	
 	public void createSpeciesList() {
 		JSONArray jsonArray = null;
-		try {
-			jsonArray = parseJSONObject(new URL("http://cormacbrady.info/~tkek/json/species.json"));
-		} catch (MalformedURLException e1) {
+	//	try {
+			jsonArray = parseJSONObject("species");
+		/*} catch (MalformedURLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}
+		}*/
 
 		for (int i = 0; i < jsonArray.length(); i++) {
 			try {
-				addReserve(jsonArray.getString(i));
+				addSpecies(jsonArray.getString(i));
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 		}
 	}
 
-	public JSONArray parseJSONObject(URL url) {
+	public JSONArray parseJSONObject(String speciesOrReserve) {
 
 		// TOTES ILLEGAL
 		//StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
@@ -179,10 +195,18 @@ public class ReserveDataManager {
 		BufferedReader br = null;
 		try {
 			String line;
-//			URL reserveUrl = new URL(
-//					"http://cormacbrady.info/~tkek/json/reserves.json");
+			URL reserveUrl = null;
+			if (speciesOrReserve.equals("species")) {
+			reserveUrl = new URL(
+					"http://cormacbrady.info/~tkek/json/species.json");
+			}
+			
+			else if (speciesOrReserve.equals("reserve")){
+				reserveUrl = new URL(
+						"http://cormacbrady.info/~tkek/json/reserves.json");
+			}
 			br = new BufferedReader(new InputStreamReader(
-					url.openStream()));
+					reserveUrl.openStream()));
 			while ((line = br.readLine()) != null) {
 				jsonData += line + "\n";
 			}
