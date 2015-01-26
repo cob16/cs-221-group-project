@@ -8,7 +8,7 @@
 ----------------------| ------------------|--------------|----------
 | Abdullah Alkhashty  | abdullahalkhashty | aba5         | Testing team
 | Au, Yee Tim         | Timfortress       | yta          | Testing lead 
-| Cormac Brady        | cob16             | cob16        | Project lead
+| Cormac Brady        | cob16             | cob16        | Project lead / sorta DB master
 | Calvin Chan         | cac36             | cac36        | Qa/testing team
 | Karl Franks         | karlfranks        | kpf          | Web apprentice
 | Henry Hollingsworth | hmh7              | hmh7         | Android Grandmaster
