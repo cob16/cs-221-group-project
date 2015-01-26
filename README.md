@@ -22,7 +22,4 @@
 
 **Note: nwhaber - Nigel Hardy (our tutor) is also added for oversight of the project**
 
-  
-(please edit this file to include your github usernames)
-
 
