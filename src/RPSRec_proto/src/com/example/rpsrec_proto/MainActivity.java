@@ -5,6 +5,7 @@ import com.example.rpsrec_proto.location.GPSToGrid;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,14 +34,6 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 		});
 		
 	}
-
-//	@Override
-//	public boolean onCreateOptionsMenu(Menu menu) {
-//		// Inflate the menu; this adds items to the action bar if it is present.
-//		getMenuInflater().inflate(R.menu.main, menu);
-//		//getActionBar().setDisplayHomeAsUpEnabled(true);
-//		return true;
-//	}
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -57,10 +50,13 @@ public class MainActivity extends Activity implements View.OnTouchListener{
 @Override
 public boolean onTouch(View v, MotionEvent event) {
 	// TODO Auto-generated method stub
+	playSound();
+	System.out.println("works");
 	return false;
 }
 	public void playSound() {
-		
+		MediaPlayer mp = MediaPlayer.create(getApplicationContext(), R.raw.hitmarker);  
+		  mp.start();
 	}
 	
 

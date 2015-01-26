@@ -478,8 +478,8 @@ containing a value of this type.
     public static final class id {
         public static final int RelativeLayout1=0x7f07001b;
         public static final int ScrollLayout=0x7f07001a;
-        public static final int action_example=0x7f07003a;
-        public static final int action_settings=0x7f070039;
+        public static final int action_example=0x7f07003c;
+        public static final int action_settings=0x7f07003b;
         public static final int addRecordButton=0x7f070017;
         public static final int addRecordDataButton=0x7f070023;
         public static final int add_species_img_title=0x7f070021;
@@ -527,11 +527,13 @@ containing a value of this type.
         public static final int specimenCamera=0x7f070026;
         public static final int startButton=0x7f070019;
         public static final int strict_sandbox=0x7f07000b;
-        public static final int tabtextview=0x7f070038;
+        public static final int tabtextview=0x7f07003a;
         public static final int terrain=0x7f070005;
         public static final int text1=0x7f070036;
         public static final int text2=0x7f070037;
         public static final int textView3=0x7f070022;
+        public static final int tv_id=0x7f070039;
+        public static final int tv_label=0x7f070038;
         public static final int typLocation=0x7f07001f;
         public static final int update_reserves_button=0x7f070034;
         public static final int wrap_content=0x7f07000f;
@@ -551,8 +553,9 @@ containing a value of this type.
         public static final int fragment_fragment_test=0x7f030008;
         public static final int fragment_new_record=0x7f030009;
         public static final int fragment_record_view=0x7f03000a;
-        public static final int tab=0x7f03000b;
-        public static final int tab2=0x7f03000c;
+        public static final int single_item=0x7f03000b;
+        public static final int tab=0x7f03000c;
+        public static final int tab2=0x7f03000d;
     }
     public static final class menu {
         public static final int blank_record=0x7f0c0000;
@@ -566,6 +569,7 @@ containing a value of this type.
     }
     public static final class raw {
         public static final int gtm_analytics=0x7f040000;
+        public static final int hitmarker=0x7f040001;
     }
     public static final class string {
         public static final int accept=0x7f060002;

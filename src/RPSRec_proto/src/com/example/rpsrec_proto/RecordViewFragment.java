@@ -1,6 +1,7 @@
 package com.example.rpsrec_proto;
 
 import android.app.Fragment;
+import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class RecordViewFragment extends Fragment implements View.OnClickListener {
+public class RecordViewFragment extends ListFragment implements View.OnClickListener {
 
 	View view;
 

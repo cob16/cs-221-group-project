@@ -11,11 +11,11 @@ import android.view.MenuItem;
 
 public class MainView extends FragmentActivity {
 	ActionBar.Tab tab1, tab2;
-	Fragment NewRecordFragment = new NewRecordFragment();
+	Fragment newRecordFragment = new NewRecordFragment();
 
 	
 	// Fragment RecordViewFragment = new RecordViewFragment();
-	Fragment FragmentTab2 = new FragmentTab2();
+	Fragment recordViewFragment = new RecordViewFragment();
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -28,8 +28,8 @@ public class MainView extends FragmentActivity {
 		tab1 = actionBar.newTab().setText("New Record");
 		tab2 = actionBar.newTab().setText("Records"); // dis da queue
 
-		tab1.setTabListener(new MyTabListener(NewRecordFragment));
-		tab2.setTabListener(new MyTabListener(FragmentTab2));
+		tab1.setTabListener(new MyTabListener(newRecordFragment));
+		tab2.setTabListener(new MyTabListener(recordViewFragment));
 
 		actionBar.addTab(tab1);
 		actionBar.addTab(tab2);
