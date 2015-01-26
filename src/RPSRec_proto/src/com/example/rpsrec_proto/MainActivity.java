@@ -1,5 +1,8 @@
 package com.example.rpsrec_proto;
 
+import com.example.rpsrec_proto.database.ReserveDataManager;
+import com.example.rpsrec_proto.location.GPSToGrid;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,20 +23,22 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(getApplicationContext(), Fragment_test.class);
+				//GPSToGrid.gpsToGrid(52, 123);
+				//man.parseJSONObject();
+				Intent i = new Intent(getApplicationContext(), UserDataView.class);
 				startActivity(i);
 				
 			}
 		});
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		return true;
-	}
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//		// Inflate the menu; this adds items to the action bar if it is present.
+//		getMenuInflater().inflate(R.menu.main, menu);
+//		//getActionBar().setDisplayHomeAsUpEnabled(true);
+//		return true;
+//	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

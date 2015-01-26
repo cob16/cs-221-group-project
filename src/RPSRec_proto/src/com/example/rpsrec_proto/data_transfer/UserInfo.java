@@ -4,7 +4,12 @@ import android.location.Location;
 
 public class UserInfo {
 	private String email, name, phone;
-	private Location location;
+	
+	public UserInfo(String email, String name, String phone) {
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+	}
 
 	public String getEmail() {
 		return email;
@@ -28,10 +33,6 @@ public class UserInfo {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public Location getLocation() {
-		return location;
 	}
 
 }

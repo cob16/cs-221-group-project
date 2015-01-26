@@ -1,5 +1,11 @@
 package com.example.rpsrec_proto;
 
+import com.example.rpsrec_proto.data_transfer.Record;
+import com.example.rpsrec_proto.data_transfer.RecordList;
+import com.example.rpsrec_proto.data_transfer.SubmitRecord;
+import com.example.rpsrec_proto.database.ReserveDataManager;
+import com.example.rpsrec_proto.exceptions.InvalidFieldException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,8 +14,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +28,7 @@ public class UserDataView extends Activity {
 	TextView name;
 	TextView phone;
 	TextView email;
+	Spinner reserveSpinner;
 	
 	public static final String Name = "nameKey";
 	public static final String Phone = "phoneKey";
@@ -29,56 +38,28 @@ public class UserDataView extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		sharedpreferences = getPreferences(0);
 		
-		
-		/*name = (TextView) findViewById(R.id.name);
-		phone = (TextView) findViewById(R.id.phone);
-		email = (TextView) findViewById(R.id.email);*/
-
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_data_view);
-
-		/*if (sharedpreferences.contains(Name)) {
-			name.setText(sharedpreferences.getString(Name, ""));
-
-		}
-		if (sharedpreferences.contains(Phone)) {
-			phone.setText(sharedpreferences.getString(Phone, ""));
-
-		}
-		if (sharedpreferences.contains(Email)) {
-			email.setText(sharedpreferences.getString(Email, ""));
-
-		}*/
+		
+		fillSpinner();
 		
 		final Button button =(Button)findViewById(R.id.sign_up_button);
 		button.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
+				
+				if (!(getEnteredName().equals("") || getEnteredPhoneNumber().equals("") ||	 getEnteredEmail().equals(""))) {
 				pressButton();
-				Intent i = new Intent(getApplicationContext(), BlankRecord.class);
+				Intent i = new Intent(getApplicationContext(), MainView.class);
 				startActivity(i);
+				}
+				
+				else {
+					new InvalidFieldException(getApplicationContext(), "Enter fields or die, dingus");
+				}
 			}
 		}); 
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.user_data_view, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
 	}
 
 	/**
@@ -139,6 +120,24 @@ public class UserDataView extends Activity {
 		editor.putString(Email, e);
 
 		editor.commit();
+		
+		Record record = new Record("Abella uniflora", "AB1234", "testing",
+				 'a', "121212", "example name");
+				RecordList list = new RecordList();
+				list.addRecord(record);
+				SubmitRecord submit = new SubmitRecord();
+				submit.sendToDatabase(list);
+	}
+	
+	void fillSpinner() {
+		ReserveDataManager dataManager = new ReserveDataManager(getApplicationContext());
+		dataManager.open();
+		dataManager.createReserveList();
+
+		
+		Spinner reserveSpinner = (Spinner)findViewById(R.id.reserve_spinner);
+        ArrayAdapter<String> reserveAdapter = new ArrayAdapter<String>(UserDataView.this, android.R.layout.simple_spinner_item, dataManager.getAllReserves());
+        reserveSpinner.setAdapter(reserveAdapter);
 	}
 
 }
