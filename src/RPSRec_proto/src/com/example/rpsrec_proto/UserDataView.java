@@ -182,6 +182,7 @@ public class UserDataView extends Activity {
 		public void run() {
 			dataManager.open();
 			dataManager.createReserveList();
+			dataManager.createSpeciesList();
 			reserveAdapter = new ArrayAdapter<String>(UserDataView.this,
 					android.R.layout.simple_spinner_item,
 					dataManager.getAllReserves());
