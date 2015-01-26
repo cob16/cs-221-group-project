@@ -26,7 +26,7 @@ import android.widget.Toast;
 public class UserDataView extends Activity {
 
 	SharedPreferences sharedpreferences;
-
+	RecordList list;
 	TextView name;
 	TextView phone;
 	TextView email;
@@ -44,8 +44,6 @@ public class UserDataView extends Activity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_data_view);
-
-		// fillSpinner();
 
 		final Button addRecordButton = (Button) findViewById(R.id.sign_up_button);
 		addRecordButton.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +73,7 @@ public class UserDataView extends Activity {
 			@Override
 			public void onClick(View v) {
 
-				Thread t = new Thread(new Task());
+				Thread t = new Thread(new ReserveGetter());
 				t.start();
 				try {
 					t.join();
@@ -124,6 +122,11 @@ public class UserDataView extends Activity {
 		}
 		return email;
 	}
+	
+	String getEnteredReserve() {
+		reserveSpinner = (Spinner) this.findViewById(R.id.reserve_spinner);
+		return reserveSpinner.getSelectedItem().toString();
+	}
 
 	String getEnteredPhoneNumber() {
 		String phone = "";
@@ -144,6 +147,8 @@ public class UserDataView extends Activity {
 		String n = getEnteredName();
 		String ph = getEnteredPhoneNumber();
 		String e = getEnteredEmail();
+		String res = getEnteredReserve();
+		System.out.println(res);
 
 		Editor editor = sharedpreferences.edit();
 		editor.putString(Name, n);
@@ -152,12 +157,14 @@ public class UserDataView extends Activity {
 
 		editor.commit();
 
-		Record record = new Record("Abella uniflora", "AB1234", "testing", 'a',
-				"121212", "example name", "dsada", "dsfsf");
-		RecordList list = new RecordList();
+		Record record = new Record("Abelia uniflora", "AB1234", "testing", 'A',
+				"2014-12-12", "example name", "dsada", "dsfsf");
+		list = new RecordList();
 		list.addRecord(record);
-		//SubmitRecord submit = new SubmitRecord();
-		//submit.sendToDatabase(list);
+		Thread t = new Thread(new RecordSubmitter());
+		t.start();
+		// SubmitRecord submit = new SubmitRecord();
+		// submit.sendToDatabase(list);
 	}
 
 	void fillSpinner() {
@@ -176,7 +183,7 @@ public class UserDataView extends Activity {
 		// reserveSpinner.setAdapter(reserveAdapter);
 	}
 
-	class Task implements Runnable {
+	class ReserveGetter implements Runnable {
 
 		@Override
 		public void run() {
@@ -189,6 +196,16 @@ public class UserDataView extends Activity {
 					android.R.layout.simple_spinner_item,
 					dataManager.getAllReserves());
 
+		}
+
+	}
+
+	class RecordSubmitter implements Runnable {
+
+		@Override
+		public void run() {
+			SubmitRecord submit = new SubmitRecord();
+			submit.sendToDatabase(list);
 		}
 
 	}

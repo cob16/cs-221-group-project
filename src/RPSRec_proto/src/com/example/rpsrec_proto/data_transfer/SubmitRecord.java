@@ -49,20 +49,20 @@ public class SubmitRecord {
 			// this could be done in the addRecord class and then added to the
 			// main
 			// json here instead
-			for (int i = 0; i < list.getNumberOfRecords(); i++) {
+			//for (int i = 0; i < list.getNumberOfRecords(); i++) {
 				JSONObject recordJson = new JSONObject();
-				recordJson.put("species", list.getSpecies(i));
-				recordJson.put("DAFOR", list.getDaforScale(i));
-				recordJson.put("comments", list.getAdditionalInfo(i));
-				recordJson.put("date_recorded", list.getDate(i));
-				recordJson.put("reserve_name", list.getReserve(i));
+				recordJson.put("species", list.getSpecies(0));
+				recordJson.put("DAFOR", Character.toString(list.getDaforScale(0)));
+				recordJson.put("comments", list.getAdditionalInfo(0));
+				recordJson.put("date_recorded", list.getDate(0));
+				recordJson.put("reserve_name", list.getReserve(0));
 				//recordJson.put("species_photo", list.getSpeciesPhoto(i));
 				//recordJson.put("locationPhoto", list.getLocationPhoto(i));
-				recordJson.put("location", list.getLocation(i));
-				array.put(recordJson);
-			}
+				recordJson.put("location", list.getLocation(0));
+				//array.put(recordJson);
+		//	}
 			mainObj.put("user", userObj);
-			mainObj.put("record_list", array);
+			mainObj.put("record", recordJson);
 			
 			System.out.println(mainObj);
 			// print the json on the app. PLEASE DELETE!!!
