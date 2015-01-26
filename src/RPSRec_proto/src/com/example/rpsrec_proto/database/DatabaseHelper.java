@@ -8,19 +8,28 @@ import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper{
 
-	public static final String TABLE_RESERVES = "Reserves";
-	  public static final String COLUMN_ID = "_id";
-	  public static final String COLUMN_NAME = "reserve";
+	public final String TABLE_RESERVES = "Reserves";
+	public final String COLUMN_ID = "_id";
+	public final String COLUMN_NAME = "reserve";
+	  
+	public final String TABLE_SPECIES = "Species";
+	public final String SPECIES_COLUMN_ID = "_id";
+	public final String SPECIES_COLUMN_NAME = "reserve";
 
 	  private static final String DATABASE_NAME = "topkek";
 	  private static final int DATABASE_VERSION = 1;
 
 	  // Database creation sql statement
-	  private static final String DATABASE_CREATE = "create table "
+	  private final String DATABASE_CREATE = "create table "
 	      + TABLE_RESERVES + "(" + COLUMN_ID
 	      + " integer primary key autoincrement, " + COLUMN_NAME
 	      + " text not null);";
 	
+	  private final String MAKE_Species = "create table "
+		  + TABLE_SPECIES + "(" + "_id"
+		  + " integer primary key autoincrement, " + "Species"
+		  + " text not null);";
+	  
 	public DatabaseHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
@@ -28,6 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	  @Override
 	  public void onCreate(SQLiteDatabase database) {
 	    database.execSQL(DATABASE_CREATE);
+	    database.execSQL(MAKE_Species);
 	  }
 	  
 	  @Override
@@ -35,7 +45,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	    Log.w(DatabaseHelper.class.getName(),
 	        "Upgrading database from version " + oldVersion + " to "
 	            + newVersion + ", which will destroy all old data");
+	    
 	    db.execSQL("DROP TABLE IF EXISTS " + TABLE_RESERVES);
+	    db.execSQL("DROP TABLE IF EXISTS " + TABLE_SPECIES);
+	    
 	    onCreate(db);
 	  }
 }

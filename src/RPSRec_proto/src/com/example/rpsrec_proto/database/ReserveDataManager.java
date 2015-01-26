@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
@@ -25,8 +26,11 @@ public class ReserveDataManager {
 	private SQLiteDatabase database;
 	ArrayList<String> reserves;
 	private DatabaseHelper dbHelper;
-	private String[] allColumns = { DatabaseHelper.COLUMN_ID,
-			DatabaseHelper.COLUMN_NAME };
+	private String[] allColumns = { dbHelper.COLUMN_ID,
+			dbHelper.COLUMN_NAME };
+	
+	private String[] Species_allColumns = { dbHelper.SPECIES_COLUMN_ID,
+			dbHelper.SPECIES_COLUMN_NAME };
 
 	public ReserveDataManager(Context context) {
 		dbHelper = new DatabaseHelper(context);
@@ -43,7 +47,7 @@ public class ReserveDataManager {
 	public ArrayList<String> getAllReserves() {
 		reserves = new ArrayList<String>();
 
-		Cursor cursor = database.query(DatabaseHelper.TABLE_RESERVES,
+		Cursor cursor = database.query(dbHelper.TABLE_RESERVES,
 				allColumns, null, null, null, null, null);
 
 		cursor.moveToFirst();
@@ -59,11 +63,11 @@ public class ReserveDataManager {
 
 	public void addReserve(String newReserve) {
 		ContentValues values = new ContentValues();
-		values.put(DatabaseHelper.COLUMN_NAME, newReserve);
-		long insertId = database.insert(DatabaseHelper.TABLE_RESERVES, null,
+		values.put(dbHelper.COLUMN_NAME, newReserve);
+		long insertId = database.insert(dbHelper.TABLE_RESERVES, null,
 				values);
-		Cursor cursor = database.query(DatabaseHelper.TABLE_RESERVES,
-				allColumns, DatabaseHelper.COLUMN_ID + " = " + insertId, null,
+		Cursor cursor = database.query(dbHelper.TABLE_RESERVES,
+				allColumns, dbHelper.COLUMN_ID + " = " + insertId, null,
 				null, null, null);
 		cursor.moveToFirst();
 
@@ -72,6 +76,26 @@ public class ReserveDataManager {
 		 * newComment;
 		 */
 	}
+	
+	public void addSpecies(String newSpecies) {
+		ContentValues values = new ContentValues();
+		values.put(dbHelper.TABLE_SPECIES, newSpecies);
+		long insertId = database.insert(dbHelper.TABLE_SPECIES, null,
+				values);
+		Cursor cursor = database.query(dbHelper.TABLE_SPECIES,
+				Species_allColumns, dbHelper.SPECIES_COLUMN_ID + " = " + insertId, null,
+				null, null, null);
+		cursor.moveToFirst();
+
+		/*
+		 * Reserve reserve = cursorToReserve(cursor); cursor.close(); return
+		 * newComment;
+		 */
+	}
+	
+	
+	
+	
 
 	private Reserve cursorToReserve(Cursor cursor) {
 		Reserve reserve = new Reserve();
@@ -81,7 +105,31 @@ public class ReserveDataManager {
 	}
 
 	public void createReserveList() {
-		JSONArray jsonArray = parseJSONObject();
+		JSONArray jsonArray = null;
+		try {
+			jsonArray = parseJSONObject(new URL("http://cormacbrady.info/~tkek/json/reserves.json"));
+		} catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		for (int i = 0; i < jsonArray.length(); i++) {
+			try {
+				addReserve(jsonArray.getString(i));
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public void createSpeciesList() {
+		JSONArray jsonArray = null;
+		try {
+			jsonArray = parseJSONObject(new URL("http://cormacbrady.info/~tkek/json/species.json"));
+		} catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		for (int i = 0; i < jsonArray.length(); i++) {
 			try {
@@ -92,7 +140,7 @@ public class ReserveDataManager {
 		}
 	}
 
-	public JSONArray parseJSONObject() {
+	public JSONArray parseJSONObject(URL url) {
 
 		// TOTES ILLEGAL
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
@@ -104,10 +152,10 @@ public class ReserveDataManager {
 		BufferedReader br = null;
 		try {
 			String line;
-			URL reserveUrl = new URL(
-					"http://cormacbrady.info/~tkek/json/reserves.json");
+//			URL reserveUrl = new URL(
+//					"http://cormacbrady.info/~tkek/json/reserves.json");
 			br = new BufferedReader(new InputStreamReader(
-					reserveUrl.openStream()));
+					url.openStream()));
 			while ((line = br.readLine()) != null) {
 				jsonData += line + "\n";
 			}
