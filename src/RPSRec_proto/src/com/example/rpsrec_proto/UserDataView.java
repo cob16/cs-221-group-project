@@ -1,5 +1,7 @@
 package com.example.rpsrec_proto;
 
+import java.util.ArrayList;
+
 import com.example.rpsrec_proto.data_transfer.Record;
 import com.example.rpsrec_proto.data_transfer.RecordList;
 import com.example.rpsrec_proto.data_transfer.SubmitRecord;
@@ -28,8 +30,10 @@ public class UserDataView extends Activity {
 	TextView name;
 	TextView phone;
 	TextView email;
-	Spinner reserveSpinner;
-	
+	protected Spinner reserveSpinner;
+	protected ReserveDataManager dataManager;
+	protected ArrayAdapter<String> reserveAdapter;
+
 	public static final String Name = "nameKey";
 	public static final String Phone = "phoneKey";
 	public static final String Email = "emailKey";
@@ -37,29 +41,55 @@ public class UserDataView extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		sharedpreferences = getPreferences(0);
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_data_view);
-		
-		fillSpinner();
-		
-		final Button button =(Button)findViewById(R.id.sign_up_button);
-		button.setOnClickListener(new View.OnClickListener() {
-			
+
+		//fillSpinner();
+
+		final Button addRecordButton = (Button) findViewById(R.id.sign_up_button);
+		addRecordButton.setOnClickListener(new View.OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
-				
-				if (!(getEnteredName().equals("") || getEnteredPhoneNumber().equals("") ||	 getEnteredEmail().equals(""))) {
-				pressButton();
-				Intent i = new Intent(getApplicationContext(), MainView.class);
-				startActivity(i);
+
+				if (!(getEnteredName().equals("")
+						|| getEnteredPhoneNumber().equals("") || getEnteredEmail()
+						.equals(""))) {
+					pressButton();
+					Intent i = new Intent(getApplicationContext(),
+							MainView.class);
+					startActivity(i);
 				}
-				
+
 				else {
-					new InvalidFieldException(getApplicationContext(), "Enter fields or die, dingus");
+					new InvalidFieldException(getApplicationContext(),
+							"Enter fields or die, dingus");
 				}
 			}
-		}); 
+		});
+
+		final Button updateButton = (Button) findViewById(R.id.update_reserves_button);
+		updateButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dataManager = new ReserveDataManager(getApplicationContext());
+				Thread t= new Thread(new Task());
+				t.start();
+				try {
+					t.join();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				reserveSpinner = (Spinner) findViewById(R.id.reserve_spinner);
+				reserveSpinner.setAdapter(null);
+				fillSpinner();
+				
+			}
+		});
+
 	}
 
 	/**
@@ -67,7 +97,7 @@ public class UserDataView extends Activity {
 	 */
 	String getEnteredName() {
 		String name = "";
-		
+
 		try {
 			EditText et = (EditText) findViewById(R.id.name);
 			name = et.getText().toString();
@@ -89,22 +119,23 @@ public class UserDataView extends Activity {
 			// failed to get the name string
 
 			Toast.makeText(getApplicationContext(),
-					"Please enter a valid email address", Toast.LENGTH_SHORT).show();
+					"Please enter a valid email address", Toast.LENGTH_SHORT)
+					.show();
 		}
 		return email;
 	}
 
 	String getEnteredPhoneNumber() {
 		String phone = "";
-		try {
-			EditText et = (EditText) findViewById(R.id.phone);
-			phone = et.getText().toString();
-		} catch (Exception e) {
-			// failed to get the name string
-
-			Toast.makeText(getApplicationContext(),
-					"Please enter a phone number", Toast.LENGTH_SHORT).show();
-		}
+		// try {
+		EditText et = (EditText) findViewById(R.id.phone);
+		phone = et.getText().toString();
+		/*
+		 * } catch (Exception e) { // failed to get the name string
+		 * 
+		 * Toast.makeText(getApplicationContext(),
+		 * "Please enter a phone number", Toast.LENGTH_SHORT).show(); }
+		 */
 		return phone;
 	}
 
@@ -120,24 +151,43 @@ public class UserDataView extends Activity {
 		editor.putString(Email, e);
 
 		editor.commit();
-		
-		Record record = new Record("Abella uniflora", "AB1234", "testing",
-				 'a', "121212", "example name");
-				RecordList list = new RecordList();
-				list.addRecord(record);
-				SubmitRecord submit = new SubmitRecord();
-				submit.sendToDatabase(list);
-	}
-	
-	void fillSpinner() {
-		ReserveDataManager dataManager = new ReserveDataManager(getApplicationContext());
-		dataManager.open();
-		dataManager.createReserveList();
 
-		
-		Spinner reserveSpinner = (Spinner)findViewById(R.id.reserve_spinner);
-        ArrayAdapter<String> reserveAdapter = new ArrayAdapter<String>(UserDataView.this, android.R.layout.simple_spinner_item, dataManager.getAllReserves());
-        reserveSpinner.setAdapter(reserveAdapter);
+		Record record = new Record("Abella uniflora", "AB1234", "testing", 'a',
+				"121212", "example name");
+		RecordList list = new RecordList();
+		list.addRecord(record);
+		SubmitRecord submit = new SubmitRecord();
+		submit.sendToDatabase(list);
+	}
+
+	void fillSpinner() {
+		//dataManager = new ReserveDataManager(getApplicationContext());
+		// dataManager.open();
+		// dataManager.createReserveList();
+		//reserveSpinner = (Spinner) findViewById(R.id.reserve_spinner);
+		//reserveSpinner.setAdapter(null);
+		//new Thread(new Task()).start();
+
+		reserveSpinner.setAdapter(reserveAdapter);
+
+		// ArrayAdapter<String> reserveAdapter = new
+		// ArrayAdapter<String>(UserDataView.this,
+		// android.R.layout.simple_spinner_item, dataManager.getAllReserves());
+		// reserveSpinner.setAdapter(reserveAdapter);
+	}
+
+	class Task implements Runnable {
+
+		@Override
+		public void run() {
+			dataManager.open();
+			dataManager.createReserveList();
+			reserveAdapter = new ArrayAdapter<String>(UserDataView.this,
+					android.R.layout.simple_spinner_item,
+					dataManager.getAllReserves());
+
+		}
+
 	}
 
 }

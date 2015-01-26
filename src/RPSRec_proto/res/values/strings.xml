@@ -46,5 +46,6 @@
     <string name="title_activity_temp_record_view">TempRecordView</string>
     <string name="action_example">Example action</string>
     <string name="title_activity_fragment_test">Fragment_test</string>
+    <string name="update_reserves_text">Update Reserves</string>
 
 </resources>

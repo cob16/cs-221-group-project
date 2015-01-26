@@ -143,9 +143,9 @@ public class ReserveDataManager {
 	public JSONArray parseJSONObject(URL url) {
 
 		// TOTES ILLEGAL
-		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-				.permitAll().build();
-		StrictMode.setThreadPolicy(policy);
+		//StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
+			//	.permitAll().build();
+		//StrictMode.setThreadPolicy(policy);
 		// /////////////
 
 		String jsonData = "";

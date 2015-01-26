@@ -8,10 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements View.OnTouchListener{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class MainActivity extends Activity {
 				
 			}
 		});
+		
 	}
 
 //	@Override
@@ -39,7 +41,7 @@ public class MainActivity extends Activity {
 //		//getActionBar().setDisplayHomeAsUpEnabled(true);
 //		return true;
 //	}
-
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
@@ -51,7 +53,15 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
+@Override
+public boolean onTouch(View v, MotionEvent event) {
+	// TODO Auto-generated method stub
+	return false;
+}
+	public void playSound() {
+		
+	}
 	
 
 }

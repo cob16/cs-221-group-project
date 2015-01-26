@@ -478,8 +478,8 @@ containing a value of this type.
     public static final class id {
         public static final int RelativeLayout1=0x7f07001b;
         public static final int ScrollLayout=0x7f07001a;
-        public static final int action_example=0x7f070038;
-        public static final int action_settings=0x7f070037;
+        public static final int action_example=0x7f07003a;
+        public static final int action_settings=0x7f070039;
         public static final int addRecordButton=0x7f070017;
         public static final int addRecordDataButton=0x7f070023;
         public static final int add_species_img_title=0x7f070021;
@@ -521,17 +521,19 @@ containing a value of this type.
         public static final int reserve_spinner=0x7f070033;
         public static final int sandbox=0x7f07000a;
         public static final int satellite=0x7f070004;
-        public static final int section_label=0x7f070035;
         public static final int selectionDetails=0x7f07000d;
-        public static final int sign_up_button=0x7f070034;
+        public static final int sign_up_button=0x7f070035;
         public static final int speciesName=0x7f07001c;
         public static final int specimenCamera=0x7f070026;
         public static final int startButton=0x7f070019;
         public static final int strict_sandbox=0x7f07000b;
-        public static final int tabtextview=0x7f070036;
+        public static final int tabtextview=0x7f070038;
         public static final int terrain=0x7f070005;
+        public static final int text1=0x7f070036;
+        public static final int text2=0x7f070037;
         public static final int textView3=0x7f070022;
         public static final int typLocation=0x7f07001f;
+        public static final int update_reserves_button=0x7f070034;
         public static final int wrap_content=0x7f07000f;
     }
     public static final class integer {
@@ -704,6 +706,7 @@ containing a value of this type.
         public static final int title_section2=0x7f060034;
         public static final int title_section3=0x7f060035;
         public static final int typlocation_hint=0x7f06003e;
+        public static final int update_reserves_text=0x7f060045;
         public static final int userName=0x7f060028;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
