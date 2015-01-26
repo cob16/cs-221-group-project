@@ -10,14 +10,14 @@
 | Au, Yee Tim         | Timfortress       | yta          | Testing lead 
 | Cormac Brady        | cob16             | cob16        | Project lead
 | Calvin Chan         | cac36             | cac36        | Qa/testing team
-| Karl Franks         | karlfranks        | kpf          | Server  team
-| Henry Hollingsworth | hmh7              | hmh7         | Android  team
+| Karl Franks         | karlfranks        | kpf          | Web apprentice
+| Henry Hollingsworth | hmh7              | hmh7         | Android Grandmaster
 | Howard, Rhys Kieran | rkh4              | rkh4         | QA lead
 | Scott Lockett       | scottl111         | scl10        | WebApp
 | Kieran Lynch        | kill7             | kil7         | WebApp
 | James Portch        | Giraffesintrousers| jap55        | Server  team
 | Melissa Smith       | LissaSmith        | mas97        | Deputy project lead
-| Zach Yewman         | Codlydodly        | zay          | Android team
+| Zach Yewman         | Codlydodly        | zay          | Web Guuru
 
 
 **Note: nwhaber - Nigel Hardy (our tutor) is also added for oversight of the project**
