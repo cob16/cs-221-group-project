@@ -1,110 +1,113 @@
-<!DOCTYPE html>
+<?php	
+include "header.php";
+include "connect.php";
+//Include standard header and database connection variables
 
-<html>
-<head>
-		<link rel="stylesheet" type="text/css" href="style221.css" />
-	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300,600,700' rel='stylesheet' type='text/css'>
-	<title>RPSRview</title>
-	<meta charset="UTF-8" />
-</head>
-<body>
-		<?php
-		/*
-		 * Takes the reserve id passed to it
-		 * anf looks it up in order to display
-		 * a table of the first 25 results
-		 */
+$reserve_name = (int) $_GET["reserve"];
+//Variable to store accessed reserve
 
-		$reserve_name = (int) $_GET["reserve"];
-		$host = 'localhost';
-		$user = 'tkek';
-		$pass = 'topkek3';
-		$database = 'cb-group-project';
-		$conn = new mysqli($host, $user, $pass, $database);
+	if(!$conn->connect_errno > 0){ //if connection is successful
 
+		$recordings = "SELECT * FROM Recordings WHERE reserve_name='".$reserve_name."' ORDER BY date_recorded";
+		//SQL statement to select all of the recordings pertaining to a certain reserve
+		$reserve_data = "SELECT * FROM Reserves";
+		//SQL statement to select all of the reserves
 
-		if(!$conn->connect_errno > 0){
-			$res = <<<SQL
-			SELECT *
-			FROM `Recordings`
-			WHERE $reserve_name = reserve_name
-SQL;
-			$dopefish = <<<SQL
-			SELECT *
-			FROM `Species`
-SQL;
+		if(!$recordings = $conn->query($recordings)){
+			die('There was an error accessing the recordings data.');
+		}
+		if(!$reserve_data = $conn->query($reserve_data)) {
+			die('there was an error accessing the reserve data.');
+		}
 
-			$fishsticks = <<<SQL
-			SELECT *
-			FROM `Reserves`
-
-SQL;
-
-			if(!$res = $conn->query($res)){
-				die('There was an error running the query :)');
-			}
-			if(!$fishsticks = $conn->query($fishsticks)) {
-				die('there was an error running the query :(');
-			}
-			if(!$dopefish = $conn->query($dopefish)) {
-				die('there was an error running the query :(');
-			}
-
-		echo '<div class="header">';
-			echo '<h1><a href="https://cormacbrady.info/~tkek"><strong>RPSR</strong>view</a></h1>';
-			while ($b = $fishsticks->fetch_assoc()) {
-						if ($reserve_name == $b["reserve_ID"]) {
-							echo '<p>Reserve - ' . ucwords($b["reserve_name"]) . '</p>';
-						}
-					}		
-			echo '<a class="gitlogo" href="https://github.com/cob16/cs-221-group-project"> <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" height="45" width="45"></a>';
-		echo '</div>';
-
-	
+		//Bootstrap panel
 		echo '<div class="container">';
+		echo '<div class="panel panel-primary">';
+		echo '<!-- Default panel contents -->';
+		while ($b = $reserve_data->fetch_assoc()) {
+			if ($reserve_name == $b["reserve_ID"]) {
+				//Output the header with the reserve data
+				echo '<div class="panel-heading"><strong>Reserve</strong> - ' . ucwords($b["reserve_name"]);
 
-			
-			echo '<table cellpadding="25">';
-			echo '<thead>';
-			echo '<tr>';
-			echo '<th>Select</th>';
-			echo '<th>Species</th>';
-			echo '<th>DAFOR Scale</th>';
-			echo '<th>Comments</th>';
-			echo '<th>Date Recorded</th>';
-			echo '<th>Location Photo</th>';
-			echo '<th>Species Photo</th>';
-			echo '<th>Email</th>';
-			echo '</tr>';
-			//print eatch row
-			while ($a = $res->fetch_assoc()) {
-				echo '<tr>';
-				echo '<td><input type="checkbox"></td>';
-				 $specNumber = $a["species"];
-				 while ($c = $dopefish->fetch_assoc()) {
-				 	if ($specNumber == $c["species_id"]) {
-				 		echo '<td>' . $c["Species"] . '</td>';
-				 		break;
-				 	}
-				 }
-				echo '<td>' . $a["DAFOR"] . '</td>';
-				echo '<td>' . $a["comments"] . '</td>';
-				$fixedDate = date("d-m-Y", strtotime($a["date_recorded"]));
-				echo '<td>' . $fixedDate . '</td>';
-				echo '<td><img src="' . $a["photo_path_general"] . '"></td>';
-				echo '<td><img src="' . $a["photo_path_species"] . '"</td>';
-				echo '<td>' . $a["Email"] . '</td>';
-				echo '</tr>';
+				if((strlen($b['description']))==0){
+					echo '<br /><strong>Description</strong> - <em>No description provided</em>';
+				}
+				else{
+					echo '<br /><strong>Description</strong> - ' . $b["description"];
+				}
+				if($b['grid_reference']==0){
+					echo '<br /><strong>Location</strong> - <em>No location provided</em></div>';
+				}
+				else{
+					echo '<br /><strong>Location</strong> - ' . $b["grid_reference"] . '</div>';
+				}
+
 			}
-			echo '</table>';
-		}
-		else
-		{
-			echo "connection error";
-		}
-		?>
+		}		
 
 
-</div>
-</body>
-</html>
+		//Set up table header
+		echo '<table class="table table-striped">';
+		echo '<thead>';
+		echo '<tr>';
+		echo '<th>Species</th>';
+		echo '<th>DAFOR Scale</th>';
+		echo '<th>Comments</th>';
+		echo '<th>Date Recorded</th>';
+		echo '<th>Location Photo</th>';
+		echo '<th>Species Photo</th>';
+		echo '<th>Email</th>';
+		echo '</tr>';
+		echo '</thead>';
+
+		
+		while ($a = $recordings->fetch_assoc()) {
+			echo '<tr>';
+
+			$specNumber = $a["species"];
+			$species_names = "SELECT Species FROM Species WHERE species_id='".$specNumber."'";
+			//SQL statement to select the specific species
+			if(!$species_names = $conn->query($species_names)){
+				die('There was an error accessing the species data.');
+			}
+			$c = $species_names->fetch_assoc();
+			echo '<td>' . $c["Species"] . '</td>';
+			echo '<td>' . $a["DAFOR"] . '</td>';
+			echo '<td>' . $a["comments"] . '</td>';
+			$fixedDate = date("d-m-Y", strtotime($a["date_recorded"]));
+			echo '<td>' . $fixedDate . '</td>';
+
+			//If there is a linked photo, show that
+			//If not, display the fallback error photo
+			if ($a["photo_path_general"] == "") {
+				echo '<td><img class="small" src="images/camerav2.jpg" alt=""></td>';
+			}
+			else {
+				echo '<td><img class="small" src="' . $a["photo_path_general"] . '" alt=""></td>';
+			}
+
+			//If there is a linked photo, show that
+			//If not, display the fallback error photo
+			if ($a["photo_path_species"] == "") {
+				echo '<td><img class="small" src="images/camerav2.jpg" alt=""></td>';
+			}
+			else {
+				echo '<td><img class="small" src="' . $a["photo_path_species"] . '" alt=""></td>';
+			}
+
+			echo '<td>' . $a["Email"] . '</td>';
+			echo '</tr>';
+		}
+		echo '</table>';		
+	}
+	else
+	{
+		echo "ERROR: Database connection error!";
+	}
+
+//Close the rest of the opened tags
+echo '</div>';
+echo'</div>';
+echo'</body>';
+echo'</html>';
+?>
