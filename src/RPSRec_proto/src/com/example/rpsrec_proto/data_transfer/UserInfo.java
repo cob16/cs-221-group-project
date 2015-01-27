@@ -3,36 +3,36 @@ package com.example.rpsrec_proto.data_transfer;
 import android.location.Location;
 
 public class UserInfo {
-	private String email, name, phone;
+	public static String email, name, phone;
 	
-	public UserInfo(String email, String name, String phone) {
-		this.name = name;
-		this.phone = phone;
-		this.email = email;
+	public UserInfo(String newEmail, String newName, String newPhone) {
+		name = newName;
+		phone = newPhone;
+		email = newEmail;
 	}
 
-	public String getEmail() {
+	public static String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public static void setEmail(String newEmail) {
+		email = newEmail;
 	}
 
-	public String getName() {
+	public static String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public static void setName(String newName) {
+		name = newName;
 	}
 
-	public String getPhone() {
+	public static String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public static void setPhone(String newPhone) {
+		phone = newPhone;
 	}
 
 }

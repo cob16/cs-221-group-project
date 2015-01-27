@@ -1,8 +1,9 @@
 package com.example.rpsrec_proto;
 
-import com.example.rpsrec_proto.data_transfer.Record;
 import com.example.rpsrec_proto.data_transfer.RecordList;
 import com.example.rpsrec_proto.data_transfer.SubmitRecord;
+import com.example.rpsrec_proto.data_transfer.UserInfo;
+import com.example.rpsrec_proto.database.Record;
 import com.example.rpsrec_proto.database.ReserveDataManager;
 import com.example.rpsrec_proto.exceptions.InvalidFieldException;
 
@@ -29,6 +30,7 @@ public class UserDataView extends Activity {
 	protected Spinner reserveSpinner;
 	protected ReserveDataManager dataManager;
 	protected ArrayAdapter<String> reserveAdapter;
+	private UserInfo info;
 
 	public static final String Name = "nameKey";
 	public static final String Phone = "phoneKey";
@@ -155,11 +157,8 @@ public class UserDataView extends Activity {
 
 		editor.commit();
 
+		new UserInfo(getEnteredEmail(), getEnteredName(), getEnteredPhoneNumber());
 		
-		Record record = new Record("Abelia uniflora", "AB1234", "testing", 'A',
-				"2014-12-12", "example name", "dsada", "dsfsf");
-		list = new RecordList();
-		list.addRecord(record);
 		Thread t = new Thread(new RecordSubmitter());
 		t.start();
 		// SubmitRecord submit = new SubmitRecord();
@@ -192,7 +191,7 @@ public class UserDataView extends Activity {
 		@Override
 		public void run() {
 			SubmitRecord submit = new SubmitRecord();
-			submit.sendToDatabase(list);
+			submit.sendToDatabase(getApplicationContext());
 		}
 
 	}

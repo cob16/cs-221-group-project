@@ -3,7 +3,6 @@ package com.example.rpsrec_proto.database;
 import java.util.ArrayList;
 
 import com.example.rpsrec_proto.R;
-import com.example.rpsrec_proto.data_transfer.Record;
 
 import android.content.Context;
 import android.view.LayoutInflater;

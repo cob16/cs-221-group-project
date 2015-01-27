@@ -1,6 +1,10 @@
 package com.example.rpsrec_proto;
 
+import java.util.ArrayList;
+
 import com.example.rpsrec_proto.data_transfer.SubmitRecord;
+import com.example.rpsrec_proto.database.Record;
+import com.example.rpsrec_proto.database.ReserveDataManager;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -8,10 +12,11 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainView extends Activity {
+public class MainView extends FragmentActivity {
 	ActionBar.Tab tab1, tab2;
 	Fragment newRecordFragment = new NewRecordFragment();
 
@@ -58,10 +63,26 @@ public class MainView extends Activity {
 		}
 		
 		else if (id == R.id.action_upload) {
-			SubmitRecord submit = new SubmitRecord();
+			Thread t= new Thread(new Sender());
+			t.start();
+			
+			//recordViewFragment.emptyList();
 			
 		}
 		return true;
+	}
+		
+	class Sender implements Runnable {
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+SubmitRecord submit = new SubmitRecord();
+			
+			submit.sendToDatabase(getApplicationContext());
+		}
+		
+		
 	}
 
 }

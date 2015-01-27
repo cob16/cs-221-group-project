@@ -1,8 +1,10 @@
 package com.example.rpsrec_proto;
 
 import java.io.File;
-import com.example.rpsrec_proto.data_transfer.Record;
+
 import com.example.rpsrec_proto.data_transfer.RecordList;
+import com.example.rpsrec_proto.database.Record;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;

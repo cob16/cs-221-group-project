@@ -196,8 +196,9 @@ int menu record_view 0x7f0c0005
 int menu temp_record_view 0x7f0c0006
 int menu user_data_view 0x7f0c0007
 int raw airhorn 0x7f040000
-int raw gtm_analytics 0x7f040001
-int raw hitmarker 0x7f040002
+int raw atriple 0x7f040001
+int raw gtm_analytics 0x7f040002
+int raw hitmarker 0x7f040003
 int string accept 0x7f060002
 int string action_delete 0x7f060039
 int string action_edit 0x7f060038

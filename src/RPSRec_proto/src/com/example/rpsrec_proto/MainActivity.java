@@ -23,8 +23,9 @@ import android.widget.ImageView;
 public class MainActivity extends Activity {
 	ImageView imgView;
 	boolean pressed = false;
-	MediaPlayer hitmarker,airhorn;
+	MediaPlayer hitmarker,airhorn,triple;
 	int X, Y, dx, dy;
+	int pressCount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class MainActivity extends Activity {
 
 		hitmarker = MediaPlayer.create(getApplicationContext(), R.raw.hitmarker);
 		airhorn=MediaPlayer.create(getApplicationContext(), R.raw.airhorn);
+		triple=MediaPlayer.create(getApplicationContext(), R.raw.atriple);
 		imgView = new ImageView(getApplicationContext());
 		imgView = (ImageView) findViewById(R.id.hitmarker);
 
@@ -85,8 +87,12 @@ public class MainActivity extends Activity {
 			hitmarker.start();
 			imgView.layout(X, Y, X + imgView.getMeasuredWidth(),
 					Y + imgView.getMeasuredHeight());
-
+			pressCount++;
 			pressed = true;
+			
+			if (pressCount==3) {
+				triple.start();
+			}
 			break;
 
 		case MotionEvent.ACTION_MOVE:

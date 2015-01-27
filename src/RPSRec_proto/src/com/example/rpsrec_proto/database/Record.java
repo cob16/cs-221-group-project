@@ -1,9 +1,11 @@
-package com.example.rpsrec_proto.data_transfer;
+package com.example.rpsrec_proto.database;
 
 /**
  * Contains the data of a single record
  */
 import java.io.File;
+
+import com.example.rpsrec_proto.data_transfer.UserInfo;
 
 public class Record {
 
@@ -20,9 +22,8 @@ public class Record {
 		
 	}
 	
-	public Record(String newSpecies, int iid, String newLocation, String newInfo,
+	public Record(String newSpecies, String newLocation, String newInfo,
 			char newDafor, String newDate, String newReserve,String newSpeciesPhoto, String newLocationPhoto) {
-		id = iid;
 		species = newSpecies;
 		location = newLocation;
 		additionalInfo = newInfo;

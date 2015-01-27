@@ -3,6 +3,8 @@ package com.example.rpsrec_proto.data_transfer;
 import java.io.File;
 import java.util.ArrayList;
 
+import com.example.rpsrec_proto.database.Record;
+
 /**
  * 
  * Contains the list of all records

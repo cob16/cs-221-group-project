@@ -4,9 +4,9 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.example.rpsrec_proto.data_transfer.Record;
 import com.example.rpsrec_proto.data_transfer.RecordList;
 import com.example.rpsrec_proto.data_transfer.SubmitRecord;
+import com.example.rpsrec_proto.database.Record;
 import com.example.rpsrec_proto.database.ReserveDataManager;
 import com.example.rpsrec_proto.exceptions.InvalidFieldException;
 import com.example.rpsrec_proto.location.GPSToGrid;
@@ -176,7 +176,7 @@ public class NewRecordFragment extends Fragment implements
 
 	void addRecordPressed() {
 
-		Record record = new Record(getSpecies(), getLocation(), getInfo(),
+		Record record = new Record(getSpecies() ,getLocation(), getInfo(),
 				getDAFOR(), getDate(), "", "image1", "image2");
 
 		ReserveDataManager dataManager = new ReserveDataManager(getActivity());

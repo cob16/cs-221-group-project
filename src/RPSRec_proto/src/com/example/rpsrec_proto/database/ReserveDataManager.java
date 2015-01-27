@@ -12,8 +12,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.rpsrec_proto.data_transfer.Record;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -39,8 +37,7 @@ public class ReserveDataManager {
 			dbHelper.SPECIES_COLUMN_NAME };
 
 	private String[] Record_allColumns = { dbHelper.RECORD_COLUMN_ID,
-			dbHelper.RECORD_COLUMN_species, 
-			dbHelper.RECORD_COLUMN_DAFOR,
+			dbHelper.RECORD_COLUMN_species, dbHelper.RECORD_COLUMN_DAFOR,
 			dbHelper.RECORD_COLUMN_comments,
 			dbHelper.RECORD_COLUMN_date_recorded,
 			dbHelper.RECORD_COLUMN_photo_path_general,
@@ -96,7 +93,7 @@ public class ReserveDataManager {
 	}
 
 	public void addReserve(String newReserve) {
-				
+
 		ContentValues values = new ContentValues();
 		values.put(dbHelper.COLUMN_NAME, newReserve);
 		long insertId = database.insert(dbHelper.TABLE_RESERVES, null, values);
@@ -148,14 +145,33 @@ public class ReserveDataManager {
 		 * newComment;
 		 */
 	}
-	
+
 	public void editRecord(Record record) {
 		ContentValues cv = new ContentValues();
-		cv.put("Field1","Bob"); //These Fields should be your String values of actual column names
-		cv.put("Field2","19");
-		cv.put("Field2","Male");
-		
-		database.update(dbHelper.TABLE_RECORDS, cv, dbHelper.RECORD_COLUMN_ID + "=" record.getId(), null);
+		cv.put(dbHelper.RECORD_COLUMN_species, record.getSpecies()); // These
+																		// Fields
+																		// should
+																		// be
+																		// your
+																		// String
+																		// values
+																		// of
+																		// actual
+																		// column
+																		// names
+		cv.put(dbHelper.RECORD_COLUMN_location, record.getLocation());
+		cv.put(dbHelper.RECORD_COLUMN_comments, record.getAdditionalInfo());
+		cv.put(dbHelper.RECORD_COLUMN_DAFOR,
+				Character.toString(record.getDaforScale()));
+		cv.put(dbHelper.RECORD_COLUMN_time, record.getDate());
+		cv.put(dbHelper.RECORD_COLUMN_reserve_name, record.getReserve());
+		cv.put(dbHelper.RECORD_COLUMN_photo_path_species,
+				record.getSpeciesPhoto());
+		cv.put(dbHelper.RECORD_COLUMN_photo_path_general,
+				record.getLocationPhoto());
+
+		database.update(dbHelper.TABLE_RECORDS, cv, dbHelper.RECORD_COLUMN_ID
+				+ "=" + record.getId(), null);
 	}
 
 	private Record cursorToRecord(Cursor cursor) {
@@ -169,6 +185,8 @@ public class ReserveDataManager {
 		record.setlocation(cursor.getString(5));
 		record.setLocationPhoto(cursor.getString(6));
 		record.setSpeciesPhoto(cursor.getString(7));
+
+		//record.setId(Integer.parseInt(cursor.getString(8)));
 
 		return record;
 	}

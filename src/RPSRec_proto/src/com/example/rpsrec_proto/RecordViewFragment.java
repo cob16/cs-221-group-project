@@ -2,7 +2,7 @@ package com.example.rpsrec_proto;
 
 import java.util.ArrayList;
 
-import com.example.rpsrec_proto.data_transfer.Record;
+import com.example.rpsrec_proto.database.Record;
 import com.example.rpsrec_proto.database.ReserveDataManager;
 
 import android.app.Fragment;
@@ -21,13 +21,13 @@ public class RecordViewFragment extends ListFragment implements
 		View.OnClickListener {
 
 	View view;
+	ArrayAdapter<String> adapter;
+	ArrayList<Record> tempList;
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		String[] values = new String[] { "Android", "iPhone", "WindowsMobile",
-				"Blackberry", "WebOS", "Ubuntu", "Windows7", "Max OS X",
-				"Linux", "OS/2" };
+
 		
 		ReserveDataManager dataManager = new ReserveDataManager(getActivity());
 		dataManager.open();
@@ -40,7 +40,7 @@ public class RecordViewFragment extends ListFragment implements
 		}
 		
 		
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, nameList);
+		adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, nameList);
 		//ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
 		setListAdapter(adapter);
 	}
@@ -54,5 +54,9 @@ public class RecordViewFragment extends ListFragment implements
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	public void emptyList() {
+		setListAdapter(null);
 	}
 }
