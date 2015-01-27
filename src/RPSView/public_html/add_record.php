@@ -140,14 +140,10 @@ else {
             $first_pic     = $data['record']["first_pic"];
             $second_pic    = $data['record']["second_pic"];
 
-            if (!$location) {
-                $location = $result_reserves['grid_reference'];
-            }
-
             $sql = "INSERT INTO `Recordings`(`species`, `DAFOR`, `comments`, `date_recorded`, `photo_path_general`, `photo_path_species`, `Email`, `reserve_name`, `location`)
               VALUES ('$species_id', '$DAFOR', '$comments'  ,'$date_recorded', '$first_pic', '$second_pic', '$email' ,'$reserve_ID' ,'$location')";
 
-            if ($conn->query($sql) === TRUE) {n
+            if ($conn->query($sql) === TRUE) {
                 //http_response_code(201);
                 echo "<p> New record created successfully </p>";
             } else {
