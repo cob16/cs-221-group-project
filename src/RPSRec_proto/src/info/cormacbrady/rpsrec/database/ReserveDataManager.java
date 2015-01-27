@@ -92,6 +92,7 @@ public class ReserveDataManager {
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			Record cursorRecord = cursorToRecord(cursor);
+			
 			records.add(cursorRecord);
 			cursor.moveToNext();
 		}
@@ -136,7 +137,7 @@ public class ReserveDataManager {
 		values.put(dbHelper.RECORD_COLUMN_comments,
 				newRecord.getAdditionalInfo());
 		values.put(dbHelper.RECORD_COLUMN_species, newRecord.getSpecies());
-		values.put(dbHelper.RECORD_COLUMN_DAFOR, newRecord.getDaforScale() + "");
+		values.put(dbHelper.RECORD_COLUMN_DAFOR, Character.toString(newRecord.getDaforScale()));
 		values.put(dbHelper.RECORD_COLUMN_reserve_name, newRecord.getReserve());
 		values.put(dbHelper.RECORD_COLUMN_date_recorded, newRecord.getDate());
 		values.put(dbHelper.RECORD_COLUMN_location, newRecord.getLocation());
@@ -147,6 +148,7 @@ public class ReserveDataManager {
 				newRecord.getSpeciesPhoto());
 
 		long insertId = database.insert(dbHelper.TABLE_RECORDS, null, values);
+		
 		// cursor.moveToFirst();
 
 		/*
@@ -186,16 +188,24 @@ public class ReserveDataManager {
 	private Record cursorToRecord(Cursor cursor) {
 
 		Record record = new Record();
+		
+		/*record.setAdditionalInfo(cursor.getString(cursor.getColumnIndex(dbHelper.RECORD_COLUMN_location)));
+		record.setSpecies(cursor.getString(cursor.getColumnIndex(dbHelper.RECORD_COLUMN_comments)));
+		record.setDaforScale(cursor.getString(cursor.getColumnIndex(dbHelper.RECORD_COLUMN_DAFOR)).charAt(0));
+		record.setDate(cursor.getString(cursor.getColumnIndex(dbHelper.RECORD_COLUMN_time)));
+		record.setReserveName(cursor.getString( cursor.getColumnIndex(dbHelper.RECORD_COLUMN_reserve_name)));
+		record.setLocationPhoto(cursor.getString( cursor.getColumnIndex(dbHelper.RECORD_COLUMN_photo_path_species)));
+		record.setSpeciesPhoto(cursor.getString( cursor.getColumnIndex(dbHelper.RECORD_COLUMN_photo_path_general)));*/
+			
+		
 		record.setAdditionalInfo(cursor.getString(0));
 		record.setSpecies(cursor.getString(1));
 		record.setDaforScale(cursor.getString(2).charAt(0));
 		record.setReserveName(cursor.getString(3));
 		record.setDate(cursor.getString(4));
-		record.setlocation(cursor.getString(7));
+		record.setLocation(cursor.getString(7));
 		record.setLocationPhoto(cursor.getString(6));
 		record.setSpeciesPhoto(cursor.getString(5));
-
-		//record.setId(Integer.parseInt(cursor.getString(8)));
 
 		return record;
 	}

@@ -122,4 +122,8 @@ public class Record {
 		this.date = newDate;
 		
 	}
+	
+	public void setLocation(String newLocation) {
+		location = newLocation;
+	}
 }

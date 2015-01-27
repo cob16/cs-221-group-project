@@ -159,7 +159,7 @@ public class UserDataView extends Activity {
 
 		editor.commit();
 
-		new UserInfo(getEnteredEmail(), getEnteredName(), getEnteredPhoneNumber());
+		new UserInfo(getEnteredEmail(), getEnteredName(), getEnteredPhoneNumber(), res);
 		
 		Thread t = new Thread(new RecordSubmitter());
 		t.start();

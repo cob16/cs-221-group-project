@@ -2,7 +2,6 @@ package info.cormacbrady.rpsrec.data_transfer;
 
 import android.location.Location;
 
-
 /*
  * @UserInfo.java 1.1 2015-1-18
  *
@@ -12,11 +11,12 @@ import android.location.Location;
  */
 public class UserInfo {
 	public static String email, name, phone, reserve;
-	
-	public UserInfo(String newEmail, String newName, String newPhone) {
+
+	public UserInfo(String newEmail, String newName, String newPhone, String newReserve) {
 		name = newName;
 		phone = newPhone;
 		email = newEmail;
+		reserve = newReserve;
 	}
 
 	public static String getEmail() {
@@ -33,6 +33,14 @@ public class UserInfo {
 
 	public static void setName(String newName) {
 		name = newName;
+	}
+
+	public static void setReserve(String newReserve) {
+		reserve = newReserve;
+	}
+
+	public static String getReserve() {
+		return reserve;
 	}
 
 	public static String getPhone() {

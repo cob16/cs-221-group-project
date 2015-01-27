@@ -2,6 +2,7 @@ package info.cormacbrady.rpsrec;
 
 import info.cormacbrady.rpsrec.data_transfer.RecordList;
 import info.cormacbrady.rpsrec.data_transfer.SubmitRecord;
+import info.cormacbrady.rpsrec.data_transfer.UserInfo;
 import info.cormacbrady.rpsrec.database.Record;
 import info.cormacbrady.rpsrec.database.ReserveDataManager;
 import info.cormacbrady.rpsrec.exceptions.InvalidFieldException;
@@ -240,7 +241,7 @@ public class NewRecordFragment extends Fragment implements
 		System.out.println(getGalleryPhoto("location"));
 
 		Record record = new Record(getSpecies() ,getLocation(), getInfo(),
-				getDAFOR(), getDate(), "location", getGalleryPhoto("species"), getGalleryPhoto("location"));
+				getDAFOR(), getDate(), UserInfo.getReserve(), getGalleryPhoto("species"), getGalleryPhoto("location"));
 
 		ReserveDataManager dataManager = new ReserveDataManager(getActivity());
 		dataManager.open();
