@@ -11,6 +11,7 @@ public class Record {
 	private char daforScale;
 	private String speciesPhoto, locationPhoto, reserveName;
 	private UserInfo user;
+	private int id;
 
 	public Record() {
 		species=additionalInfo=reserve=location=speciesPhoto=locationPhoto=date=reserveName="";
@@ -19,8 +20,9 @@ public class Record {
 		
 	}
 	
-	public Record(String newSpecies, String newLocation, String newInfo,
+	public Record(String newSpecies, int iid, String newLocation, String newInfo,
 			char newDafor, String newDate, String newReserve,String newSpeciesPhoto, String newLocationPhoto) {
+		id = iid;
 		species = newSpecies;
 		location = newLocation;
 		additionalInfo = newInfo;
@@ -29,6 +31,14 @@ public class Record {
 		reserve = newReserve;
 		speciesPhoto = newSpeciesPhoto;
 		locationPhoto = newLocationPhoto;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setSpecies(String species) {
