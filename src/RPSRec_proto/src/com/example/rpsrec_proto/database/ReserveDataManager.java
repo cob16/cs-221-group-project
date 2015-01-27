@@ -39,7 +39,8 @@ public class ReserveDataManager {
 			dbHelper.SPECIES_COLUMN_NAME };
 
 	private String[] Record_allColumns = { dbHelper.RECORD_COLUMN_ID,
-			dbHelper.RECORD_COLUMN_species, dbHelper.RECORD_COLUMN_DAFOR,
+			dbHelper.RECORD_COLUMN_species, 
+			dbHelper.RECORD_COLUMN_DAFOR,
 			dbHelper.RECORD_COLUMN_comments,
 			dbHelper.RECORD_COLUMN_date_recorded,
 			dbHelper.RECORD_COLUMN_photo_path_general,
@@ -95,6 +96,7 @@ public class ReserveDataManager {
 	}
 
 	public void addReserve(String newReserve) {
+				
 		ContentValues values = new ContentValues();
 		values.put(dbHelper.COLUMN_NAME, newReserve);
 		long insertId = database.insert(dbHelper.TABLE_RESERVES, null, values);
@@ -145,6 +147,15 @@ public class ReserveDataManager {
 		 * Reserve reserve = cursorToReserve(cursor); cursor.close(); return
 		 * newComment;
 		 */
+	}
+	
+	public void editRecord(Record record) {
+		ContentValues cv = new ContentValues();
+		cv.put("Field1","Bob"); //These Fields should be your String values of actual column names
+		cv.put("Field2","19");
+		cv.put("Field2","Male");
+		
+		database.update(dbHelper.TABLE_RECORDS, cv, dbHelper.RECORD_COLUMN_ID + "=" record.getId(), null);
 	}
 
 	private Record cursorToRecord(Cursor cursor) {
