@@ -47,5 +47,6 @@
     <string name="action_example">Example action</string>
     <string name="title_activity_fragment_test">Fragment_test</string>
     <string name="update_reserves_text">Update Reserves</string>
+    <string name="get_location_hint">Get Location</string>
 
 </resources>

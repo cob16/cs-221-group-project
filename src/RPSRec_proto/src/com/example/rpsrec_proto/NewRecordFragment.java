@@ -1,10 +1,13 @@
 package com.example.rpsrec_proto;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.example.rpsrec_proto.data_transfer.Record;
 import com.example.rpsrec_proto.data_transfer.RecordList;
 import com.example.rpsrec_proto.data_transfer.SubmitRecord;
+import com.example.rpsrec_proto.database.ReserveDataManager;
 import com.example.rpsrec_proto.exceptions.InvalidFieldException;
 import com.example.rpsrec_proto.location.GPSToGrid;
 import com.google.android.gms.common.ConnectionResult;
@@ -25,6 +28,7 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.format.Time;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +45,7 @@ public class NewRecordFragment extends Fragment implements
 	View view;
 	GoogleApiClient mGoogleApiClient;
 	Location mLastLocation;
+	String location;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -48,7 +53,6 @@ public class NewRecordFragment extends Fragment implements
 		view = inflater.inflate(R.layout.fragment_new_record, container, false);
 
 		buildGoogleApiClient();
-		mGoogleApiClient.connect();
 		final ImageButton specimenGalleryButton = (ImageButton) view
 				.findViewById(R.id.getSpecimenImage);
 		specimenGalleryButton.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +70,17 @@ public class NewRecordFragment extends Fragment implements
 			@Override
 			public void onClick(View v) {
 				getGalleryImage("location");
+			}
+		});
+
+		final Button locationButton = (Button) view
+				.findViewById(R.id.get_location_button);
+		locationButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				mGoogleApiClient.connect();
+
 			}
 		});
 
@@ -95,13 +110,13 @@ public class NewRecordFragment extends Fragment implements
 
 			@Override
 			public void onClick(View v) {
-				if (!(getSpecies().equals("")
-						|| getTypicalLocation().equals("") || getInfo().equals(
-						""))) {
+				if (!(getSpecies().equals("") || getInfo().equals(""))) {
 					addRecordPressed();
-					/*Intent i = new Intent(getActivity(), UserDataView.class);
-					startActivity(i);*/
-				
+					/*
+					 * Intent i = new Intent(getActivity(), UserDataView.class);
+					 * startActivity(i);
+					 */
+
 				} else {
 					new InvalidFieldException(getActivity(),
 							"Fill those fields, you dungbeetle");
@@ -116,7 +131,6 @@ public class NewRecordFragment extends Fragment implements
 	@Override
 	public void onClick(View v) {
 		// THE STUFF THAT SAVES RECORDS
-
 	}
 
 	String getSpecies() {
@@ -127,11 +141,6 @@ public class NewRecordFragment extends Fragment implements
 	char getDAFOR() {
 		Spinner spinner = (Spinner) view.findViewById(R.id.dafor_spinner);
 		return spinner.getSelectedItem().toString().charAt(0);
-	}
-
-	String getTypicalLocation() {
-		et = (EditText) view.findViewById(R.id.typLocation);
-		return et.getText().toString();
 	}
 
 	String getInfo() {
@@ -153,18 +162,34 @@ public class NewRecordFragment extends Fragment implements
 		startActivityForResult(intent, 1);
 	}
 
+	String getDate() {
+		Date cDate = new Date();
+		return new SimpleDateFormat("yyyy-MM-dd").format(cDate);
+	}
+
+	int getTime() {
+		int hour = Time.HOUR;
+		int minute = Time.MINUTE;
+		int seconds = Time.SECOND;
+		return (hour + minute + seconds);
+	}
+
 	void addRecordPressed() {
-		//LocationListener mLocationListener = null;
-		//LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-		//locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, mLocationListener);		 
-		 
-		/*
-		 * Record record = new Record(getSpecies(), "AB1234", getInfo(),
-		 * getDAFOR(), "121212", "reserve name"); RecordList list = new
-		 * RecordList(); list.addRecord(record); submit = new SubmitRecord();
-		 * submit.sendToDatabase(list); /* getSpecies(); getDAFOR();
-		 * getTypicalLocation(); getInfo();
-		 */
+
+		Record record = new Record(getSpecies(), getLocation(), getInfo(),
+				getDAFOR(), getDate(), "", "image1", "image2");
+
+		ReserveDataManager dataManager = new ReserveDataManager(getActivity());
+		dataManager.open();
+		dataManager.addRecord(record);
+
+	}
+
+	public String getLocation() {
+		if (location == null) {
+			return "";
+		}
+		return location;
 	}
 
 	protected synchronized void buildGoogleApiClient() {
@@ -176,7 +201,9 @@ public class NewRecordFragment extends Fragment implements
 
 	@Override
 	public void onConnectionFailed(ConnectionResult arg0) {
-		// TODO Auto-generated method stub
+		Toast toast = Toast.makeText(getActivity(), "Please turn GPS on",
+				Toast.LENGTH_LONG);
+		toast.show();
 
 	}
 
@@ -187,18 +214,18 @@ public class NewRecordFragment extends Fragment implements
 		if (mLastLocation != null) {
 			// mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
 			// mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
-			Toast toast = Toast.makeText(getActivity(), GPSToGrid.gpsToGrid(
-					mLastLocation.getLatitude(), mLastLocation.getLongitude()),
-					Toast.LENGTH_LONG);
+			location = GPSToGrid.gpsToGrid(mLastLocation.getLatitude(),
+					mLastLocation.getLongitude());
+			Toast toast = Toast.makeText(getActivity(),
+					"Location: " + location, Toast.LENGTH_LONG);
 			toast.show();
-			System.out.println(mLastLocation.getLatitude()+ mLastLocation.getLongitude());
 		} else {
 			Toast toast = Toast.makeText(getActivity(),
 					"Failed to get location", Toast.LENGTH_LONG);
 			toast.show();
 		}
+		mGoogleApiClient.disconnect();
 	}
-	
 
 	@Override
 	public void onConnectionSuspended(int arg0) {

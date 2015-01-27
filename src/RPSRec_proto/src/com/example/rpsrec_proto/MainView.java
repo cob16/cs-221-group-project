@@ -1,5 +1,7 @@
 package com.example.rpsrec_proto;
 
+import com.example.rpsrec_proto.data_transfer.SubmitRecord;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -9,7 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainView extends FragmentActivity {
+public class MainView extends Activity {
 	ActionBar.Tab tab1, tab2;
 	Fragment newRecordFragment = new NewRecordFragment();
 
@@ -54,7 +56,12 @@ public class MainView extends FragmentActivity {
 
 			return true;
 		}
-		return super.onOptionsItemSelected(item);
+		
+		else if (id == R.id.action_upload) {
+			SubmitRecord submit = new SubmitRecord();
+			
+		}
+		return true;
 	}
 
 }

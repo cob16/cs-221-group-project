@@ -1,7 +1,5 @@
 package com.example.rpsrec_proto;
 
-import java.util.ArrayList;
-
 import com.example.rpsrec_proto.data_transfer.Record;
 import com.example.rpsrec_proto.data_transfer.RecordList;
 import com.example.rpsrec_proto.data_transfer.SubmitRecord;
@@ -13,8 +11,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -44,7 +40,9 @@ public class UserDataView extends Activity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_data_view);
-
+		
+		reserveSpinner = (Spinner) findViewById(R.id.reserve_spinner);
+		
 		final Button addRecordButton = (Button) findViewById(R.id.sign_up_button);
 		addRecordButton.setOnClickListener(new View.OnClickListener() {
 
@@ -53,7 +51,7 @@ public class UserDataView extends Activity {
 
 				if (!(getEnteredName().equals("")
 						|| getEnteredPhoneNumber().equals("") || getEnteredEmail()
-						.equals(""))) {
+						.equals("") || reserveSpinner.getAdapter()==null)) {
 					pressButton();
 					Intent i = new Intent(getApplicationContext(),
 							MainView.class);
@@ -62,7 +60,7 @@ public class UserDataView extends Activity {
 
 				else {
 					new InvalidFieldException(getApplicationContext(),
-							"Enter fields or die, dingus");
+							"Sorry, please fill in all fields");
 				}
 			}
 		});
@@ -81,7 +79,7 @@ public class UserDataView extends Activity {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				reserveSpinner = (Spinner) findViewById(R.id.reserve_spinner);
+				
 				reserveSpinner.setAdapter(null);
 				fillSpinner();
 
@@ -157,6 +155,7 @@ public class UserDataView extends Activity {
 
 		editor.commit();
 
+		
 		Record record = new Record("Abelia uniflora", "AB1234", "testing", 'A',
 				"2014-12-12", "example name", "dsada", "dsfsf");
 		list = new RecordList();
@@ -168,19 +167,7 @@ public class UserDataView extends Activity {
 	}
 
 	void fillSpinner() {
-		// dataManager = new ReserveDataManager(getApplicationContext());
-		// dataManager.open();
-		// dataManager.createReserveList();
-		// reserveSpinner = (Spinner) findViewById(R.id.reserve_spinner);
-		// reserveSpinner.setAdapter(null);
-		// new Thread(new Task()).start();
-
 		reserveSpinner.setAdapter(reserveAdapter);
-
-		// ArrayAdapter<String> reserveAdapter = new
-		// ArrayAdapter<String>(UserDataView.this,
-		// android.R.layout.simple_spinner_item, dataManager.getAllReserves());
-		// reserveSpinner.setAdapter(reserveAdapter);
 	}
 
 	class ReserveGetter implements Runnable {

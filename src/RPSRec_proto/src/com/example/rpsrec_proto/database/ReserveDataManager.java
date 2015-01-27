@@ -29,28 +29,24 @@ public class ReserveDataManager {
 		dbHelper = new DatabaseHelper(context);
 	}
 
-	
 	private SQLiteDatabase database;
 	ArrayList<String> reserves;
 	private DatabaseHelper dbHelper;
 	private String[] allColumns = { DatabaseHelper.COLUMN_ID,
 			DatabaseHelper.COLUMN_NAME };
-	
+
 	private String[] Species_allColumns = { dbHelper.SPECIES_COLUMN_ID,
 			dbHelper.SPECIES_COLUMN_NAME };
-	
-	private String[] Record_allColumns = { 
-			dbHelper.RECORD_COLUMN_ID ,
-			dbHelper.RECORD_COLUMN_species ,
-			dbHelper.RECORD_COLUMN_DAFOR,
+
+	private String[] Record_allColumns = { dbHelper.RECORD_COLUMN_ID,
+			dbHelper.RECORD_COLUMN_species, dbHelper.RECORD_COLUMN_DAFOR,
 			dbHelper.RECORD_COLUMN_comments,
 			dbHelper.RECORD_COLUMN_date_recorded,
 			dbHelper.RECORD_COLUMN_photo_path_general,
 			dbHelper.RECORD_COLUMN_photo_path_species,
 			dbHelper.RECORD_COLUMN_reserve_name,
-			dbHelper.RECORD_COLUMN_location};
+			dbHelper.RECORD_COLUMN_location };
 
-	
 	public void open() {
 		database = dbHelper.getWritableDatabase();
 	}
@@ -58,16 +54,17 @@ public class ReserveDataManager {
 	public void close() {
 		dbHelper.close();
 	}
-	
+
 	public void flushDataBase() {
-		dbHelper.onUpgrade(database, dbHelper.DATABASE_VERSION, dbHelper.DATABASE_VERSION+1);
+		dbHelper.onUpgrade(database, dbHelper.DATABASE_VERSION,
+				dbHelper.DATABASE_VERSION + 1);
 	}
 
 	public ArrayList<String> getAllReserves() {
 		reserves = new ArrayList<String>();
 
-		Cursor cursor = database.query(dbHelper.TABLE_RESERVES,
-				allColumns, null, null, null, null, null);
+		Cursor cursor = database.query(dbHelper.TABLE_RESERVES, allColumns,
+				null, null, null, null, null);
 
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
@@ -80,14 +77,29 @@ public class ReserveDataManager {
 		return reserves;
 	}
 
+	public ArrayList<Record> getAllRecords() {
+		ArrayList<Record> records = new ArrayList<Record>();
+
+		Cursor cursor = database.query(dbHelper.TABLE_RECORDS,
+				Record_allColumns, null, null, null, null, null);
+
+		cursor.moveToFirst();
+		while (!cursor.isAfterLast()) {
+			Record cursorRecord = cursorToRecord(cursor);
+			records.add(cursorRecord);
+			cursor.moveToNext();
+		}
+		// make sure to close the cursor
+		cursor.close();
+		return records;
+	}
+
 	public void addReserve(String newReserve) {
 		ContentValues values = new ContentValues();
 		values.put(dbHelper.COLUMN_NAME, newReserve);
-		long insertId = database.insert(dbHelper.TABLE_RESERVES, null,
-				values);
-		Cursor cursor = database.query(dbHelper.TABLE_RESERVES,
-				allColumns, dbHelper.COLUMN_ID + " = " + insertId, null,
-				null, null, null);
+		long insertId = database.insert(dbHelper.TABLE_RESERVES, null, values);
+		Cursor cursor = database.query(dbHelper.TABLE_RESERVES, allColumns,
+				dbHelper.COLUMN_ID + " = " + insertId, null, null, null, null);
 		cursor.moveToFirst();
 
 		/*
@@ -95,42 +107,39 @@ public class ReserveDataManager {
 		 * newComment;
 		 */
 	}
-	
-	public void addSpecies(String newSpecies) {
-		ContentValues values = new ContentValues();
-		values.put(dbHelper.SPECIES_COLUMN_NAME, newSpecies);
-		long insertId = database.insert(dbHelper.TABLE_SPECIES, null,
-				values);
-		Cursor cursor = database.query(dbHelper.TABLE_SPECIES,
-				Species_allColumns, dbHelper.SPECIES_COLUMN_ID + " = " + insertId, null,
-				null, null, null);
-		cursor.moveToFirst();
 
-		/*
-		 * Reserve reserve = cursorToReserve(cursor); cursor.close(); return
-		 * newComment;
-		 */
-	}
-	
+	// public void addSpecies(String newSpecies) {
+	// ContentValues values = new ContentValues();
+	// values.put(dbHelper.SPECIES_COLUMN_NAME, newSpecies);
+	// long insertId = database.insert(dbHelper.TABLE_SPECIES, null,
+	// values);
+	// Cursor cursor = database.query(dbHelper.TABLE_SPECIES,
+	// Species_allColumns, dbHelper.SPECIES_COLUMN_ID + " = " + insertId, null,
+	// null, null, null);
+	// cursor.moveToFirst();
+	//
+	// /*
+	// * Reserve reserve = cursorToReserve(cursor); cursor.close(); return
+	// * newComment;
+	// */
+	// }
+
 	public void addRecord(Record newRecord) {
 		ContentValues values = new ContentValues();
-		values.put(dbHelper.RECORD_COLUMN_comments, newRecord.getAdditionalInfo());
+		values.put(dbHelper.RECORD_COLUMN_comments,
+				newRecord.getAdditionalInfo());
 		values.put(dbHelper.RECORD_COLUMN_species, newRecord.getSpecies());
-		values.put(dbHelper.RECORD_COLUMN_DAFOR, newRecord.getDaforScale() +"");
+		values.put(dbHelper.RECORD_COLUMN_DAFOR, newRecord.getDaforScale() + "");
 		values.put(dbHelper.RECORD_COLUMN_reserve_name, newRecord.getReserve());
 		values.put(dbHelper.RECORD_COLUMN_date_recorded, newRecord.getDate());
 		values.put(dbHelper.RECORD_COLUMN_location, newRecord.getLocation());
-		values.put(dbHelper.RECORD_COLUMN_photo_path_general, newRecord.getLocationPhoto());
-		values.put(dbHelper.RECORD_COLUMN_photo_path_species, newRecord.getSpeciesPhoto());
-		values.put(dbHelper.RECORD_COLUMN_reserve_name, newRecord.getReserve());
-		
-		
-		long insertId = database.insert(dbHelper.TABLE_RECORDS, null,
-				values);
-		Cursor cursor = database.query(dbHelper.TABLE_SPECIES,
-				Species_allColumns, dbHelper.SPECIES_COLUMN_ID + " = " + insertId, null,
-				null, null, null);
-		cursor.moveToFirst();
+		values.put(dbHelper.RECORD_COLUMN_photo_path_general,
+				newRecord.getLocationPhoto());
+		values.put(dbHelper.RECORD_COLUMN_photo_path_species,
+				newRecord.getSpeciesPhoto());
+
+		long insertId = database.insert(dbHelper.TABLE_RECORDS, null, values);
+		// cursor.moveToFirst();
 
 		/*
 		 * Reserve reserve = cursorToReserve(cursor); cursor.close(); return
@@ -138,7 +147,20 @@ public class ReserveDataManager {
 		 */
 	}
 
-	
+	private Record cursorToRecord(Cursor cursor) {
+
+		Record record = new Record();
+		record.setAdditionalInfo(cursor.getString(0));
+		record.setSpecies(cursor.getString(1));
+		record.setDaforScale(cursor.getString(2).charAt(0));
+		record.setReserveName(cursor.getString(3));
+		record.setDate(cursor.getString(4));
+		record.setlocation(cursor.getString(5));
+		record.setLocationPhoto(cursor.getString(6));
+		record.setSpeciesPhoto(cursor.getString(7));
+
+		return record;
+	}
 
 	private Reserve cursorToReserve(Cursor cursor) {
 		Reserve reserve = new Reserve();
@@ -149,12 +171,13 @@ public class ReserveDataManager {
 
 	public void createReserveList() {
 		JSONArray jsonArray = null;
-		//try {
-			jsonArray = parseJSONObject("reserve");//new URL("http://cormacbrady.info/~tkek/json/reserves.json"));
-		//} catch (MalformedURLException e1) {
-			// TODO Auto-generated catch block
-			//e1.printStackTrace();
-		//}
+		// try {
+		jsonArray = parseJSONObject("reserve");// new
+												// URL("http://cormacbrady.info/~tkek/json/reserves.json"));
+		// } catch (MalformedURLException e1) {
+		// TODO Auto-generated catch block
+		// e1.printStackTrace();
+		// }
 
 		for (int i = 0; i < jsonArray.length(); i++) {
 			try {
@@ -164,31 +187,32 @@ public class ReserveDataManager {
 			}
 		}
 	}
-	
-	public void createSpeciesList() {
-		JSONArray jsonArray = null;
-	//	try {
-			jsonArray = parseJSONObject("species");
-		/*} catch (MalformedURLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}*/
 
-		for (int i = 0; i < jsonArray.length(); i++) {
-			try {
-				addSpecies(jsonArray.getString(i));
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+	// public void createSpeciesList() {
+	// JSONArray jsonArray = null;
+	// // try {
+	// jsonArray = parseJSONObject("species");
+	// /*} catch (MalformedURLException e1) {
+	// // TODO Auto-generated catch block
+	// e1.printStackTrace();
+	// }*/
+	//
+	// for (int i = 0; i < jsonArray.length(); i++) {
+	// try {
+	// addSpecies(jsonArray.getString(i));
+	// } catch (JSONException e) {
+	// e.printStackTrace();
+	// }
+	// }
+	// }
 
 	public JSONArray parseJSONObject(String speciesOrReserve) {
 
 		// TOTES ILLEGAL
-		//StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-			//	.permitAll().build();
-		//StrictMode.setThreadPolicy(policy);
+		// StrictMode.ThreadPolicy policy = new
+		// StrictMode.ThreadPolicy.Builder()
+		// .permitAll().build();
+		// StrictMode.setThreadPolicy(policy);
 		// /////////////
 
 		String jsonData = "";
@@ -197,11 +221,11 @@ public class ReserveDataManager {
 			String line;
 			URL reserveUrl = null;
 			if (speciesOrReserve.equals("species")) {
-			reserveUrl = new URL(
-					"http://cormacbrady.info/~tkek/json/species.json");
+				reserveUrl = new URL(
+						"http://cormacbrady.info/~tkek/json/species.json");
 			}
-			
-			else if (speciesOrReserve.equals("reserve")){
+
+			else if (speciesOrReserve.equals("reserve")) {
 				reserveUrl = new URL(
 						"http://cormacbrady.info/~tkek/json/reserves.json");
 			}

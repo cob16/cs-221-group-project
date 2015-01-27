@@ -9,9 +9,16 @@ public class Record {
 
 	private String species, additionalInfo, reserve, location, date;
 	private char daforScale;
-	private String speciesPhoto, locationPhoto;
+	private String speciesPhoto, locationPhoto, reserveName;
 	private UserInfo user;
 
+	public Record() {
+		species=additionalInfo=reserve=location=speciesPhoto=locationPhoto=date=reserveName="";
+		daforScale=0;
+		user=null;
+		
+	}
+	
 	public Record(String newSpecies, String newLocation, String newInfo,
 			char newDafor, String newDate, String newReserve,String newSpeciesPhoto, String newLocationPhoto) {
 		species = newSpecies;
@@ -38,6 +45,10 @@ public class Record {
 
 	public void setDaforScale(char daforScale) {
 		this.daforScale = daforScale;
+	}
+	
+	public void setReserveName(String reserveName) {
+		this.reserveName= reserveName;
 	}
 
 	public void setSpeciesPhoto(String speciesPhoto) {
@@ -82,5 +93,14 @@ public class Record {
 	
 	public UserInfo getUser() {
 		return user;
+	}
+	
+	public String getReserveName() {
+		return reserveName;
+	}
+
+	public void setDate(String newDate) {
+		this.date = newDate;
+		
 	}
 }
