@@ -25,7 +25,7 @@ import android.widget.ImageView;
 public class MainActivity extends Activity {
 	ImageView imgView;
 	boolean pressed = false;
-	MediaPlayer hitmarker,airhorn,triple;
+	MediaPlayer hitmarker, airhorn, triple;
 	int X, Y, dx, dy;
 	int pressCount;
 
@@ -34,9 +34,10 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		hitmarker = MediaPlayer.create(getApplicationContext(), R.raw.hitmarker);
-		airhorn=MediaPlayer.create(getApplicationContext(), R.raw.airhorn);
-		triple=MediaPlayer.create(getApplicationContext(), R.raw.atriple);
+		hitmarker = MediaPlayer
+				.create(getApplicationContext(), R.raw.hitmarker);
+		airhorn = MediaPlayer.create(getApplicationContext(), R.raw.airhorn);
+		triple = MediaPlayer.create(getApplicationContext(), R.raw.atriple);
 		imgView = new ImageView(getApplicationContext());
 		imgView = (ImageView) findViewById(R.id.hitmarker);
 
@@ -91,21 +92,21 @@ public class MainActivity extends Activity {
 					Y + imgView.getMeasuredHeight());
 			pressCount++;
 			pressed = true;
-			
-			if (pressCount%3==0) {
+
+			if (pressCount % 3 == 0) {
 				triple.start();
 			}
 			break;
 
 		case MotionEvent.ACTION_MOVE:
-			
+
 			// Toast.makeText(this, "MOVE "+"X: "+X+" Y: "+Y,
 			// Toast.LENGTH_SHORT).show();
 
 			break;
 
 		case MotionEvent.ACTION_UP:
-			//airhorn.start();
+			// airhorn.start();
 			// Toast.makeText(this, "ACTION_UP "+"X: "+X+" Y: "+Y,
 			// Toast.LENGTH_SHORT).show();
 
