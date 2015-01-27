@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/Orange" >
         <activity
-            android:name=".MainActivity"
+            android:name="info.cormacbrady.rpsrec.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,35 +23,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BlankRecord"
+            android:name="info.cormacbrady.rpsrec.BlankRecord"
             android:label="@string/title_activity_blank_record" >
         </activity>
         <activity
-            android:name=".NewRecord"
+            android:name="info.cormacbrady.rpsrec.NewRecord"
             android:label="@string/title_activity_new_record"
-            android:parentActivityName=".BlankRecord" >
+            android:parentActivityName="info.cormacbrady.rpsrec.BlankRecord" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.rpsrec_proto.BlankRecord" />
         </activity>
         <activity
-            android:name=".UserDataView"
+            android:name="info.cormacbrady.rpsrec.UserDataView"
             android:label="@string/title_activity_user_data_view" >
         </activity>
         <activity
-            android:name=".RecordView"
+            android:name="info.cormacbrady.rpsrec.RecordView"
             android:label="@string/title_activity_record_view" >
         </activity>
         <activity
-            android:name=".TempRecordView"
+            android:name="info.cormacbrady.rpsrec.TempRecordView"
             android:label="@string/title_activity_record_view" >
         </activity>
         <activity
-            android:name=".Fragment_test"
+            android:name="info.cormacbrady.rpsrec.Fragment_test"
             android:label="@string/title_activity_fragment_test" >
         </activity>
         <activity
-            android:name=".MainView"
+            android:name="info.cormacbrady.rpsrec.MainView"
             android:label="@string/title_activity_fragment_test" >
         </activity>
         <meta-data android:name="com.google.android.gms.version"
