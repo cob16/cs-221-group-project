@@ -21,6 +21,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.StrictMode;
 import android.widget.Toast;
 
+
+/*
+ * @ReserveDataManager.java 1.1 2015-101-18
+ *
+ * Copyright (c) 2013 Aberystwyth University.
+ * All rights reserved.
+ *
+ */
 public class ReserveDataManager {
 
 	public ReserveDataManager(Context context) {
@@ -132,6 +140,7 @@ public class ReserveDataManager {
 		values.put(dbHelper.RECORD_COLUMN_reserve_name, newRecord.getReserve());
 		values.put(dbHelper.RECORD_COLUMN_date_recorded, newRecord.getDate());
 		values.put(dbHelper.RECORD_COLUMN_location, newRecord.getLocation());
+
 		values.put(dbHelper.RECORD_COLUMN_photo_path_general,
 				newRecord.getLocationPhoto());
 		values.put(dbHelper.RECORD_COLUMN_photo_path_species,
@@ -182,9 +191,9 @@ public class ReserveDataManager {
 		record.setDaforScale(cursor.getString(2).charAt(0));
 		record.setReserveName(cursor.getString(3));
 		record.setDate(cursor.getString(4));
-		record.setlocation(cursor.getString(5));
+		record.setlocation(cursor.getString(7));
 		record.setLocationPhoto(cursor.getString(6));
-		record.setSpeciesPhoto(cursor.getString(7));
+		record.setSpeciesPhoto(cursor.getString(5));
 
 		//record.setId(Integer.parseInt(cursor.getString(8)));
 

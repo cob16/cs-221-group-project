@@ -7,6 +7,14 @@ import info.cormacbrady.rpsrec.data_transfer.UserInfo;
 
 import java.io.File;
 
+
+/*
+ * @Record.java 1.1 2015-01-15
+ *
+ * Copyright (c) 2013 Aberystwyth University.
+ * All rights reserved.
+ *
+ */
 public class Record {
 
 	private String species, additionalInfo, reserve, location, date;

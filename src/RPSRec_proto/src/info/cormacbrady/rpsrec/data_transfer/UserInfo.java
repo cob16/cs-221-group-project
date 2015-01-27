@@ -2,8 +2,16 @@ package info.cormacbrady.rpsrec.data_transfer;
 
 import android.location.Location;
 
+
+/*
+ * @UserInfo.java 1.1 2015-1-18
+ *
+ * Copyright (c) 2013 Aberystwyth University.
+ * All rights reserved.
+ *
+ */
 public class UserInfo {
-	public static String email, name, phone;
+	public static String email, name, phone, reserve;
 	
 	public UserInfo(String newEmail, String newName, String newPhone) {
 		name = newName;

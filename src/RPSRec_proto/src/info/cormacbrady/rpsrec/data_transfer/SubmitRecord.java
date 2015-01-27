@@ -75,12 +75,15 @@ public class SubmitRecord {
 				recordJson.put("comments", list.get(i).getAdditionalInfo());
 				recordJson.put("date_recorded", list.get(i).getDate());
 				recordJson.put("reserve_name", list.get(i).getReserve());
-				// recordJson.put("species_photo", list.getSpeciesPhoto(i));
-				// recordJson.put("locationPhoto", list.getLocationPhoto(i));
+				 recordJson.put("species_photo", list.get(i).getSpeciesPhoto());
+				 recordJson.put("locationPhoto", list.get(i).getLocationPhoto());
 				recordJson.put("location", list.get(i).getLocation());
 				mainObj.put("record", recordJson);
 
 				mainObj.put("user", userObj);
+				
+				EncodePhoto photo = new EncodePhoto();
+				//photo.run(list.get(i).getSpeciesPhoto()))
 
 				System.out.println(mainObj);
 				// print the json on the app. PLEASE DELETE!!!

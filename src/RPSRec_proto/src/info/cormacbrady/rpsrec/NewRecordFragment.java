@@ -18,6 +18,7 @@ import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.location.LocationServices;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -40,6 +41,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+
+/*
+ * @NewRecordFragment.java 1.1 2015-1-18
+ *
+ * Copyright (c) 2013 Aberystwyth University.
+ * All rights reserved.
+ *
+ */
 public class NewRecordFragment extends Fragment implements
 		View.OnClickListener, ConnectionCallbacks, OnConnectionFailedListener {
 
@@ -48,6 +57,10 @@ public class NewRecordFragment extends Fragment implements
 	GoogleApiClient mGoogleApiClient;
 	Location mLastLocation;
 	String location;
+	String galleryPhoto, cameraPhoto;
+	String locationPhoto=" "; 
+	String speciesPhoto="";
+	String typePhoto;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -61,6 +74,7 @@ public class NewRecordFragment extends Fragment implements
 
 			@Override
 			public void onClick(View v) {
+				typePhoto="species";
 				getGalleryImage("specimen");
 			}
 		});
@@ -71,6 +85,7 @@ public class NewRecordFragment extends Fragment implements
 
 			@Override
 			public void onClick(View v) {
+				typePhoto="location";
 				getGalleryImage("location");
 			}
 		});
@@ -114,6 +129,7 @@ public class NewRecordFragment extends Fragment implements
 			public void onClick(View v) {
 				if (!(getSpecies().equals("") || getInfo().equals(""))) {
 					addRecordPressed();
+					Toast.makeText(getActivity(), "Record added", Toast.LENGTH_LONG);
 					/*
 					 * Intent i = new Intent(getActivity(), UserDataView.class);
 					 * startActivity(i);
@@ -121,7 +137,7 @@ public class NewRecordFragment extends Fragment implements
 
 				} else {
 					new InvalidFieldException(getActivity(),
-							"Fill those fields, you dungbeetle");
+							"Sorry, please fill all fields");
 				}
 			}
 
@@ -151,9 +167,52 @@ public class NewRecordFragment extends Fragment implements
 	}
 
 	void getGalleryImage(String type) {
-		Intent intent = new Intent(Intent.ACTION_PICK,
+		/*Intent intent = new Intent(Intent.ACTION_PICK,
 				android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-		startActivityForResult(intent, 2);
+		startActivityForResult(intent, 2);*/
+		
+		startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), 2);
+		
+		/*if (type.equals("location")) {
+			locationPhoto= galleryPhoto;
+		}
+		else {
+			speciesPhoto = galleryPhoto;
+		}*/
+				
+	}
+	
+	public void setGalleryPhoto(String photo) {
+		if (typePhoto.equals("location")) {
+		locationPhoto=photo;
+		}
+		else {
+			speciesPhoto=photo;
+		}
+	}
+	
+	public String getGalleryPhoto(String type) {
+		if (type.equals("location")) {
+		return locationPhoto;
+		}
+		else {
+			return speciesPhoto;
+		}
+	}
+	
+	
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    super.onActivityResult(requestCode, resultCode, data);
+
+
+	    //Detects request codes
+	    if(requestCode==2 && resultCode == Activity.RESULT_OK) {
+	        Uri selectedImage = data.getData();
+	       String photo = selectedImage.toString();
+	       setGalleryPhoto(photo);
+	    }
 	}
 
 	void getCameraPhoto(String type) {
@@ -177,9 +236,11 @@ public class NewRecordFragment extends Fragment implements
 	}
 
 	void addRecordPressed() {
+		System.out.println(getGalleryPhoto("species"));
+		System.out.println(getGalleryPhoto("location"));
 
 		Record record = new Record(getSpecies() ,getLocation(), getInfo(),
-				getDAFOR(), getDate(), "", "image1", "image2");
+				getDAFOR(), getDate(), "location", getGalleryPhoto("species"), getGalleryPhoto("location"));
 
 		ReserveDataManager dataManager = new ReserveDataManager(getActivity());
 		dataManager.open();
