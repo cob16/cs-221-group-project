@@ -2,6 +2,16 @@
 
 ### Team TOP KEK
 
+### Git help
+
+Did you brake evrything?
+These two comands will sort you out (by deleting local changes)!
+```
+git fetch origin
+
+git reset --hard origin/master
+```
+
 #### Members: 
 
 | Member              | Github ID         | Aber ID      | role
