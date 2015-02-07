@@ -4,8 +4,8 @@
 
 ### Git help
 
-Did you brake evrything?
-These two comands will sort you out (by deleting local changes)!
+Did you brake everything?
+These two commands will sort you out (by deleting local changes)! 
 ```
 git fetch origin
 
