@@ -1,0 +1,13 @@
+Personal Reflective Report
+Abdullah ALKhashty-aba5
+
+Job
+Testing Team
+
+In this project, I was assigned to the testing team which is in charge of the testing of the application and making sure that the implementation of the plan is well. Our group did lack one important element which was communication, for me also there was a key problem which was that the repository in our git-hub was very complicated to deal with and my job most of the time was unclear to me. On work week, there were many missing members of our team which lead to us having a shortage of manpower to complete some essential parts of our project, I also was in Birmingham to deal with a family issue for a day.
+
+On work week, I did arrive to the Orchid and tried to make the most of it, I was assigned to help with building our database of existing flower conservatories. Also I was put in charge of implementing a search bar that would auto-complete user input in accordance to our existing database, to make the user's job a bit easier, I really did enjoy working on this, however we failed to implement some of the basic aspects of our program so I was not able to finish this part of it. Although our group was 5 people down as I was informed, we tried to overcome that issue and we made some noticeable progress regardless of the issue.
+
+I also was given at one point a job of modifying our website to make it look nicer which I have done, I have implemented a CSS style sheet and some HTML buttons to make it looks nicer and easier to navigate. I have inserted a line between the buttons and the list of wildlife conservatories, to make it look more organized and less crowded. However, many of our group members were carded including a red card for a variety of reasons including not attending work week or not helping with the project. Our overall project looked nice however and is presented well.
+
+I could have done a much better job but I did encounter some issues and family problems, which led to me ultimately not being able to concentrate at all. I did however try to make the best of what I could do when I was required at the work week.
