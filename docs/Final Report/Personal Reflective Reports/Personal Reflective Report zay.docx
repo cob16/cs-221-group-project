@@ -1,0 +1,23 @@
+﻿Personal Reflective Report – Zachary Yewman (zay)	
+The objective of this report is to outline my involvement in the group project and to give a detailed description of the tasks assigned to me, how I completed them and any issues I encountered whilst working, this includes issues ith the work iteslf and any issues that I encountered with the team.
+
+My original role in the group was android developer for the first semester, then after the second semester I migrated over to web development. My responsibilities in the first semester was to create the design documents for the Android App, this involved creating the UI design for the “Project Plan” section of the project, aswell as being entirely responsible for the design document as far as far as the android app is concerned. I then continued to work on the android app by creating a prototype version of a class for sending a JSON via a HTTP post from the android app to the database. During the first semester I also managed to create a prototype class for sending the a JSON from the android app to the database in a HTTP post. 
+
+As time progressed it became more and more clear that Kieran Lynch, one of the two people originally assigned to the creation of the web app who then was later removed, was not very commited to the group project, so to pick up the slack I was asked to do some work on the website, namely to make the website able to communicate with the database and pull information from the database and display it in relevent tables which I succeeded at doing.
+
+When I came back for work week in the second semester I was eager to continue working on the website, as that is where I found the most personal enjoyment. I revamped the entire websites aesthetics using a CSS framework called “Twitter Bootstap” along side Karl Franks, and together we added all of the functionalities to the website that were listed on the specification, while working closely with Calvin Chan and Tim Au who made up the testing team to make sure that there were no bugs and that everything on the website worked as expected. The only thing that was not done to the specification which I only found out from the demonstration was that there was only two webpages used to display the information, one to show the list of reserves, and another to show the list of recordings at the selected reserve. However as I now understand it there should have been three web pages, one for the reserve list, then one for each species in the selected reserve, then another one for each recording of the selected species within the selected reserve.
+
+Due to my migration from the android team to the web team it meant that for work week there were now two people working on the website and only Henry Hollingsworth working on the Android application, who received some help from Cormac Brady for the last couple of days of work week. This meant despite Henrys best efforts, that the app was missing features and still had some bugs by the end of work week. I think that this was preventable had I looked for a replacement in the group for my position in the android team before I moved to the web team, or I could have stayed on the android team and looked for a replacement for Kieran on the web team. Either way would definitely have been better than just moving. This is my biggest personal regret for the group project, and is a mistake that I will learn from and hopefully not make again.
+
+I think that the management of the group by the group leader Cormac Brady, was something he can be proud of as a first time project leader, given the reluctance of some of the group to do anything. One small problem I had with Cormacs leadership was the frequency at which not meeting deadlines would have been punishable with a card, althought I understand that this is to motivate previously unmotivated people to actually do some work, I believe it created a less friendly environment for the people actually doing the work. Other than this I  was very impressed by Cormacs attitude, and his eagerness to contribute outside of the leadership role, such as when he created the database on his personal server. 
+
+Overall I personally enjoyed the group project experience and the challenges that it brought. My most enjoyable moments have been working with equally motivated people to overcome the challenges faced during the group project. 
+
+
+
+
+
+
+
+
+
