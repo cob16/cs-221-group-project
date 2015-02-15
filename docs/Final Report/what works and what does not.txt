@@ -1,0 +1,28 @@
+What works For a detailed list of requirement met please 
+consult the testing documentation,
+
+*	As an overview of the final product almost all of it works including: 
+
+o	offline storage on app
+o	required fields for each recoding
+o	submitting of record to a reserve that has been predetermined
+o	Creating and viewing reserves on the website
+o	Persistent normalised storage using MySQL 
+
+What doesn't
+
+*	There is a bug when pictures are attempted be submitted with results in its failure of the entire 
+	submission
+
+*	The application has some other minor bugs
+*	The web app does not filter show a list of the spices in a reserve without showing duplicates if 
+	there are mutable records of that spices
+
+
+The main events of the project (Project Highlights)
+	
+*	The android application used tabs that use "fragments" (no other groups did this and is hard to 
+	do)
+*	The web app can be used on a mobile web browser! (tested on chrome mobile web browser)
+*	Our current state of the GitHub repo wold allow new contributors commit improvements easily 
+	as all information is provided including the documentation
