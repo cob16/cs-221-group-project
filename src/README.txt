@@ -1,3 +1,5 @@
+==installing
+
 How to run the RSPRview
 1) Initialise the database, some example data has already been placed into the database.
 2) Upload the contents of the RPSview directory to the root directory of the webserver
@@ -10,12 +12,21 @@ How to run the RPSRec
 4) Run the app
 
 
-Directory Files
+
+==Directory Files Tree
+
 rootdir_|_rpsview
 	|_resrec_
 	|        |_src
 	|	 |_rpsrec.apk  
 	|_rpsserv
+
+
+
+
+==Burning to Disk
+
+Add files from folder disk files to root directory on disk
 
 
 This project uses bootstrap
